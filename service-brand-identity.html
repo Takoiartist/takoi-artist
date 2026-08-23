@@ -41,13 +41,13 @@
     }
 
    .hero-banner {
+  display: block;
   width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: contain;
-  background: #f5f5f5;
+  max-width: 420px;   /* porque la imagen es vertical, no la dejamos estirarse a lo ancho */
+  height: auto;        /* respeta la proporción real de la imagen */
+  margin: 0 auto;       /* la centra en el contenedor */
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
 }
 
     .service-desc {
