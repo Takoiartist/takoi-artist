@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Takoi Artist</title>
-<meta name="description" content="Takoi Artist · Jotako Studio — Illustrations, Editorial, Brand Design, Custom Digital Illustration, Manga/Comics, 2D Animation y Website.">
+<meta name="description" content="Takoi Artist · Jotako Studio — Illustrations, Editorial, Brand Design, Custom Digital Illustration, Manga/Comics, 2D Animation and Website.">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Potta+One&display=swap" rel="stylesheet">
 <style>
@@ -47,7 +47,6 @@
   }
   .back-link:hover{ color:var(--purple-dark); }
 
-  /* ---------- Category grid (the section being redesigned) ---------- */
   .cat-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -98,7 +97,6 @@
   .btn-takoi.outline{ background:transparent; color:var(--purple); border:2px solid var(--purple); }
   .btn-takoi.outline:hover{ background:var(--purple); color:#fff; }
 
-  /* ---------- Section scaffolding ---------- */
   .py-section{ padding:64px 0; }
   .bg-soft{ background:var(--purple-soft); }
 
@@ -138,36 +136,7 @@
     border:2px dashed #d9c9ec; border-radius:16px; padding:22px; text-align:center; color:var(--text-muted);
     font-size:.88rem; display:none;
   }
-  .empty-note b{ color:var(--purple); }
 
-  /* ---------- Brand / client spotlight ---------- */
-  .spotlight{
-    display:grid; grid-template-columns:1.1fr 1fr; gap:0; border-radius:20px; overflow:hidden;
-    box-shadow:0 6px 24px rgba(107,68,145,.12); background:#fff; margin-bottom:20px;
-  }
-  @media (max-width:860px){ .spotlight{ grid-template-columns:1fr; } }
-  .spotlight-info{ padding:36px; display:flex; flex-direction:column; justify-content:center; }
-  .spotlight-info .eyebrow{ text-align:left; }
-  .spotlight-info h3{ font-family:'Poppins',sans-serif; font-weight:700; color:var(--ink); font-size:1.5rem; }
-  .spotlight-info p{ color:var(--text-muted); font-size:.92rem; }
-  .spotlight-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
-  .spotlight-tags span{
-    font-size:.72rem; font-weight:600; color:var(--purple); background:var(--purple-soft);
-    padding:5px 12px; border-radius:20px;
-  }
-  .spotlight-imgs{ display:grid; grid-template-columns:1fr 1fr; gap:2px; }
-  .spotlight-imgs .img-box{ aspect-ratio:1/1; position:relative; }
-  .spotlight-imgs .img-box:first-child{ grid-column:1/-1; aspect-ratio:16/9; }
-  .spotlight-imgs img{ width:100%; height:100%; object-fit:cover; cursor:zoom-in; }
-
-  /* ---------- About ---------- */
-  .about-portrait{
-    width:100%; border-radius:20px; box-shadow:0 8px 30px rgba(107,68,145,.18);
-  }
-  .about-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
-  .about-tags span{ font-size:.74rem; font-weight:600; color:var(--purple); background:var(--purple-soft); padding:6px 12px; border-radius:20px; }
-
-  /* ---------- Downloads ---------- */
   .dl-card{
     display:flex; align-items:center; justify-content:space-between; gap:16px;
     background:#fff; border-radius:16px; padding:22px 26px; text-decoration:none; color:var(--ink);
@@ -181,12 +150,10 @@
     display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;
   }
 
-  /* ---------- Footer ---------- */
   footer.site-footer{ background:var(--ink); color:#ccc; padding:2.5rem 0 1rem; }
   footer.site-footer a{ color:#ccc; text-decoration:none; font-size:.85rem; }
   footer.site-footer a:hover{ color:#fff; }
 
-  /* ---------- Lightbox ---------- */
   .lightbox{
     position:fixed; inset:0; z-index:300; background:rgba(43,43,43,.85);
     display:none; align-items:center; justify-content:center; padding:30px 16px;
@@ -219,7 +186,7 @@
 
 <nav class="navbar navbar-expand-lg py-0">
   <div class="container-fluid justify-content-center">
-    <button class="navbar-toggler border-0 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
+    <button class="navbar-toggler border-0 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Open menu">
       <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="menu">
@@ -231,66 +198,41 @@
         <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
         <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="sitemap.html">Mapa del sitio</a></li>
+        <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- ============ PORTFOLIO INDEX ============ -->
+<!-- PORTFOLIO INDEX -->
 <section class="py-section" id="top" style="background:#fff">
   <div class="container">
     <div class="text-end mb-3">
       <a href="index.html" class="back-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
-        Regresar
+        Back
       </a>
     </div>
 
     <h2 class="section-title">PORTFOLIO</h2>
     <img class="divider-icon" src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="14">
-    <p class="section-sub">Explora por disciplina — toca una portada para ver ese trabajo en detalle.</p>
+    <p class="section-sub">Browse by discipline — tap a cover to explore that work in detail.</p>
 
     <div class="cat-grid" id="catGrid"></div>
   </div>
 </section>
 
-<!-- ============ ABOUT STRIP ============ -->
-<section class="py-section bg-soft">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-4 text-center">
-        <img class="about-portrait" src="http://takoiartista.free.nf/wp-content/uploads/2026/03/Jorge-Jotako-Brand-2024_PERFIL.png" alt="Jorge A. Castaño - Jotako Studio" onerror="this.style.display='none'">
-      </div>
-      <div class="col-lg-8">
-        <p class="eyebrow" style="text-align:left">Sobre Jotako Studio</p>
-        <h3 style="font-family:'Poppins',sans-serif; font-weight:700; color:var(--ink); font-size:1.7rem">Ilustrador, artista de cómic y animador 2D</h3>
-        <p style="color:var(--text-muted)">Soy Jorge A. Castaño. Bajo el seudónimo <b>Tako Iwakura (Takoi)</b> cuento historias que conectan emocionalmente, inspirado en la narrativa visual japonesa —manga y anime— y en el estudio de la figura humana para crear personajes con carácter propio.</p>
-        <p style="color:var(--text-muted)">Trabajo principalmente con Clip Studio Paint y Adobe Illustrator, además de MediBang, Procreate y OpenToonz. Como proyecto personal, escribo y dibujo el webcómic <b>DREAMERS ~Soñadores~</b>, publicado en Webtoon Canvas, Tapas y Akaya.</p>
-        <div class="about-tags">
-          <span>Ilustración digital</span>
-          <span>Comic &amp; Manga</span>
-          <span>2D Animation</span>
-          <span>Brand Identity</span>
-        </div>
-        <a class="btn-takoi outline mt-4" href="about.html">Conocer más</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ILUSTRACIÓN ============ -->
+<!-- ILLUSTRATIONS -->
 <section class="py-section" id="ilustracion" style="background:#fff">
   <div class="container">
-    <p class="eyebrow">01 · Capítulo</p>
+    <p class="eyebrow">01 · Chapter</p>
     <h2 class="section-title">Illustrations</h2>
-    <p class="section-sub">Retratos, estilo anime, ilustración infantil e ilustración corporativa.</p>
+    <p class="section-sub">Portraits, anime style, children's illustration and corporate illustration.</p>
 
-    <div class="chip-row" role="tablist" aria-label="Filtrar ilustraciones">
-      <button class="chip active" data-filter="all">Todo</button>
-      <button class="chip" data-filter="retrato">Retratos &amp; Anime</button>
-      <button class="chip" data-filter="infantil">Infantil</button>
-      <button class="chip" data-filter="corporativa">Corporativa</button>
+    <div class="chip-row" role="tablist" aria-label="Filter illustrations">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="retrato">Portraits &amp; Anime</button>
+      <button class="chip" data-filter="corporativa">Corporate</button>
     </div>
 
     <div class="piece-grid" id="gallery-ilustracion"></div>
@@ -298,94 +240,77 @@
   </div>
 </section>
 
-<!-- ============ EDITORIAL ============ -->
+<!-- EDITORIAL -->
 <section class="py-section bg-soft" id="editorial">
   <div class="container">
-    <p class="eyebrow">02 · Capítulo</p>
+    <p class="eyebrow">02 · Chapter</p>
     <h2 class="section-title">Editorial Design</h2>
-    <p class="section-sub">Ilustración narrativa pensada para publicación e impresión.</p>
+    <p class="section-sub">Narrative illustration designed for publication and print.</p>
     <div class="piece-grid" id="gallery-editorial"></div>
   </div>
 </section>
 
-<!-- ============ MARCA / BRAND ============ -->
+<!-- BRAND DESIGN -->
 <section class="py-section" id="marca" style="background:#fff">
   <div class="container">
-    <p class="eyebrow">03 · Capítulo</p>
+    <p class="eyebrow">03 · Chapter</p>
     <h2 class="section-title">Brand Design</h2>
-    <p class="section-sub">Proyectos de ilustración desarrollados para marcas y negocios.</p>
-
-    <div class="spotlight">
-      <div class="spotlight-info">
-        <p class="eyebrow">Cliente</p>
-        <h3>Store Negos</h3>
-        <p>Sistema de ilustraciones desarrollado para reforzar la identidad visual de la marca, aplicado en portada, piezas gráficas y contenido de campaña.</p>
-        <div class="spotlight-tags">
-          <span>Ilustración de marca</span>
-          <span>Identidad visual</span>
-          <span>Campaña</span>
-        </div>
-      </div>
-      <div class="spotlight-imgs" id="spotlight-storenegos"></div>
-    </div>
-
-    <h4 style="font-family:'Poppins',sans-serif; font-weight:700; color:var(--ink); margin:40px 0 4px">Contenido para redes sociales</h4>
-    <p style="color:var(--text-muted); font-size:.9rem; margin-bottom:20px">Piezas ilustradas para RRSS, pensadas para publicación y campaña digital.</p>
-    <div class="piece-grid" id="gallery-rrss"></div>
+    <p class="section-sub">Illustration projects developed for brands and businesses.</p>
+    <div class="piece-grid" id="gallery-marca"></div>
   </div>
 </section>
 
-<!-- ============ COMISIONES / CUSTOM ============ -->
+<!-- CUSTOM DIGITAL ILLUSTRATION -->
 <section class="py-section bg-soft" id="comisiones">
   <div class="container">
-    <p class="eyebrow">04 · Capítulo</p>
+    <p class="eyebrow">04 · Chapter</p>
     <h2 class="section-title">Custom Digital Illustration</h2>
-    <p class="section-sub">Comisiones personalizadas: personajes, retratos y piezas realistas.</p>
+    <p class="section-sub">Personalized commissions: characters, portraits and realistic pieces.</p>
     <div class="piece-grid" id="gallery-comisiones"></div>
   </div>
 </section>
 
-<!-- ============ MANGA / COMIC ============ -->
+<!-- MANGA / COMIC -->
 <section class="py-section" id="manga" style="background:#fff">
   <div class="container">
-    <p class="eyebrow">05 · Capítulo</p>
+    <p class="eyebrow">05 · Chapter</p>
     <h2 class="section-title">Mangas &amp; Comics</h2>
-    <p class="section-sub">Páginas, paneles y diseño de personajes para cómic y manga.</p>
+    <p class="section-sub">Pages, panels and character design for comic and manga.</p>
     <div class="piece-grid" id="gallery-manga"></div>
   </div>
 </section>
 
-<!-- ============ 2D ANIMATION ============ -->
+<!-- 2D ANIMATION -->
 <section class="py-section bg-soft" id="animacion">
   <div class="container">
-    <p class="eyebrow">06 · Capítulo</p>
+    <p class="eyebrow">06 · Chapter</p>
     <h2 class="section-title">2D Animation</h2>
-    <p class="section-sub">Character design, movimiento y motion illustration.</p>
+    <p class="section-sub">Character design, motion and motion illustration.</p>
     <div class="piece-grid" id="gallery-animacion"></div>
   </div>
 </section>
 
-<!-- ============ WEBSITE ============ -->
+<!-- WEBSITE -->
 <section class="py-section" id="web" style="background:#fff">
   <div class="container">
-    <p class="eyebrow">07 · Capítulo</p>
+    <p class="eyebrow">07 · Chapter</p>
     <h2 class="section-title">Website</h2>
-    <p class="section-sub">Diseño e ilustración aplicados a proyectos digitales, UI/UX.</p>
+    <p class="section-sub">Design and illustration applied to digital projects, UI/UX.</p>
     <div class="piece-grid" id="gallery-web"></div>
   </div>
 </section>
 
-<!-- ============ DESCARGAS ============ -->
+<!-- DOWNLOADS -->
 <section class="py-section bg-soft">
   <div class="container">
     <p class="eyebrow">Extra</p>
-    <h2 class="section-title">Descarga el book completo</h2>
-    <p class="section-sub">Los portafolios en PDF, listos para compartir con clientes.</p>
+    <h2 class="section-title">Download the full book</h2>
+    <p class="section-sub">Portfolio PDFs, ready to share with clients.</p>
     <div class="row g-3 justify-content-center">
       <div class="col-md-5">
         <a class="dl-card" href="https://takoiartist.github.io/takoi-artist/%5BJotako%5D%20Portafolio%20de%20Ilustraci%C3%B3n%202023.pdf" target="_blank" rel="noopener">
           <div>
-            <h5>Portafolio de Ilustración</h5>
+            <h5>Illustration Portfolio</h5>
             <small>PDF · 2023</small>
           </div>
           <span class="dl-icon">↓</span>
@@ -394,7 +319,7 @@
       <div class="col-md-5">
         <a class="dl-card" href="https://takoiartist.github.io/takoi-artist/%5BJotako%5D%20Portafolio%20de%20Ilustraci%C3%B3n%20Infantil%202026.pdf" target="_blank" rel="noopener">
           <div>
-            <h5>Portafolio Infantil</h5>
+            <h5>Children's Portfolio</h5>
             <small>PDF · 2026</small>
           </div>
           <span class="dl-icon">↓</span>
@@ -404,12 +329,12 @@
   </div>
 </section>
 
-<!-- ============ CTA CONTACTO ============ -->
+<!-- CTA -->
 <section class="py-section" style="background:var(--purple); text-align:center">
   <div class="container">
-    <h2 class="section-title" style="color:#fff">¿Un proyecto en mente?</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,.85)">Escríbeme y lo armamos juntos.</p>
-    <a class="btn-takoi" style="background:#fff; color:var(--purple)" href="https://wa.me/573145641237" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+    <h2 class="section-title" style="color:#fff">Have a project in mind?</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.85)">Write to me and we'll build it together.</p>
+    <a class="btn-takoi" style="background:#fff; color:var(--purple)" href="https://wa.me/573145641237" target="_blank" rel="noopener">Write to me on WhatsApp</a>
   </div>
 </section>
 
@@ -422,7 +347,7 @@
           <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/whatsapp-3.png" alt="WhatsApp" height="18"> 3145641237
         </a>
         <a href="mailto:armando.takoiartist@gmail.com">
-          <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/correo-2.png" alt="Correo" height="18"> armando.takoiartist@gmail.com
+          <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/correo-2.png" alt="Email" height="18"> armando.takoiartist@gmail.com
         </a>
       </div>
       <div class="col-md-4 text-center">
@@ -439,15 +364,15 @@
     </div>
     <hr style="border-color:rgba(255,255,255,.1); margin-top:1.5rem;">
     <p class="text-center mb-0" style="font-size:.72rem; color:#777;">
-      Copyright © Todos los Derechos Reservados 2026 &nbsp;|&nbsp; Diseñado por:
+      Copyright © All Rights Reserved 2026 &nbsp;|&nbsp; Designed by:
       <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/meiw-creative.png" alt="Meiw Creative" height="22" style="opacity:.8;">
     </p>
   </div>
 </footer>
 
-<!-- ============ LIGHTBOX ============ -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de la ilustración">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged illustration view">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
   <div class="lightbox-card">
     <img id="lightboxImg" src="" alt="">
     <div class="lightbox-cap">
@@ -460,20 +385,26 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 (function(){
-  var RAW1 = "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ec99815d2366576898541fb675642480b287ccde/";
-  var RAW2 = "https://raw.githubusercontent.com/Takoiartist/takoi-artist/f32a7c78723ca3fc7af863a9a7590a731c693ff8/";
-  var GH   = "https://takoiartist.github.io/takoi-artist/";
-  var CDN  = "http://takoiartista.free.nf/wp-content/uploads/2026/06/";
+  var CDN = "http://takoiartista.free.nf/wp-content/uploads/2026/06/";
+  var GH  = "https://takoiartist.github.io/takoi-artist/";
+  var RAW = "https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/";
 
-  // ---- Category grid (official covers, same art as the live site's portfolio.html) ----
+  // ---- Category grid ----
   var categories = [
-    { num:"01", href:"#ilustracion", title:"Illustrations", img:CDN+"DDD-14-scaled.png" },
-    { num:"02", href:"#manga", title:"Mangas and Comics", img:CDN+"Comic-Pineda_005-scaled.png" },
-    { num:"03", href:"#animacion", title:"2D Animation", img:CDN+"CARACTER-DESIGN-14-scaled.png" },
-    { num:"04", href:"#marca", title:"Brand Design", img:CDN+"BRAND-14-scaled.png" },
-    { num:"05", href:"#web", title:"Website", img:CDN+"Jotako-Lolas-App-Ingreso-UI-UX_Mesa-de-trabajo-1.png" },
-    { num:"06", href:"#editorial", title:"Editorial Design", img:CDN+"Jotako-Behance-Editorial-2024-07.png" },
-    { num:"07", href:"#comisiones", title:"Custom Digital Illustration", img:CDN+"2026-06-15-16_11_38-2-1.png" }
+    { num:"01", href:"#ilustracion", title:"Illustrations",
+      img:"https://github.com/Takoiartist/takoi-artist/blob/main/Ilustraci%C3%B3n10.png?raw=true" },
+    { num:"02", href:"#manga", title:"Mangas and Comics",
+      img:"https://github.com/Takoiartist/takoi-artist/blob/main/C%C3%B3mic%20Pineda_005.png?raw=true" },
+    { num:"03", href:"#animacion", title:"2D Animation",
+      img:"https://github.com/Takoiartist/takoi-artist/blob/main/Plano%2001.png?raw=true" },
+    { num:"04", href:"#marca", title:"Brand Design",
+      img:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20Behance%20Jotako%20Brand%202023-10.png" },
+    { num:"05", href:"#web", title:"Website",
+      img:"https://github.com/Takoiartist/takoi-artist/blob/main/%5BJotako%5D%20Lola's%20App%20Ingreso%20UI-UX-06.png?raw=true" },
+    { num:"06", href:"#editorial", title:"Editorial Design",
+      img:CDN+"Jotako-Behance-Editorial-2024-07.png" },
+    { num:"07", href:"#comisiones", title:"Custom Digital Illustration",
+      img:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/9af0bd86150e6e155342391954a4d870522734b4/Ilustraci%C3%B3n%20gatas.png" }
   ];
 
   var catGrid = document.getElementById('catGrid');
@@ -490,56 +421,47 @@
   var cta = document.createElement('a');
   cta.className = 'port-card cta-card';
   cta.href = 'index.html#contacto';
-  cta.innerHTML = '<h3>¿Un proyecto en mente?</h3><p>Escríbeme y lo armamos juntos →</p>';
+  cta.innerHTML = '<h3>Have a project in mind?</h3><p>Write to me and we\'ll build it together →</p>';
   catGrid.appendChild(cta);
 
   // ---- Gallery data ----
   var illustrations = [
-    { src: GH+"Ilustraci%C3%B3n10.png", title:"Retrato — estudio 10", client:"Retrato", cat:"retrato" },
-    { src: GH+"Ilustraci%C3%B3n2.4.png", title:"Retrato — estudio 2.4", client:"Retrato", cat:"retrato" },
-    { src: GH+"Ilustraci%C3%B3n5.png", title:"Retrato — estudio 05", client:"Retrato", cat:"retrato" },
-    { src: GH+"Ilustraci%C3%B3n6.png", title:"Retrato — estudio 06", client:"Retrato", cat:"retrato" },
-    { src: RAW1+"01.png", title:"Personaje estilo anime", client:"Retrato", cat:"retrato" },
-    { src: RAW1+"%5BTako%5D%20Kosaka_01.png", title:"Kosaka — retrato", client:"Kosaka", cat:"retrato" },
-    { src: RAW1+"%5BJotako%5D%20Portada%20Retrato-13.png", title:"Portada de retrato", client:"Retrato", cat:"retrato" }
+    { src:"https://github.com/Takoiartist/takoi-artist/blob/main/Ilustraci%C3%B3n10.png?raw=true", title:"Portrait — study 10", client:"Portrait", cat:"retrato" },
+    { src:GH+"Ilustraci%C3%B3n2.4.png", title:"Portrait — study 2.4", client:"Portrait", cat:"retrato" },
+    { src:GH+"Ilustraci%C3%B3n5.png", title:"Portrait — study 05", client:"Portrait", cat:"retrato" },
+    { src:GH+"Ilustraci%C3%B3n6.png", title:"Portrait — study 06", client:"Portrait", cat:"retrato" },
+    { src:CDN+"2026-06-15-16_11_38-2-1.png", title:"Corporate illustration", client:"Corporate", cat:"corporativa" }
   ];
 
   var editorial = [
-    { src: CDN+"Jotako-Behance-Editorial-2024-07.png", title:"Portada — Editorial 2024", client:"Editorial Design" },
-    { src: GH+"Comp-1_1.gif", title:"Animación editorial", client:"Editorial" },
-    { src: GH+"ni%C3%B1as%20indigenas.png", title:"Niñas indígenas", client:"Editorial" },
-    { src: GH+"Ilustraci%C3%B3n2.png", title:"Ilustración editorial 02", client:"Editorial" },
-    { src: GH+"Ilustracio%CC%81n05naranaja.png", title:"Ilustración editorial 05", client:"Editorial" }
+    { src:CDN+"Jotako-Behance-Editorial-2024-07.png", title:"Cover — Editorial 2024", client:"Editorial Design" },
+    { src:GH+"ni%C3%B1as%20indigenas.png", title:"Indigenous girls", client:"Editorial" },
+    { src:GH+"Ilustraci%C3%B3n2.png", title:"Editorial illustration 02", client:"Editorial" }
   ];
 
-  var storeNegos = [
-    { src: RAW1+"%5BJotako%5D%20Store%20Negos_PORTADA_Mesa%20de%20trabajo%201.png", title:"Store Negos — portada", client:"Store Negos" },
-    { src: RAW1+"%5BJotako%5D%20Store%20Negos-06.png", title:"Store Negos — pieza 06", client:"Store Negos" },
-    { src: RAW1+"%5BJotako%5D%20Store%20Negos-07.png", title:"Store Negos — pieza 07", client:"Store Negos" }
-  ];
-
-  var rrss = [
-    { src: RAW1+"%5BTako%5D%20RRSS%202025_02.png", title:"Contenido RRSS 2025", client:"Redes sociales" }
+  var marca = [
+    { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20Behance%20Jotako%20Brand%202023-10.png", title:"Brand Design 2023", client:"Brand Identity" },
+    { src:CDN+"BRAND-14-scaled.png", title:"Brand Design — corporate", client:"Brand Identity" }
   ];
 
   var comisiones = [
-    { src: CDN+"2026-06-15-16_11_38-2-1.png", title:"Portada — Custom Illustration", client:"Custom Digital Illustration" },
-    { src: RAW2+"Dora%20La%20Catadora%20Ilustraci%C3%B3n%20Personaje_Mesa%20de%20trabajo%201.png", title:"Diseño de personaje", client:"Dora La Catadora" },
-    { src: RAW2+"Ilustraci%C3%B3n%20Prom2026.png", title:"Ilustración realista — ave", client:"Comisión 2026" },
-    { src: RAW2+"%5BTakoilu%5D%20Laura%20Ilustraci%C3%B3n%20Paisaje.jpg", title:"Paisaje ilustrado", client:"Laura" }
+    { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/9af0bd86150e6e155342391954a4d870522734b4/Ilustraci%C3%B3n%20gatas.png", title:"Custom illustration — cats", client:"Custom Digital Illustration" },
+    { src:CDN+"Miguel-Ilu-01-scaled.png", title:"Custom portrait — Miguel", client:"Custom" },
+    { src:CDN+"Maxi-Minion2-scaled.png", title:"Custom illustration — Maxi", client:"Custom" }
   ];
 
   var manga = [
-    { src: CDN+"Comic-Pineda_005-scaled.png", title:"Página de cómic — Pineda", client:"Comic & Manga" }
+    { src:"https://github.com/Takoiartist/takoi-artist/blob/main/C%C3%B3mic%20Pineda_005.png?raw=true", title:"Comic page — Pineda", client:"Comic & Manga" }
   ];
 
   var animacion = [
-    { src: CDN+"CARACTER-DESIGN-14-scaled.png", title:"Character design para animación", client:"2D Animation" },
-    { src: CDN+"Daniela-Streamer-scaled.png", title:"Daniela — streamer character", client:"2D Animation" }
+    { src:"https://github.com/Takoiartist/takoi-artist/blob/main/Plano%2001.png?raw=true", title:"2D Animation — plane 01", client:"2D Animation" },
+    { src:CDN+"Daniela-Streamer-scaled.png", title:"Daniela — streamer character", client:"2D Animation" }
   ];
 
   var web = [
-    { src: CDN+"Jotako-Lolas-App-Ingreso-UI-UX_Mesa-de-trabajo-1.png", title:"Lolas App — pantalla de ingreso", client:"UI/UX" }
+    { src:"https://github.com/Takoiartist/takoi-artist/blob/main/%5BJotako%5D%20Lola's%20App%20Ingreso%20UI-UX-06.png?raw=true", title:"Lolas App — login screen", client:"UI/UX" },
+    { src:CDN+"Jotako-Lolas-App-Ingreso-UI-UX_Mesa-de-trabajo-1.png", title:"Lolas App — full UI", client:"UI/UX" }
   ];
 
   function pieceEl(item){
@@ -550,7 +472,7 @@
     btn.innerHTML =
       '<div class="img-box">' +
         '<img src="'+item.src+'" alt="'+item.title+' — '+item.client+'" loading="lazy">' +
-        '<div class="fallback">Vista previa no disponible<br>'+item.title+'</div>' +
+        '<div class="fallback">Preview not available<br>'+item.title+'</div>' +
       '</div>' +
       '<figcaption><span>'+item.title+'</span><span class="p-client">'+item.client+'</span></figcaption>';
     var img = btn.querySelector('img');
@@ -567,30 +489,15 @@
 
   fillGallery('gallery-ilustracion', illustrations);
   fillGallery('gallery-editorial', editorial);
-  fillGallery('gallery-rrss', rrss);
+  fillGallery('gallery-marca', marca);
   fillGallery('gallery-comisiones', comisiones);
   fillGallery('gallery-manga', manga);
   fillGallery('gallery-animacion', animacion);
   fillGallery('gallery-web', web);
 
-  // Store Negos spotlight
-  var spotEl = document.getElementById('spotlight-storenegos');
-  storeNegos.forEach(function(item){
-    var box = document.createElement('div');
-    box.className = 'img-box';
-    box.innerHTML = '<img src="'+item.src+'" alt="'+item.title+'" loading="lazy"><div class="fallback">Vista previa no disponible<br>'+item.title+'</div>';
-    box.querySelector('img').addEventListener('error', function(){ box.classList.add('broken'); });
-    box.addEventListener('click', function(){ openLightbox(item); });
-    spotEl.appendChild(box);
-  });
-
   // ---- Filters ----
   var chips = document.querySelectorAll('.chip');
   var emptyNote = document.getElementById('empty-note');
-  var emptyMessages = {
-    infantil: 'La galería de <b>ilustración infantil</b> se está preparando — mientras tanto puedes ver el book completo en la sección de descargas más abajo.',
-    corporativa: 'Esta vista se completará con más piezas próximamente — mientras tanto puedes ver los proyectos de marca completos en la sección <b>Brand Design</b> más abajo.'
-  };
   chips.forEach(function(chip){
     chip.addEventListener('click', function(){
       chips.forEach(function(c){ c.classList.remove('active'); });
@@ -604,8 +511,8 @@
         p.style.display = show ? '' : 'none';
         if(show){ visible++; }
       });
-      if(emptyMessages[f] && visible === 0){
-        emptyNote.innerHTML = emptyMessages[f];
+      if(visible === 0){
+        emptyNote.innerHTML = 'No pieces available for this category yet.';
         emptyNote.style.display = 'block';
       } else {
         emptyNote.style.display = 'none';
@@ -644,7 +551,7 @@
 
   // ---- Scroll reveal ----
   if('IntersectionObserver' in window){
-    var targets = document.querySelectorAll('.port-card, .piece, .spotlight, .dl-card');
+    var targets = document.querySelectorAll('.port-card, .piece, .dl-card');
     targets.forEach(function(el){ el.style.opacity = 0; el.style.transform = 'translateY(14px)'; el.style.transition = 'opacity .5s ease, transform .5s ease'; });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
@@ -661,4 +568,5 @@
 </script>
 </body>
 </html>
+
 
