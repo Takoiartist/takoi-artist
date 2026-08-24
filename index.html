@@ -132,17 +132,11 @@
     /* Quita el resaltado amarillo que Google pone sobre el texto traducido */
     .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-    #google_translate_element .goog-te-gadget {
-      font-family: 'Poppins', sans-serif !important;
-      font-size: 0 !important;
-      color: transparent !important;
-      line-height: normal !important;
-    }
     #google_translate_element .goog-te-gadget-simple {
       background: rgba(255,255,255,.15) !important;
       border: none !important;
       border-radius: 50px !important;
-      padding: 6px 10px !important;
+      padding: 6px 12px !important;
       display: inline-flex !important;
       align-items: center !important;
       cursor: pointer !important;
@@ -152,23 +146,24 @@
       background: rgba(255,255,255,.32) !important;
       transform: translateY(-2px);
     }
-    #google_translate_element .goog-te-gadget-icon { display: none !important; }
-    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value {
+    /* Colorea y ajusta el tamaño de TODO lo que Google mete adentro (texto, enlace, spans) */
+    #google_translate_element .goog-te-gadget-simple,
+    #google_translate_element .goog-te-gadget-simple a,
+    #google_translate_element .goog-te-gadget-simple a span,
+    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value,
+    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span {
       color: #fff !important;
       font-size: .8rem !important;
       font-family: 'Poppins', sans-serif !important;
       font-weight: 700 !important;
+      text-decoration: none !important;
+      line-height: normal !important;
     }
-    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span {
-      color: #fff !important;
-      border: none !important;
-    }
-    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span:last-child {
-      /* flechita del dropdown */
-      border-top-color: #fff !important;
-    }
+    /* Oculta la banderita/ícono que trae por defecto */
+    #google_translate_element .goog-te-gadget-icon,
+    #google_translate_element img { display: none !important; }
     /* Oculta el logo/link "Powered by Google Translate" */
-    .goog-logo-link, .goog-te-gadget span > a { display: none !important; }
+    .goog-logo-link { display: none !important; }
 
     .section-title {
       font-family: 'Potta One', cursive;
