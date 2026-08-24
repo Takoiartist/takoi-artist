@@ -13,6 +13,16 @@
     header { background: #fff; padding: 12px 0; }
 
     .navbar { background: #6B4491 !important; }
+
+    /* Menú centrado en escritorio; redes alineadas a la derecha. */
+    .navbar-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 46px;
+      padding: .3rem 2rem;
+    }
     .navbar .nav-link {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
@@ -21,6 +31,30 @@
       padding: .4rem .9rem;
     }
     .navbar .nav-link:hover { opacity: .8; }
+
+    @media (min-width: 992px) {
+      .navbar-container .navbar-toggler { display: none; }
+      .navbar-container #menu {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        display: flex !important;
+      }
+      .navbar-container .menu-social { margin-left: auto; }
+      .navbar-container #menu .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+        gap: .15rem !important;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-container { flex-wrap: wrap; padding: .3rem 1rem; }
+      .navbar-container .menu-social { margin-left: auto; }
+      .navbar-container #menu { order: 3; width: 100%; }
+      .navbar-container #menu .navbar-nav { align-items: center; padding: .5rem 0; }
+    }
 
     /* ===== WhatsApp + Redes sociales en el navbar ===== */
     .social-icon {
@@ -195,15 +229,15 @@
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg py-0" role="navigation" aria-label="Menú principal">
-    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap">
+    <div class="navbar-container">
 
-      <button class="navbar-toggler border-0 my-2 order-1" type="button"
+      <button class="navbar-toggler border-0 my-2" type="button"
               data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
         <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
       </button>
 
       <!-- WhatsApp + Redes sociales (al lado del menú) -->
-      <div class="d-flex align-items-center gap-2 order-2 order-lg-3 py-1">
+      <div class="menu-social d-flex align-items-center gap-2 py-1">
         <a href="https://instagram.com/Takoiartist" target="_blank" rel="noopener" title="Instagram" class="social-icon"><i class="bi bi-instagram"></i></a>
         <a href="https://www.behance.net/jotako" target="_blank" rel="noopener" title="Behance" class="social-icon"><i class="bi bi-behance"></i></a>
         <a href="https://x.com/takoiartist" target="_blank" rel="noopener" title="Twitter / X" class="social-icon"><i class="bi bi-twitter-x"></i></a>
@@ -213,8 +247,8 @@
         </a>
       </div>
 
-      <div class="collapse navbar-collapse flex-grow-1 justify-content-center order-3 order-lg-2" id="menu">
-        <ul class="navbar-nav gap-2 py-2">
+      <div class="collapse navbar-collapse justify-content-center" id="menu">
+        <ul class="navbar-nav py-2">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
