@@ -592,23 +592,27 @@ var editorial = [
     { src:CDN+"Jotako-Lolas-App-Ingreso-UI-UX_Mesa-de-trabajo-1.png", title:"Lolas App — full UI", client:"UI/UX" }
   ];
 
-  function pieceEl(item){
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'piece';
-    if(item.cat){ btn.setAttribute('data-cat', item.cat); }
-    btn.innerHTML =
-      '<div class="img-box">' +
-        '<img src="'+item.src+'" alt="'+item.title+' — '+item.client+'" loading="lazy">' +
-        '<div class="fallback">Preview not available<br>'+item.title+'</div>' +
-      '</div>' +
-      '<figcaption><span>'+item.title+'</span><span class="p-client">'+item.client+'</span></figcaption>';
-    var img = btn.querySelector('img');
-    var box = btn.querySelector('.img-box');
-    img.addEventListener('error', function(){ box.classList.add('broken'); });
-    btn.addEventListener('click', function(){ openLightbox(item); });
-    return btn;
-  }
+ function pieceEl(item){
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'piece';
+  if(item.cat){ btn.setAttribute('data-cat', item.cat); }
+  btn.innerHTML =
+    '<div class="img-box">' +
+      '<img src="'+item.src+'" alt="'+item.title+' — '+item.client+'" loading="lazy">' +
+      '<div class="fallback">Preview not available<br>'+item.title+'</div>' +
+    '</div>' +
+    // 👇 NUEVO figcaption mejorado
+    '<figcaption>' +
+      '<span><strong>' + item.title + '</strong><br><small style="font-weight:400;color:#888;">' + item.client + '</small></span>' +
+      '<span class="p-client">' + (item.description || item.client) + '</span>' +
+    '</figcaption>';
+  var img = btn.querySelector('img');
+  var box = btn.querySelector('.img-box');
+  img.addEventListener('error', function(){ box.classList.add('broken'); });
+  btn.addEventListener('click', function(){ openLightbox(item); });
+  return btn;
+}
 
   function fillGallery(id, items){
     var el = document.getElementById(id);
