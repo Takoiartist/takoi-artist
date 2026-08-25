@@ -255,11 +255,51 @@
     .pag-btn:hover:not(:disabled) { background: #f5f3fa; }
     .pag-btn:disabled { opacity: .35; cursor: not-allowed; }
 
-    /* Lightbox */
+    /* Lightbox / product gallery */
     #lightboxModal .modal-content { background: transparent; border: none; }
-    #lightboxModal .modal-body { display: flex; align-items: center; justify-content: center; padding: 0; }
-    #lightboxModal img { max-height: 85vh; max-width: 100%; border-radius: 12px; background: #fff; }
-    #lightboxModal .btn-close { background-color: #fff; opacity: 1; position: absolute; top: -40px; right: 0; }
+    #lightboxModal .modal-body { padding: 0; }
+    #lightboxModal .carousel-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    #lightboxModal .carousel-item img {
+      max-height: 80vh;
+      max-width: 100%;
+      border-radius: 12px;
+      background: #fff;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+    #lightboxModal .btn-close { background-color: #fff; opacity: 1; position: absolute; top: -40px; right: 0; z-index: 10; }
+    #lightboxModal .carousel-control-prev-icon,
+    #lightboxModal .carousel-control-next-icon {
+      filter: invert(1) grayscale(100);
+      background-color: #6B4491;
+      border-radius: 50%;
+      padding: 12px;
+    }
+    #lightboxModal .carousel-indicators { position: relative; margin-top: .8rem; }
+    #lightboxModal .carousel-indicators [data-bs-target] { background-color: #6B4491; }
+    #lightboxModal .lightbox-title {
+      text-align: center;
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-top: .8rem;
+    }
+    .thumb-count {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,.6);
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: .15rem .5rem;
+      border-radius: 10px;
+    }
 
     /* FOOTER */
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
@@ -380,13 +420,25 @@
     </div>
   </section>
 
-  <!-- Lightbox -->
+  <!-- Lightbox / product gallery -->
   <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-body position-relative">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          <img id="lightboxImg" src="" alt="">
+          <div id="lightboxCarousel" class="carousel slide carousel-fade" data-bs-ride="false">
+            <div class="carousel-indicators" id="lightboxIndicators"></div>
+            <div class="carousel-inner" id="lightboxInner"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#lightboxCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#lightboxCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <p class="lightbox-title" id="lightboxTitle"></p>
         </div>
       </div>
     </div>
@@ -446,75 +498,133 @@
     ];
 
     // ---- Products ----
+    // Each product is ONE design. "images" holds up to 5 photos of that same
+    // product (mockups / angles / samples) — clicking the card opens a gallery
+    // to browse just that product's own photos, not the whole catalog.
     const products = [
       // T-Shirt Prints
-      { name: "City Pop T-Shirt Print", price: 20, category: "tshirt-prints", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/2023-11-01%2016_28_20-22_03_13_4.psd%20al%2025%25%20(RGB_8)%20_.png" },
-      { name: "City Pop Cover Design", price: 20, category: "tshirt-prints", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20Covers-03.png" },
-      { name: "City Pop T-Shirt Design", price: 20, category: "tshirt-prints", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-02-10CM%20ALTO.png" },
-      { name: "Reel Maeve Design", price: 20, category: "tshirt-prints", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/64363c805cd9d1d6ae019d6693ad61df5cf92e5c/%5BJotako%5D%20Reel%20Maeve-23.png" },
-      { name: "T-Shirt Print - Story 1", price: 20, category: "tshirt-prints", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/64363c805cd9d1d6ae019d6693ad61df5cf92e5c/%5BJotako%5D%20Stories-23.png" },
-      { name: "T-Shirt Print - Story 2", price: 20, category: "tshirt-prints", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/64363c805cd9d1d6ae019d6693ad61df5cf92e5c/%5BJotako%5D%20Stories-25.png" },
+      {
+        name: "City Pop T-Shirt Print", price: 20, category: "tshirt-prints", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/2023-11-01%2016_28_20-22_03_13_4.psd%20al%2025%25%20(RGB_8)%20_.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20Covers-03.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-02-10CM%20ALTO.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/64363c805cd9d1d6ae019d6693ad61df5cf92e5c/%5BJotako%5D%20Reel%20Maeve-23.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/64363c805cd9d1d6ae019d6693ad61df5cf92e5c/%5BJotako%5D%20Stories-23.png"
+        ]
+      },
 
       // City Pop / Illustration 02
-      { name: "City Pop Illustration 06", price: 20, category: "city-pop", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-06.png" },
-      { name: "City Pop Illustration 04", price: 20, category: "city-pop", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-04.png" },
-      { name: "City Pop Illustration 03", price: 20, category: "city-pop", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-03.png" },
+      {
+        name: "City Pop Illustration 02", price: 20, category: "city-pop", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-06.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-04.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/City%20Pop%20T-shirts-03.png"
+        ]
+      },
 
-      // Bluey
-      { name: "Bluey T-Shirt Design", price: 25, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/Bluey%20T-shirt-02.png" },
-      { name: "Bluey T-Shirt Design (Area)", price: 25, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/Bluey%20T-shirt%20AREA%2055X35.png" },
-      { name: "Bluey Custom Illustration", price: 25, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/2023-11-01%2016_29_50-22_03_13_4.psd%20al%2025%25%20(RGB_8)%20_.png" },
-      { name: "Bluey Design - Mini Version", price: 20, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20RRSS-06.png" },
-      { name: "Bluey Puppy - Maxi Version", price: 25, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20Stories-22.png" },
-      { name: "Bluey Design - Story 1", price: 20, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20Stories-24.png" },
-      { name: "Bluey Design - Story 2", price: 20, category: "bluey", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20Stories-26.png" },
+      // Bluey - two distinct designs
+      {
+        name: "Bluey - Mini Version", price: 20, category: "bluey", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/Bluey%20T-shirt-02.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/Bluey%20T-shirt%20AREA%2055X35.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/2023-11-01%2016_29_50-22_03_13_4.psd%20al%2025%25%20(RGB_8)%20_.png"
+        ]
+      },
+      {
+        name: "Bluey Puppy - Maxi Version", price: 25, category: "bluey", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20RRSS-06.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20Stories-22.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20Stories-24.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/ad852ac15473c270abc001ddc3f2e98f7f078df9/%5BJotako%5D%20Stories-26.png"
+        ]
+      },
 
       // Pet Illustration
-      { name: "Pet Illustration Print", price: 20, category: "pet-illustration", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/Beastars%20T-shirt%20AREA%2055x35-07.png" },
+      {
+        name: "Pet Illustration Print", price: 20, category: "pet-illustration", forSale: true,
+        images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ccee0894d93bc51e5f5cd98099d098607534bd0/Beastars%20T-shirt%20AREA%2055x35-07.png"]
+      },
 
       // Custom Characters
-      { name: "Jesus - Roblox Style", price: 20, category: "custom-characters", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/9aa026beacf9cce60475f01bb71788f08f202f46/ilustraci%C3%B3n%20espalda_Mesa%20de%20trabajo%201%20copia.png" },
+      {
+        name: "Jesus - Roblox Style", price: 20, category: "custom-characters", forSale: true,
+        images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/9aa026beacf9cce60475f01bb71788f08f202f46/ilustraci%C3%B3n%20espalda_Mesa%20de%20trabajo%201%20copia.png"]
+      },
 
-      // Minecraft
-      { name: "Minecraft Style Portrait 1", price: 20, category: "minecraft", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/de3cc21f7ef5d77193fecdf778634a94d802ab01/%5BJotako%5D%20Minecraft-13.png" },
-      { name: "Minecraft Style Portrait 2", price: 20, category: "minecraft", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/de3cc21f7ef5d77193fecdf778634a94d802ab01/%5BJotako%5D%20Minecraft-15.png" },
-      { name: "Minecraft Style Portrait 3", price: 20, category: "minecraft", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/de3cc21f7ef5d77193fecdf778634a94d802ab01/%5BJotako%5D%20RRSS-15.png" },
+      // Minecraft - one service, 3 sample portraits
+      {
+        name: "Minecraft Style Portrait", price: 20, category: "minecraft", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/de3cc21f7ef5d77193fecdf778634a94d802ab01/%5BJotako%5D%20Minecraft-13.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/de3cc21f7ef5d77193fecdf778634a94d802ab01/%5BJotako%5D%20Minecraft-15.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/de3cc21f7ef5d77193fecdf778634a94d802ab01/%5BJotako%5D%20RRSS-15.png"
+        ]
+      },
 
-      // Realistic Pets
-      { name: "Realistic Pet Portrait 1", price: 30, category: "realistic-pets", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20Carrusel%20%230%20Mascotas-02.png" },
-      { name: "Realistic Pet Portrait 2", price: 30, category: "realistic-pets", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20Carrusel%20%230%20Mascotas-06.png" },
-      { name: "Realistic Pet Portrait 3", price: 30, category: "realistic-pets", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20Carrusel%20%230%20Mascotas-10.png" },
-      { name: "Realistic Pet Portrait 4", price: 30, category: "realistic-pets", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20RRSS-04.png" },
+      // Realistic Pets - one service, 4 sample portraits
+      {
+        name: "Realistic Pet Portrait", price: 30, category: "realistic-pets", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20Carrusel%20%230%20Mascotas-02.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20Carrusel%20%230%20Mascotas-06.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20Carrusel%20%230%20Mascotas-10.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1192627a5df136529dd75dbce5b88a85d117135/%5BJotako%5D%20RRSS-04.png"
+        ]
+      },
 
-      // Commission Samples
-      { name: "Commission Sample 1", price: 20, category: "commissions", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Commissions%20Open01.png" },
-      { name: "Commission Sample 2", price: 20, category: "commissions", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Commissions%20Open02.png" },
-      { name: "Commission Sample 3", price: 20, category: "commissions", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Commissions%20Open03.png" },
-      { name: "Commission Rate Sample 1", price: 20, category: "commissions", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Open%20Comissions%20Reel_Mesa%20de%20trabajo%201%20copia%202.png" },
-      { name: "Commission Rate Sample 2", price: 20, category: "commissions", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Open%20Comissions%20Reel_Mesa%20de%20trabajo%201%20copia.png" },
-      { name: "Commission Rate Sample 3", price: 20, category: "commissions", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Open%20Comissions%20Reel_Mesa%20de%20trabajo%201.png" },
+      // Commission Samples - two distinct sets
+      {
+        name: "Commission Samples", price: 20, category: "commissions", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Commissions%20Open01.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Commissions%20Open02.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Commissions%20Open03.png"
+        ]
+      },
+      {
+        name: "Commission Rate Sheet", price: 20, category: "commissions", forSale: true,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Open%20Comissions%20Reel_Mesa%20de%20trabajo%201%20copia%202.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Open%20Comissions%20Reel_Mesa%20de%20trabajo%201%20copia.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6eebef2c4f9cae15c9fb1ffa3a2fe743a4eff1a5/%5BJotako%5D%20Open%20Comissions%20Reel_Mesa%20de%20trabajo%201.png"
+        ]
+      },
 
       // Ghibli
-      { name: "Ghibli Style Illustration", price: 25, category: "ghibli", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/e3ea8f4beb7aa475f2a6917a3d75f0d650c1f71d/%5BJotako%5D%20RRSS-03.png" },
+      {
+        name: "Ghibli Style Illustration", price: 25, category: "ghibli", forSale: true,
+        images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/e3ea8f4beb7aa475f2a6917a3d75f0d650c1f71d/%5BJotako%5D%20RRSS-03.png"]
+      },
 
-      // Colombian Birds (samples only)
-      { name: "Colombian Bird Illustration 1", category: "colombian-birds", forSale: false, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-02.png" },
-      { name: "Colombian Bird Illustration 2", category: "colombian-birds", forSale: false, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-03.png" },
-      { name: "Colombian Bird Illustration 3", category: "colombian-birds", forSale: false, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-04.png" },
-      { name: "Colombian Bird Illustration 4", category: "colombian-birds", forSale: false, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-05.png" },
-      { name: "Colombian Bird Illustration 5", category: "colombian-birds", forSale: false, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-06.png" },
-      { name: "Colombian Bird Illustration 6", category: "colombian-birds", forSale: false, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas_Mesa%20de%20trabajo%201.png" },
+      // Colombian Birds - sample gallery (not for sale), capped at 5 photos
+      {
+        name: "Colombian Birds - Sample Set", category: "colombian-birds", forSale: false,
+        images: [
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas_Mesa%20de%20trabajo%201.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-02.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-03.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-04.png",
+          "https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-05.png"
+        ]
+      },
 
-      // Prints for sale (Inktober)
-      { name: "Inktober 2019 Print 1", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/1%20InkTober%202019.png" },
-      { name: "Inktober 2019 Print 2", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/2%20InkTober%202019.png" },
-      { name: "Inktober 2018 Print 1", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%231.png" },
-      { name: "Inktober 2018 Print 2", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%232.jpg" },
-      { name: "Inktober 2018 Print 3", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%233.jpg" },
-      { name: "Inktober 2018 Print 4", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%234.jpg" },
-      { name: "Inktober Prints 4-5-6", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/Inktober%20%234-5-6.png" },
-      { name: "Inktober Prints 7-8-9", price: 15, category: "prints-sale", forSale: true, img: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/Inktober%20%237-8-9.png" }
+      // Prints for sale (Inktober) - each is its own distinct artwork
+      { name: "Inktober 2019 Print 1", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/1%20InkTober%202019.png"] },
+      { name: "Inktober 2019 Print 2", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/2%20InkTober%202019.png"] },
+      { name: "Inktober 2018 Print 1", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%231.png"] },
+      { name: "Inktober 2018 Print 2", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%232.jpg"] },
+      { name: "Inktober 2018 Print 3", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%233.jpg"] },
+      { name: "Inktober 2018 Print 4", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/InkTober2018%234.jpg"] },
+      { name: "Inktober Prints 4-5-6", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/Inktober%20%234-5-6.png"] },
+      { name: "Inktober Prints 7-8-9", price: 15, category: "prints-sale", forSale: true, images: ["https://raw.githubusercontent.com/Takoiartist/takoi-artist/c2d44b2656b75b29d5bac2327fec56a36a626b82/Inktober%20%237-8-9.png"] }
     ];
+
+    // Safety cap: never render more than 5 photos for a single product.
+    products.forEach(p => { if (p.images.length > 5) p.images = p.images.slice(0, 5); });
 
     // ---- State ----
     let activeCategory = "all";
@@ -569,11 +679,14 @@
       const start = (currentPage - 1) * ITEMS_PER_PAGE;
       const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
 
-      gridEl.innerHTML = pageItems.map(p => `
+      gridEl.innerHTML = pageItems.map(p => {
+        const globalIndex = products.indexOf(p);
+        return `
         <div class="col-6 col-md-4 col-lg-4 product-card">
-          <div class="product-img-wrap" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img="${p.img}">
+          <div class="product-img-wrap" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-product-index="${globalIndex}">
             ${!p.forSale ? '<span class="badge-sample">SAMPLE ONLY</span>' : ''}
-            <img src="${p.img}" alt="${p.name}" loading="lazy">
+            ${p.images.length > 1 ? `<span class="thumb-count">${p.images.length} photos</span>` : ''}
+            <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
           </div>
           <p class="product-name">${p.name}</p>
           ${p.forSale
@@ -584,7 +697,8 @@
             💬 ${p.forSale ? 'Buy on WhatsApp' : 'Request This Style'}
           </a>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       const shownFrom = filtered.length === 0 ? 0 : start + 1;
       const shownTo = Math.min(start + ITEMS_PER_PAGE, filtered.length);
@@ -605,13 +719,37 @@
       window.scrollTo({top: gridEl.offsetTop - 100, behavior: 'smooth'});
     });
 
-    // Lightbox
+    // Lightbox / product gallery
+    let lightboxCarouselInstance = null;
     document.getElementById('lightboxModal').addEventListener('show.bs.modal', (event) => {
       const trigger = event.relatedTarget;
-      document.getElementById('lightboxImg').setAttribute('src', trigger.getAttribute('data-img'));
+      const product = products[parseInt(trigger.getAttribute('data-product-index'), 10)];
+
+      const innerEl = document.getElementById('lightboxInner');
+      const indicatorsEl = document.getElementById('lightboxIndicators');
+      const titleEl = document.getElementById('lightboxTitle');
+
+      innerEl.innerHTML = product.images.map((src, i) => `
+        <div class="carousel-item${i === 0 ? ' active' : ''}">
+          <img src="${src}" alt="${product.name} - photo ${i + 1}">
+        </div>`).join('');
+
+      indicatorsEl.innerHTML = product.images.length > 1
+        ? product.images.map((_, i) => `
+            <button type="button" data-bs-target="#lightboxCarousel" data-bs-slide-to="${i}"
+                    class="${i === 0 ? 'active' : ''}" aria-current="${i === 0}" aria-label="Photo ${i + 1}"></button>`).join('')
+        : '';
+
+      titleEl.textContent = product.images.length > 1
+        ? `${product.name} — ${product.images.length} photos`
+        : product.name;
+
+      if (lightboxCarouselInstance) lightboxCarouselInstance.dispose();
+      lightboxCarouselInstance = new bootstrap.Carousel(document.getElementById('lightboxCarousel'), { ride: false });
     });
 
     render();
   </script>
 </body>
 </html>
+
