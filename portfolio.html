@@ -634,7 +634,158 @@ var mangaProjects = [
   btn.addEventListener('click', function(){ openLightbox(item); });
   return btn;
 }
+// ===== FUNCIÓN PARA RENDERIZAR TARJETAS DE PROYECTO =====
+function renderProjectCard(project) {
+  var div = document.createElement('div');
+  div.className = 'piece project-card';
+  div.style.cursor = 'pointer';
+  
+  var isSingle = project.images.length === 1;
+  
+  div.innerHTML = 
+    '<div class="img-box">' +
+      '<img src="'+project.cover+'" alt="'+project.title+'" loading="lazy">' +
+      '<div class="project-badge">'+project.images.length+' images</div>' +
+    '</div>' +
+    '<figcaption>' +
+      '<span><strong>' + project.title + '</strong><br><small style="font-weight:400;color:#888;">' + project.client + '</small></span>' +
+      '<span class="p-client">' + (project.description || project.client) + '</span>' +
+    '</figcaption>';
+  
+  div.addEventListener('click', function() {
+    openCarousel(project);
+  });
+  
+  return div;
+}
 
+// ===== FUNCIÓN PARA ABRIR EL CARRUSEL =====
+function openCarousel(project) {
+  var currentIndex = 0;
+  var total = project.images.length;
+  
+  // Crear overlay del carrusel
+  var overlay = document.createElement('div');
+  overlay.className = 'carousel-overlay';
+  overlay.style.cssText = 
+    'position:fixed; inset:0; z-index:400; background:rgba(0,0,0,0.9); ' +
+    'display:flex; align-items:center; justify-content:center; flex-direction:column;';
+  
+  // Contenedor de la imagen
+  var container = document.createElement('div');
+  container.style.cssText = 
+    'max-width:90vw; max-height:80vh; position:relative; background:#fff; border-radius:12px; overflow:hidden;';
+  
+  var img = document.createElement('img');
+  img.src = project.images[currentIndex].src;
+  img.alt = project.images[currentIndex].title;
+  img.style.cssText = 'max-width:100%; max-height:70vh; display:block; margin:0 auto;';
+  
+  // Info de la imagen
+  var info = document.createElement('div');
+  info.style.cssText = 
+    'padding:12px 20px; background:#fff; display:flex; justify-content:space-between; align-items:center;';
+  info.innerHTML = 
+    '<span><strong>' + project.images[currentIndex].title + '</strong></span>' +
+    '<span style="color:#6B4491;font-weight:700;">' + project.client + '</span>';
+  
+  // Contador
+  var counter = document.createElement('div');
+  counter.style.cssText = 
+    'color:#fff; text-align:center; padding:8px; font-size:0.85rem;';
+  counter.textContent = (currentIndex + 1) + ' / ' + total;
+  
+  // Botones de navegación
+  var nav = document.createElement('div');
+  nav.style.cssText = 
+    'position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; pointer-events:none;';
+  
+  var prevBtn = document.createElement('button');
+  prevBtn.textContent = '‹';
+  prevBtn.style.cssText = 
+    'pointer-events:auto; background:rgba(255,255,255,0.2); color:#fff; border:none; ' +
+    'width:50px; height:50px; border-radius:50%; font-size:2rem; cursor:pointer; ' +
+    'margin:0 10px; transition:background 0.3s;';
+  prevBtn.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.4)'; };
+  prevBtn.onmouseout = function() { this.style.background = 'rgba(255,255,255,0.2)'; };
+  
+  var nextBtn = document.createElement('button');
+  nextBtn.textContent = '›';
+  nextBtn.style.cssText = 
+    'pointer-events:auto; background:rgba(255,255,255,0.2); color:#fff; border:none; ' +
+    'width:50px; height:50px; border-radius:50%; font-size:2rem; cursor:pointer; ' +
+    'margin:0 10px; transition:background 0.3s;';
+  nextBtn.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.4)'; };
+  nextBtn.onmouseout = function() { this.style.background = 'rgba(255,255,255,0.2)'; };
+  
+  // Botón cerrar
+  var closeBtn = document.createElement('button');
+  closeBtn.textContent = '✕';
+  closeBtn.style.cssText = 
+    'position:absolute; top:10px; right:15px; background:rgba(0,0,0,0.5); color:#fff; ' +
+    'border:none; width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:5;';
+  
+  // Función para actualizar la imagen
+  function updateImage(index) {
+    currentIndex = index;
+    img.src = project.images[currentIndex].src;
+    img.alt = project.images[currentIndex].title;
+    info.innerHTML = 
+      '<span><strong>' + project.images[currentIndex].title + '</strong></span>' +
+      '<span style="color:#6B4491;font-weight:700;">' + project.client + '</span>';
+    counter.textContent = (currentIndex + 1) + ' / ' + total;
+    prevBtn.style.display = total > 1 ? 'block' : 'none';
+    nextBtn.style.display = total > 1 ? 'block' : 'none';
+  }
+  
+  // Eventos de navegación
+  prevBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    updateImage((currentIndex - 1 + total) % total);
+  });
+  
+  nextBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    updateImage((currentIndex + 1) % total);
+  });
+  
+  // Cerrar con tecla Escape
+  function handleKeydown(e) {
+    if (e.key === 'Escape') closeCarousel();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  }
+  
+  function closeCarousel() {
+    document.removeEventListener('keydown', handleKeydown);
+    overlay.remove();
+    document.body.style.overflow = '';
+  }
+  
+  closeBtn.addEventListener('click', closeCarousel);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeCarousel();
+  });
+  
+  // Armar estructura
+  nav.appendChild(prevBtn);
+  nav.appendChild(nextBtn);
+  container.appendChild(img);
+  container.appendChild(info);
+  container.appendChild(nav);
+  container.appendChild(closeBtn);
+  overlay.appendChild(container);
+  overlay.appendChild(counter);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', handleKeydown);
+  
+  // Ocultar botones si hay solo 1 imagen
+  if (total === 1) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+  }
+}
   function fillGallery(id, items){
     var el = document.getElementById(id);
     items.forEach(function(item){ el.appendChild(pieceEl(item)); });
