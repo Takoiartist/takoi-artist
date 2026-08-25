@@ -117,7 +117,7 @@
     transition:transform .25s ease, box-shadow .25s ease;
   }
   .piece:hover{ transform:translateY(-3px); box-shadow:0 10px 24px rgba(107,68,145,.2); }
-  .piece .img-box{ width:100%; aspect-ratio:4/5; overflow:hidden; background:#ffffff; position:relative; }
+  .piece .img-box{ width:100%; aspect-ratio:4/5; overflow:hidden; background:#eee0f5; position:relative; }
   .piece img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
   .piece:hover img{ transform:scale(1.07); }
   .piece figcaption{
@@ -177,7 +177,7 @@
     *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
   }
 
-  /* ===== PROYECT BADGE ===== */
+  /* Badge de cantidad de imágenes en proyectos (manga/comics) */
   .project-badge {
     position: absolute;
     bottom: 10px;
@@ -191,24 +191,16 @@
     z-index: 2;
     backdrop-filter: blur(4px);
   }
-
-  .project-card .img-box {
-    position: relative;
-  }
-
-  .project-card {
-    cursor: pointer;
-  }
+  .project-card .img-box { position: relative; }
+  .project-card { cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header class="site-header">
   <a href="index.html"><img src="http://takoiartista.free.nf/wp-content/uploads/2026/02/logo-violeta-10-scaled.png" alt="Takoi Artist Logo" height="70"></a>
 </header>
 
-<!-- ===== NAVBAR ===== -->
 <nav class="navbar navbar-expand-lg py-0">
   <div class="container-fluid justify-content-center">
     <button class="navbar-toggler border-0 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Open menu">
@@ -229,8 +221,211 @@
   </div>
 </nav>
 
-<!-- ===== REST OF CONTENT ===== -->
-<!-- (Mantén todo el HTML que ya tienes, sin cambios) -->
+<!-- PORTFOLIO INDEX -->
+<section class="py-section" id="top" style="background:#fff">
+  <div class="container">
+    <div class="text-end mb-3">
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+        Back
+      </a>
+    </div>
+
+    <h2 class="section-title">PORTFOLIO</h2>
+    <img class="divider-icon" src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="14">
+    <p class="section-sub">Browse by discipline — tap a cover to explore that work in detail.</p>
+
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- ILLUSTRATIONS -->
+<section class="py-section" id="ilustracion" style="background:#fff">
+  <div class="container">
+    <p class="eyebrow">01 · Chapter</p>
+    <h2 class="section-title">Illustrations</h2>
+    <p class="section-sub">Portraits, anime style, children's illustration and corporate illustration.</p>
+
+    <div class="chip-row" role="tablist" aria-label="Filter illustrations">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="retrato">Portraits &amp; Anime</button>
+    </div>
+
+    <div class="piece-grid" id="gallery-ilustracion"></div>
+    <div class="empty-note mt-3" id="empty-note"></div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="py-section bg-soft" id="editorial">
+  <div class="container">
+    <p class="eyebrow">02 · Chapter</p>
+    <h2 class="section-title">Editorial Design</h2>
+    <p class="section-sub">Narrative illustration designed for publication and print.</p>
+    <div class="piece-grid" id="gallery-editorial"></div>
+  </div>
+</section>
+
+<!-- BRAND DESIGN -->
+<section class="py-section" id="marca" style="background:#fff">
+  <div class="container">
+    <p class="eyebrow">03 · Chapter</p>
+    <h2 class="section-title">Brand Design</h2>
+    <p class="section-sub">Illustration projects developed for brands, businesses and corporate identity.</p>
+    <div class="piece-grid" id="gallery-marca"></div>
+  </div>
+</section>
+
+<!-- CUSTOM DIGITAL ILLUSTRATION -->
+<section class="py-section bg-soft" id="comisiones">
+  <div class="container">
+    <p class="eyebrow">04 · Chapter</p>
+    <h2 class="section-title">Custom Digital Illustration</h2>
+    <p class="section-sub">Personalized commissions: characters, portraits and realistic pieces.</p>
+    <div class="piece-grid" id="gallery-comisiones"></div>
+  </div>
+</section>
+
+<!-- MANGA / COMIC -->
+<section class="py-section" id="manga" style="background:#fff">
+  <div class="container">
+    <p class="eyebrow">05 · Chapter</p>
+    <h2 class="section-title">Mangas &amp; Comics</h2>
+    <p class="section-sub">Pages, panels and character design for comic and manga.</p>
+    <div class="piece-grid" id="gallery-manga"></div>
+  </div>
+</section>
+
+<!-- 2D ANIMATION -->
+<section class="py-section bg-soft" id="animacion">
+  <div class="container">
+    <p class="eyebrow">06 · Chapter</p>
+    <h2 class="section-title">2D Animation</h2>
+    <p class="section-sub">Character design, motion and motion illustration.</p>
+    <div class="piece-grid" id="gallery-animacion"></div>
+  </div>
+</section>
+
+<!-- WEBSITE -->
+<section class="py-section" id="web" style="background:#fff">
+  <div class="container">
+    <p class="eyebrow">07 · Chapter</p>
+    <h2 class="section-title">Website</h2>
+    <p class="section-sub">Design and illustration applied to digital projects, UI/UX.</p>
+    <div class="piece-grid" id="gallery-web"></div>
+  </div>
+</section>
+
+<!-- DOWNLOADS: Editorial PDFs -->
+<section class="py-section bg-soft">
+  <div class="container">
+    <p class="eyebrow">Extra</p>
+    <h2 class="section-title">Download the full book</h2>
+    <p class="section-sub">Editorial PDFs, ready to share with clients.</p>
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-5">
+        <a class="dl-card" href="https://raw.githubusercontent.com/Takoiartist/takoi-artist/0942709ddd77b7ac5b659cc96de3566dcd16ba89/Monica%20Betancourt%20-%20Gabo%20Libro%20Infantil_v3.4.2.pdf" target="_blank" rel="noopener">
+          <div>
+            <h5>Gabo Children's Book</h5>
+            <small>PDF · Mónica Betancourt</small>
+          </div>
+          <span class="dl-icon">↓</span>
+        </a>
+      </div>
+      <div class="col-md-5">
+        <a class="dl-card" href="https://raw.githubusercontent.com/Takoiartist/takoi-artist/0942709ddd77b7ac5b659cc96de3566dcd16ba89/Proyecto%20Editorial%20copia.pdf" target="_blank" rel="noopener">
+          <div>
+            <h5>Inclusive Publishing Guide</h5>
+            <small>PDF · Neurodiversity Guide</small>
+          </div>
+          <span class="dl-icon">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS: Portfolio PDFs -->
+<section class="py-section bg-soft">
+  <div class="container">
+    <p class="eyebrow">Extra</p>
+    <h2 class="section-title">Download the portfolio</h2>
+    <p class="section-sub">Portfolio PDFs, ready to share with clients.</p>
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-5">
+        <a class="dl-card" href="https://drive.google.com/file/d/1leOH-ftdgY4sOelQvsTYO5uipLCdLW4j/view?usp=sharing" target="_blank" rel="noopener">
+          <div>
+            <h5>Illustration Portfolio</h5>
+            <small>PDF · 2023</small>
+          </div>
+          <span class="dl-icon">↓</span>
+        </a>
+      </div>
+      <div class="col-md-5">
+        <a class="dl-card" href="https://takoiartist.github.io/takoi-artist/%5BJotako%5D%20Portafolio%20de%20Ilustraci%C3%B3n%20Infantil%202026.pdf" target="_blank" rel="noopener">
+          <div>
+            <h5>Children's Portfolio</h5>
+            <small>PDF · 2026</small>
+          </div>
+          <span class="dl-icon">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-section" style="background:var(--purple); text-align:center">
+  <div class="container">
+    <h2 class="section-title" style="color:#fff">Have a project in mind?</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.85)">Write to me and we'll build it together.</p>
+    <a class="btn-takoi" style="background:#fff; color:var(--purple)" href="https://wa.me/573145641237" target="_blank" rel="noopener">Write to me on WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row align-items-center text-center g-4">
+      <div class="col-md-4 d-flex flex-column gap-2 align-items-center">
+        <a href="https://wa.me/573145641237" target="_blank" rel="noopener">
+          <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/whatsapp-3.png" alt="WhatsApp" height="18"> 3145641237
+        </a>
+        <a href="mailto:armando.takoiartist@gmail.com">
+          <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/correo-2.png" alt="Email" height="18"> armando.takoiartist@gmail.com
+        </a>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/logo.png" alt="Takoi Artist Logo" height="65" style="opacity:.85;">
+      </div>
+      <div class="col-md-4 d-flex flex-column gap-2 align-items-center">
+        <a href="https://instagram.com/Takoiartist" target="_blank">
+          <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/isnstagram.png" alt="Instagram" height="18"> @Takoiartist
+        </a>
+        <a href="https://behance.net/Takoiartist" target="_blank">
+          <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/behance-2.png" alt="Behance" height="18"> @Takoiartist
+        </a>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,.1); margin-top:1.5rem;">
+    <p class="text-center mb-0" style="font-size:.72rem; color:#777;">
+      Copyright © All Rights Reserved 2026 &nbsp;|&nbsp; Designed by:
+      <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/meiw-creative.png" alt="Meiw Creative" height="22" style="opacity:.8;">
+    </p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged illustration view">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <div class="lightbox-card">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-cap">
+      <b id="lightboxTitle"></b>
+      <span class="tag" id="lightboxClient"></span>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -239,7 +434,7 @@
   var GH  = "https://takoiartist.github.io/takoi-artist/";
   var RAW = "https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/";
 
-  // ===== CATEGORY GRID =====
+  // ---- Category grid ----
   var categories = [
     { num:"01", href:"#ilustracion", title:"Illustrations",
       img:"https://github.com/Takoiartist/takoi-artist/blob/main/Ilustraci%C3%B3n10.png?raw=true" },
@@ -274,12 +469,13 @@
   cta.innerHTML = '<h3>Have a project in mind?</h3><p>Write to me and we\'ll build it together →</p>';
   catGrid.appendChild(cta);
 
-  // ===== GALLERY DATA =====
+  // ---- Gallery data ----
   var illustrations = [
     { src:"https://github.com/Takoiartist/takoi-artist/blob/main/Ilustraci%C3%B3n10.png?raw=true", title:"Portrait — study 10", client:"Portrait", cat:"retrato" },
     { src:GH+"Ilustraci%C3%B3n2.4.png", title:"Portrait — study 2.4", client:"Portrait", cat:"retrato" },
     { src:GH+"Ilustraci%C3%B3n5.png", title:"Portrait — study 05", client:"Portrait", cat:"retrato" },
-    { src:GH+"Ilustraci%C3%B3n6.png", title:"Portrait — study 06", client:"Portrait", cat:"retrato" },
+    { src:GH+"Ilustraci%C3%B3n6.png", title:"Portrait — study 06", client:"Portrait", cat:"retrato" }
+    // 👉 Si tienes más ilustraciones de retrato/anime, agrégalas aquí con cat:"retrato"
   ];
 
   var editorial = [
@@ -293,6 +489,8 @@
   var marca = [
     { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20Behance%20Jotako%20Brand%202023-10.png", title: "Jotako Brand Identity 2023", client: "Brand Identity", description: "Complete brand identity system" },
     { src: CDN+"BRAND-14-scaled.png", title: "Corporate Brand Design", client: "Brand Identity", description: "Corporate identity and branding" }
+    // 👉 Agrega aquí tus ilustraciones corporativas cuando tengas las URLs reales, por ejemplo:
+    // { src: "https://raw.githubusercontent.com/.../mi-imagen.png", title: "Nombre del proyecto", client: "Corporate", description: "Descripción" }
   ];
 
   var comisiones = [
@@ -363,7 +561,6 @@
     { src:CDN+"Jotako-Lolas-App-Ingreso-UI-UX_Mesa-de-trabajo-1.png", title:"Lolas App — full UI", client:"UI/UX" }
   ];
 
-  // ===== FUNCTIONS =====
   function pieceEl(item){
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -388,8 +585,7 @@
   function renderProjectCard(project) {
     var div = document.createElement('div');
     div.className = 'piece project-card';
-    div.style.cursor = 'pointer';
-    div.innerHTML = 
+    div.innerHTML =
       '<div class="img-box">' +
         '<img src="'+project.cover+'" alt="'+project.title+'" loading="lazy">' +
         '<div class="project-badge">'+project.images.length+' images</div>' +
@@ -405,72 +601,73 @@
   function openCarousel(project) {
     var currentIndex = 0;
     var total = project.images.length;
-    
+
     var overlay = document.createElement('div');
     overlay.className = 'carousel-overlay';
-    overlay.style.cssText = 
+    overlay.style.cssText =
       'position:fixed; inset:0; z-index:400; background:rgba(0,0,0,0.9); ' +
       'display:flex; align-items:center; justify-content:center; flex-direction:column;';
-    
+
     var container = document.createElement('div');
-    container.style.cssText = 
+    container.style.cssText =
       'max-width:90vw; max-height:80vh; position:relative; background:#fff; border-radius:12px; overflow:hidden;';
-    
+
     var img = document.createElement('img');
     img.src = project.images[currentIndex].src;
     img.alt = project.images[currentIndex].title;
     img.style.cssText = 'max-width:100%; max-height:70vh; display:block; margin:0 auto;';
-    
+
     var info = document.createElement('div');
-    info.style.cssText = 'padding:12px 20px; background:#fff; display:flex; justify-content:space-between; align-items:center;';
-    info.innerHTML = 
+    info.style.cssText =
+      'padding:12px 20px; background:#fff; display:flex; justify-content:space-between; align-items:center;';
+    info.innerHTML =
       '<span><strong>' + project.images[currentIndex].title + '</strong></span>' +
       '<span style="color:#6B4491;font-weight:700;">' + project.client + '</span>';
-    
+
     var counter = document.createElement('div');
     counter.style.cssText = 'color:#fff; text-align:center; padding:8px; font-size:0.85rem;';
     counter.textContent = (currentIndex + 1) + ' / ' + total;
-    
+
     var nav = document.createElement('div');
-    nav.style.cssText = 
+    nav.style.cssText =
       'position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; pointer-events:none;';
-    
+
     var prevBtn = document.createElement('button');
     prevBtn.textContent = '‹';
-    prevBtn.style.cssText = 
+    prevBtn.style.cssText =
       'pointer-events:auto; background:rgba(255,255,255,0.2); color:#fff; border:none; ' +
       'width:50px; height:50px; border-radius:50%; font-size:2rem; cursor:pointer; ' +
       'margin:0 10px; transition:background 0.3s;';
     prevBtn.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.4)'; };
     prevBtn.onmouseout = function() { this.style.background = 'rgba(255,255,255,0.2)'; };
-    
+
     var nextBtn = document.createElement('button');
     nextBtn.textContent = '›';
-    nextBtn.style.cssText = 
+    nextBtn.style.cssText =
       'pointer-events:auto; background:rgba(255,255,255,0.2); color:#fff; border:none; ' +
       'width:50px; height:50px; border-radius:50%; font-size:2rem; cursor:pointer; ' +
       'margin:0 10px; transition:background 0.3s;';
     nextBtn.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.4)'; };
     nextBtn.onmouseout = function() { this.style.background = 'rgba(255,255,255,0.2)'; };
-    
+
     var closeBtn = document.createElement('button');
     closeBtn.textContent = '✕';
-    closeBtn.style.cssText = 
+    closeBtn.style.cssText =
       'position:absolute; top:10px; right:15px; background:rgba(0,0,0,0.5); color:#fff; ' +
       'border:none; width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:5;';
-    
+
     function updateImage(index) {
       currentIndex = index;
       img.src = project.images[currentIndex].src;
       img.alt = project.images[currentIndex].title;
-      info.innerHTML = 
+      info.innerHTML =
         '<span><strong>' + project.images[currentIndex].title + '</strong></span>' +
         '<span style="color:#6B4491;font-weight:700;">' + project.client + '</span>';
       counter.textContent = (currentIndex + 1) + ' / ' + total;
       prevBtn.style.display = total > 1 ? 'block' : 'none';
       nextBtn.style.display = total > 1 ? 'block' : 'none';
     }
-    
+
     prevBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       updateImage((currentIndex - 1 + total) % total);
@@ -479,24 +676,24 @@
       e.stopPropagation();
       updateImage((currentIndex + 1) % total);
     });
-    
+
     function handleKeydown(e) {
       if (e.key === 'Escape') closeCarousel();
       if (e.key === 'ArrowLeft') prevBtn.click();
       if (e.key === 'ArrowRight') nextBtn.click();
     }
-    
+
     function closeCarousel() {
       document.removeEventListener('keydown', handleKeydown);
       overlay.remove();
       document.body.style.overflow = '';
     }
-    
+
     closeBtn.addEventListener('click', closeCarousel);
     overlay.addEventListener('click', function(e) {
       if (e.target === overlay) closeCarousel();
     });
-    
+
     nav.appendChild(prevBtn);
     nav.appendChild(nextBtn);
     container.appendChild(img);
@@ -508,7 +705,7 @@
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeydown);
-    
+
     if (total === 1) {
       prevBtn.style.display = 'none';
       nextBtn.style.display = 'none';
@@ -520,25 +717,23 @@
     items.forEach(function(item){ el.appendChild(pieceEl(item)); });
   }
 
-  // ===== RENDER GALLERIES =====
-  fillGallery('gallery-ilustracion', illustrations);
-  fillGallery('gallery-editorial', editorial);
-  fillGallery('gallery-marca', marca);
-  fillGallery('gallery-comisiones', comisiones);
-  
-  // Manga con carrusel
   function fillMangaGallery() {
     var el = document.getElementById('gallery-manga');
     mangaProjects.forEach(function(project) {
       el.appendChild(renderProjectCard(project));
     });
   }
+
+  // ---- Render (una sola vez cada una) ----
+  fillGallery('gallery-ilustracion', illustrations);
+  fillGallery('gallery-editorial', editorial);
+  fillGallery('gallery-marca', marca);
+  fillGallery('gallery-comisiones', comisiones);
   fillMangaGallery();
-  
   fillGallery('gallery-animacion', animacion);
   fillGallery('gallery-web', web);
 
-  // ===== FILTERS =====
+  // ---- Filters ----
   var chips = document.querySelectorAll('.chip');
   var emptyNote = document.getElementById('empty-note');
   chips.forEach(function(chip){
@@ -563,7 +758,7 @@
     });
   });
 
-  // ===== LIGHTBOX =====
+  // ---- Lightbox ----
   var lightbox = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightboxImg');
   var lbTitle = document.getElementById('lightboxTitle');
@@ -592,7 +787,7 @@
     if(e.key === 'Escape' && lightbox.classList.contains('open')){ closeLightbox(); }
   });
 
-  // ===== SCROLL REVEAL =====
+  // ---- Scroll reveal ----
   if('IntersectionObserver' in window){
     var targets = document.querySelectorAll('.port-card, .piece, .dl-card');
     targets.forEach(function(el){ el.style.opacity = 0; el.style.transform = 'translateY(14px)'; el.style.transition = 'opacity .5s ease, transform .5s ease'; });
@@ -611,4 +806,5 @@
 </script>
 </body>
 </html>
+
 
