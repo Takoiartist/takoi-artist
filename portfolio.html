@@ -795,7 +795,22 @@ function openCarousel(project) {
   fillGallery('gallery-editorial', editorial);
   fillGallery('gallery-marca', marca);
   fillGallery('gallery-comisiones', comisiones);
-  fillGallery('gallery-manga', manga);
+// Rellenar la galería de manga con proyectos agrupados
+function fillMangaGallery() {
+  var el = document.getElementById('gallery-manga');
+  mangaProjects.forEach(function(project) {
+    el.appendChild(renderProjectCard(project));
+  });
+}
+fillMangaGallery();
+
+// Las otras galerías siguen igual
+fillGallery('gallery-ilustracion', illustrations);
+fillGallery('gallery-editorial', editorial);
+fillGallery('gallery-marca', marca);
+fillGallery('gallery-comisiones', comisiones);
+fillGallery('gallery-animacion', animacion);
+fillGallery('gallery-web', web);
   fillGallery('gallery-animacion', animacion);
   fillGallery('gallery-web', web);
 
