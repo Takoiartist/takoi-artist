@@ -517,5 +517,98 @@
 
   function fillGallery(id, items){
     var el = document.getElementById(id);
-    items.forEach(function(item){ el.appendChild(pieceEl(item));
+    items.forEach(function(item){ el.appendChild(pieceEl(item)); });
+  }
+
+  // ===== RENDER GALLERIES =====
+  fillGallery('gallery-ilustracion', illustrations);
+  fillGallery('gallery-editorial', editorial);
+  fillGallery('gallery-marca', marca);
+  fillGallery('gallery-comisiones', comisiones);
+  
+  // Manga con carrusel
+  function fillMangaGallery() {
+    var el = document.getElementById('gallery-manga');
+    mangaProjects.forEach(function(project) {
+      el.appendChild(renderProjectCard(project));
+    });
+  }
+  fillMangaGallery();
+  
+  fillGallery('gallery-animacion', animacion);
+  fillGallery('gallery-web', web);
+
+  // ===== FILTERS =====
+  var chips = document.querySelectorAll('.chip');
+  var emptyNote = document.getElementById('empty-note');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      var f = chip.getAttribute('data-filter');
+      var pieces = document.querySelectorAll('#gallery-ilustracion .piece');
+      var visible = 0;
+      pieces.forEach(function(p){
+        var cat = p.getAttribute('data-cat');
+        var show = (f === 'all') || (cat === f);
+        p.style.display = show ? '' : 'none';
+        if(show){ visible++; }
+      });
+      if(visible === 0){
+        emptyNote.innerHTML = 'No pieces available for this category yet.';
+        emptyNote.style.display = 'block';
+      } else {
+        emptyNote.style.display = 'none';
+      }
+    });
+  });
+
+  // ===== LIGHTBOX =====
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  var lbTitle = document.getElementById('lightboxTitle');
+  var lbClient = document.getElementById('lightboxClient');
+  var lastFocused = null;
+
+  function openLightbox(item){
+    lastFocused = document.activeElement;
+    lbImg.src = item.src;
+    lbImg.alt = item.title + ' — ' + item.client;
+    lbTitle.textContent = item.title;
+    lbClient.textContent = item.client;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lightboxClose').focus();
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+    if(lastFocused){ lastFocused.focus(); }
+  }
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){ if(e.target === lightbox){ closeLightbox(); } });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lightbox.classList.contains('open')){ closeLightbox(); }
+  });
+
+  // ===== SCROLL REVEAL =====
+  if('IntersectionObserver' in window){
+    var targets = document.querySelectorAll('.port-card, .piece, .dl-card');
+    targets.forEach(function(el){ el.style.opacity = 0; el.style.transform = 'translateY(14px)'; el.style.transition = 'opacity .5s ease, transform .5s ease'; });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.08, rootMargin:'0px 0px -40px 0px' });
+    targets.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
 
