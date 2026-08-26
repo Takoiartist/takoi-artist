@@ -193,6 +193,63 @@
   }
   .project-card .img-box { position: relative; }
   .project-card { cursor: pointer; }
+<style>
+  :root{
+    --purple:#6B4491;
+    --purple-dark:#5a3878;
+    --purple-soft:#F5F0FA;
+    --ink:#2b2b2b;
+    --text:#333;
+    --text-muted:#6b6b6b;
+  }
+  
+  /* ... TODO TU CSS EXISTENTE ... */
+  /* (las reglas que ya tenías) */
+
+  /* ===== PROYECT BADGE ===== */
+  .project-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(107, 68, 145, 0.9);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  .project-card .img-box {
+    position: relative;
+  }
+
+  .project-card {
+    cursor: pointer;
+  }
+
+  /* ===== NUEVO: BOTONES DE ACCIÓN ===== */
+  .project-action {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    pointer-events: auto;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .project-action:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+
+  .project-card .img-box .project-action {
+    z-index: 5;
+  }
+
+</style>
+
+  
 </style>
 </head>
 <body>
