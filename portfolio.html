@@ -193,6 +193,14 @@
   }
   .project-card .img-box { position: relative; }
   .project-card { cursor: pointer; }
+
+  /* Tarjeta de descarga de PDF dentro de una sección de proyecto */
+  .project-pdf-wrap{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+  }
+  .project-pdf-wrap .dl-card{ max-width:460px; width:100%; }
 </style>
 </head>
 <body>
@@ -286,31 +294,15 @@
   </div>
 </section>
 
-<div class="port-card" data-cat="comics">
-    <div class="port-img">
-        <img src="assets/img/comic-thumb.jpg" alt="Mangas & Comics">
-    </div>
-    <div class="port-info">
-        <h3>Mangas & Comics</h3>
-        <p>Pages, panels and character design for comic and manga.</p>
-        
-        <h4>Dreamers</h4>
-        <p>YouTube cover art and project - Dreamers Project</p>
-        
-        <h4>Pineda</h4>
-        <p>Comic about a superhero or comic - Sara Mazuera</p>
-        
-        <h4>Sara & Romantic comic commission</h4>
-        <p>Luis Comi - Sara Mazuera</p>
-        
-        <h4>Opossum</h4>
-        <p>Opossum character manga - Sara Mazuera</p>
-        
-        <h4>Apologetic Comic about faith and religion</h4>
-        <p>Comic Editorial Project - Sara Mazuera</p>
-        
-    </div>
-</div
+<!-- MANGA / COMIC -->
+<section class="py-section" id="manga" style="background:#fff">
+  <div class="container">
+    <p class="eyebrow">05 · Chapter</p>
+    <h2 class="section-title">Mangas &amp; Comics</h2>
+    <p class="section-sub">Pages, panels and character design for comic and manga.</p>
+    <div class="piece-grid" id="gallery-manga"></div>
+  </div>
+</section>
 
 <!-- 2D ANIMATION -->
 <section class="py-section bg-soft" id="animacion">
@@ -329,6 +321,17 @@
     <h2 class="section-title">Website</h2>
     <p class="section-sub">Design and illustration applied to digital projects, UI/UX.</p>
     <div class="piece-grid" id="gallery-web"></div>
+
+    <!-- PDF del proyecto Lola's App -->
+    <div class="project-pdf-wrap">
+      <a class="dl-card" href="https://raw.githubusercontent.com/Takoiartist/takoi-artist/8bc744b327f5db574815da231afb60ba0db78f2e/Lola's%20Registro%20flujo%20copia.pdf" target="_blank" rel="noopener">
+        <div>
+          <h5>Lola's App — Registration Flow</h5>
+          <small>PDF · UI/UX Flow</small>
+        </div>
+        <span class="dl-icon">↓</span>
+      </a>
+    </div>
   </div>
 </section>
 
