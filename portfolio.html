@@ -621,20 +621,37 @@
   }
 
   function renderProjectCard(project) {
-    var div = document.createElement('div');
-    div.className = 'piece project-card';
-    div.innerHTML =
-      '<div class="img-box">' +
-        '<img src="'+project.cover+'" alt="'+project.title+'" loading="lazy">' +
-        '<div class="project-badge">'+project.images.length+' images</div>' +
-      '</div>' +
-      '<figcaption>' +
-        '<span><strong>' + project.title + '</strong><br><small style="font-weight:400;color:#888;">' + project.client + '</small></span>' +
-        '<span class="p-client">' + (project.description || project.client) + '</span>' +
-      '</figcaption>';
-    div.addEventListener('click', function() { openCarousel(project); });
-    return div;
+  var div = document.createElement('div');
+  div.className = 'piece project-card';
+  div.style.cursor = 'pointer';
+  
+  var actions = '';
+  if (project.pdf) {
+    actions += '<a href="'+project.pdf+'" target="_blank" class="project-action" style="position:absolute;bottom:50px;left:10px;background:rgba(107,68,145,0.9);color:#fff;padding:4px 12px;border-radius:20px;font-size:0.7rem;text-decoration:none;z-index:2;">📄 PDF</a>';
   }
+  if (project.behance) {
+    actions += '<a href="'+project.behance+'" target="_blank" class="project-action" style="position:absolute;bottom:50px;right:10px;background:rgba(0,0,0,0.7);color:#fff;padding:4px 12px;border-radius:20px;font-size:0.7rem;text-decoration:none;z-index:2;">Behance</a>';
+  }
+  
+  div.innerHTML = 
+    '<div class="img-box">' +
+      '<img src="'+project.cover+'" alt="'+project.title+'" loading="lazy">' +
+      '<div class="project-badge">'+project.images.length+' images</div>' +
+      actions +
+    '</div>' +
+    '<figcaption>' +
+      '<span><strong>' + project.title + '</strong><br><small style="font-weight:400;color:#888;">' + project.client + '</small></span>' +
+      '<span class="p-client">' + (project.description || project.client) + '</span>' +
+    '</figcaption>';
+  
+  div.addEventListener('click', function(e) {
+    // Si el clic fue en un enlace, no abrir el carrusel
+    if (e.target.tagName === 'A') return;
+    openCarousel(project);
+  });
+  
+  return div;
+}
 
   function openCarousel(project) {
     var currentIndex = 0;
