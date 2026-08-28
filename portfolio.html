@@ -85,13 +85,13 @@ text-align:center; padding:24px; color:#fff; gap:10px;
 .chapter-carousel{ position:relative; }
 .chapter-arrow{
 position:absolute; top:50%; transform:translateY(-50%); z-index:5;
-width:44px; height:44px; border-radius:50%; border:none;
-background:#fff; color:var(--purple); font-size:1.3rem; cursor:pointer;
-box-shadow:0 4px 14px rgba(107,68,145,.28);
+width:44px; height:44px; border-radius:50%; border:2px solid var(--purple-dark);
+background:#fff; color:var(--purple-dark); font-size:1.5rem; font-weight:700; line-height:1; cursor:pointer;
+box-shadow:0 4px 14px rgba(90,56,120,.35);
 display:flex; align-items:center; justify-content:center;
 transition:background .15s ease, color .15s ease;
 }
-.chapter-arrow:hover{ background:var(--purple); color:#fff; }
+.chapter-arrow:hover{ background:var(--purple-dark); color:#fff; }
 .chapter-arrow.prev{ left:-6px; }
 .chapter-arrow.next{ right:-6px; }
 @media (max-width:560px){ .chapter-arrow.prev{ left:-2px; } .chapter-arrow.next{ right:-2px; } }
@@ -342,7 +342,8 @@ Back
 <div class="piece-grid" id="gallery-animacion"></div>
 <button type="button" class="chapter-arrow next" data-target="gallery-animacion" aria-label="Next">›</button>
 </div>
-<div class="project-pdf-wrap">
+<div class="row g-3 justify-content-center project-pdf-wrap" style="max-width:none;">
+<div class="col-md-5">
 <a class="dl-card" href="https://drive.google.com/file/d/1lh2ebmxtGrP-Ca4TwyBVBuCxNfdTOmzq/view?usp=sharing" target="_blank" rel="noopener">
 <div>
 <h5>Emotes</h5>
@@ -350,6 +351,43 @@ Back
 </div>
 <span class="dl-icon">↓</span>
 </a>
+</div>
+<div class="col-md-5">
+<a class="dl-card" href="https://drive.google.com/file/d/1FafXEImsmQSSmmu5QWQV7wkhEko-uM3G/view?usp=sharing" target="_blank" rel="noopener">
+<div>
+<h5>Emote GIF</h5>
+<small>GIF · 2D Animation</small>
+</div>
+<span class="dl-icon">↓</span>
+</a>
+</div>
+<div class="col-md-5">
+<a class="dl-card" href="https://github.com/Takoiartist/takoi-artist/raw/be61b3dc34d1c12cb994b66fb613d6d3823fc46f/Animacion.mp4" target="_blank" rel="noopener">
+<div>
+<h5>2D Animation Reel</h5>
+<small>Video · 2D Animation</small>
+</div>
+<span class="dl-icon">↓</span>
+</a>
+</div>
+<div class="col-md-5">
+<a class="dl-card" href="https://drive.google.com/file/d/1ZDQr-NwC9UHaRp6clyWUEBwwyCQXJSyR/view?usp=sharing" target="_blank" rel="noopener">
+<div>
+<h5>2D Animation Video</h5>
+<small>Video · 2D Animation</small>
+</div>
+<span class="dl-icon">↓</span>
+</a>
+</div>
+<div class="col-md-5">
+<a class="dl-card" href="https://drive.google.com/file/d/1CnR5OpeeqQuY4fPGapDQwDtTXY3rx0AG/view?usp=sharing" target="_blank" rel="noopener">
+<div>
+<h5>Maxicraft — YouTube Channel</h5>
+<small>Video · 2D Animation</small>
+</div>
+<span class="dl-icon">↓</span>
+</a>
+</div>
 </div>
 </div>
 </section>
@@ -578,7 +616,9 @@ images: [
 { src:"https://github.com/Takoiartist/takoi-artist/blob/main/InkTober2018%231.png?raw=true", title:"Inktober 2018 — 1" },
 { src:"https://github.com/Takoiartist/takoi-artist/blob/main/InkTober2018%232.jpg?raw=true", title:"Inktober 2018 — 2" },
 { src:"https://github.com/Takoiartist/takoi-artist/blob/main/InkTober2018%234.jpg?raw=true", title:"Inktober 2018 — 4" },
-{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/intokber%20chica%20anillos.webp", title:"Inktober — Rings" }
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/intokber%20chica%20anillos.webp", title:"Inktober — Rings" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/15.webp", title:"Inktober — 15" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/03.webp", title:"Inktober — 03" }
 ]
 }
 // 👉 Si tienes más ilustraciones de retrato/anime, agrégalas aquí con cat:"retrato"
@@ -719,14 +759,72 @@ images: [
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/%5BJotako%5D%20Negos%20Logo%20Minimalista-10.png", title:"Renter Autos — 2" }
 ]
 },
-{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/182cab60f1771b58f633d91652f2b0569750b6ff/Fivver%20Logos-06.png", title:"Dachi Dana", client:"Logo Design" }
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/182cab60f1771b58f633d91652f2b0569750b6ff/Fivver%20Logos-06.png", title:"Dachi Dana", client:"Logo Design" },
+{
+title: "CCR Brand Manual",
+client: "Brand Identity",
+description: "CCR brand manual and identity guidelines",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-05-convertido-de-jpg.webp", title:"CCR Brand Manual — 1" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-08-convertido-de-jpg.webp", title:"CCR Brand Manual — 2" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-13-convertido-de-png.webp", title:"CCR Brand Manual — 3" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-23-convertido-de-jpg.webp", title:"CCR Brand Manual — 4" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-04-convertido-de-jpg.webp", title:"CCR Brand Manual — 5" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-05-convertido-de-jpg.webp", title:"CCR Brand Manual — 6" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-06-convertido-de-jpg.webp", title:"CCR Brand Manual — 7" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-07-convertido-de-jpg.webp", title:"CCR Brand Manual — 8" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-10-convertido-de-png.webp", title:"CCR Brand Manual — 9" }
+]
+},
+{
+title: "Delicias Santeñas",
+client: "Restaurant Branding",
+description: "Branding illustrations for Delicias Santeñas restaurant",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Viernes%20de%20Delicias_v3.0-06-convertido-de-jpg.webp", title:"Delicias Santeñas — 1" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Viernes%20de%20Delicias_v3.0-08-convertido-de-jpg.webp", title:"Delicias Santeñas — 2" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Viernes%20de%20Delicias_v3.0-09-convertido-de-jpg.webp", title:"Delicias Santeñas — 3" }
+]
+},
+{
+title: "YouTuber Logo — La Calma y Katanuchi",
+client: "Logo Design",
+description: "Logo design for a YouTube channel",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/La%20Calma%20y%20Katanuchi_Mesa%20de%20trabajo%201.webp", title:"La Calma y Katanuchi — Logo" }
+]
+}
 // 👉 Agrega aquí tus ilustraciones corporativas cuando tengas las URLs reales, por ejemplo:
 // { src: "https://raw.githubusercontent.com/.../mi-imagen.png", title: "Nombre del proyecto", client: "Corporate", description: "Descripción" }
 ];
 var comisiones = [
-{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/9af0bd86150e6e155342391954a4d870522734b4/Ilustraci%C3%B3n%20gatas.png", title:"Custom illustration — cats", client:"Custom Digital Illustration" },
-{ src:CDN+"Miguel-Ilu-01-scaled.png", title:"Custom portrait — Miguel", client:"Custom" },
-{ src:CDN+"Maxi-Minion2-scaled.png", title:"Custom illustration — Maxi", client:"Custom" },
+{
+title: "Custom illustration — cats",
+client: "Custom Digital Illustration",
+link: "https://drive.google.com/file/d/1-hZPcEHZEJnsARdtFN6w4n1clRWXKTJZ/view?usp=sharing",
+linkLabel: "View video →",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/9af0bd86150e6e155342391954a4d870522734b4/Ilustraci%C3%B3n%20gatas.png", title:"Custom illustration — cats" }
+]
+},
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Miguel%20Ilu-01-convertido-de-png.webp", title:"Custom portrait — Miguel", client:"Custom" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Maxi%20Minion2-convertido-de-png.webp", title:"Custom illustration — Maxi", client:"Custom" },
+{
+title: "Koala & Ualabi",
+client: "Custom Digital Illustration",
+description: "Custom pet illustrations",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Koala.webp", title:"Koala" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Ualabi.webp", title:"Ualabi" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Dejiko-nyo%20Fanart-convertido-de-png.webp", title:"Dejiko-nyo Fan Art" }
+]
+},
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Maxi-Lobato.webp", title:"Custom illustration — Maxi Scout", client:"Custom Digital Illustration" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/%5BJotako%5D%20Lu-chie%20Fanart.webp", title:"Lu-chie Fan Art", client:"Custom Digital Illustration" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Angry%20Birds%20Space%20Ilu_Mesa%20de%20trabajo%201-convertido-de-png.webp", title:"Angry Birds Space — Maximiliano's 6th Birthday", client:"Custom Digital Illustration" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/10.webp", title:"Custom illustration — Manga Style", client:"Custom Digital Illustration" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Minecraft-05%20copia-convertido-de-png.webp", title:"Custom illustration — Minecraft", client:"Custom Digital Illustration" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Zarigueya.webp", title:"Custom illustration — Zarigueya", client:"Custom Digital Illustration" },
 {
 title: "Simpsons Style — Ana & Oscar",
 client: "Custom Digital Illustration",
@@ -750,7 +848,15 @@ images: [
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/db227f84d8ea7aaa4a1d0d97ef565f870e737571/%5BJotako%5D%20Store%20Negos-16.png", title:"Custom Portrait — Grandma Gladys & Grandson", client:"Custom Digital Illustration" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/db227f84d8ea7aaa4a1d0d97ef565f870e737571/%5BJotako%5D%20Store%20Negos-18.png", title:"Custom Portrait — Samuel", client:"Custom Digital Illustration" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/db227f84d8ea7aaa4a1d0d97ef565f870e737571/%5BJotako%5D%20Store%20Negos-19.png", title:"Custom Digital Illustration", client:"Custom Digital Illustration" },
-{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/0055a5048714eb55e1263c57eba7f460348200ca/%5BTakoiiIlustra%5D%20Rap%20Ilu_1080px%20SM.png", title:"Rap Song Illustration", client:"Custom Digital Illustration", description:"Custom illustration for a rap song" },
+{
+title: "Rap Song Illustration",
+client: "Custom Digital Illustration",
+description: "Custom illustration for a rap song",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/0055a5048714eb55e1263c57eba7f460348200ca/%5BTakoiiIlustra%5D%20Rap%20Ilu_1080px%20SM.png", title:"Rap Song Illustration — 1" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/06_Mesa%20de%20trabajo%201-convertido-de-png.webp", title:"Rap Song Illustration — 2" }
+]
+},
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/eaf8e9d701cca780300bc41ae791426d079dcdb4/Dominik%20Pop%20Art-01_1.png", title:"Dominik — Pop Art", client:"Custom Digital Illustration" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/eaf8e9d701cca780300bc41ae791426d079dcdb4/ArtbookpageWEBCOMIC%20copia.png", title:"Melisa — Artbook Illustration", client:"Custom Digital Illustration" }
 ];
@@ -768,11 +874,35 @@ images: [
 ]
 },
 {
+title: "Dreamers — Character Design",
+client: "Dreamers Project",
+description: "Character design artwork for the Dreamers webtoon",
+cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/CARACTER-DESIGN-14.webp",
+images: [
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/CARACTER-DESIGN-14.webp", title: "Dreamers — Character Design 1" },
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/DREAMERS%20Artbook%202_001-convertido-de-png.webp", title: "Dreamers — Character Design 2" },
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/DREAMERS%20Artbook%202_007-convertido-de-png.webp", title: "Dreamers — Character Design 3" },
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/DREAMERS%20Artbook%202_008-convertido-de-png.webp", title: "Dreamers — Character Design 4" }
+]
+},
+{
+title: "Hallaca",
+client: "Manga Project",
+description: "Hallaca manga project — cover and pages",
+cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Manga-Portada-02.webp",
+images: [
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Manga-Portada-02.webp", title: "Hallaca — Cover" },
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Hallaca%2001.webp", title: "Hallaca — Page 1" },
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/Hallaca%2002.webp", title: "Hallaca — Page 2" }
+]
+},
+{
 title: "Pineda Comic",
 client: "Sara Mazuera",
 description: "Comic about a superhero priest",
 cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/C%C3%B3mic%20Pineda_005.webp",
 images: [
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/portada%20pineda.webp", title: "Pineda Comic - Cover" },
 { src: "https://github.com/Takoiartist/takoi-artist/blob/main/C%C3%B3mic%20Pineda_001.png?raw=true", title: "Pineda Comic - Page 01" },
 { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/C%C3%B3mic%20Pineda_005.webp", title: "Pineda Comic - Page 05" },
 { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/C%C3%B3mic%20Pineda_006_007.png", title: "Pineda Comic - Pages 06-07" }
@@ -785,7 +915,8 @@ description: "Romantic comic commission",
 cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/a704435ef1dc4b6fee08d71e56671f14bf44eca5/Sara%20X%20Luis%20Comic_PORTADA_Mesa%20de%20trabajo%201.png",
 images: [
 { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/a704435ef1dc4b6fee08d71e56671f14bf44eca5/Sara%20X%20Luis%20Comic_PORTADA_Mesa%20de%20trabajo%201.png", title: "Sara & Luis Comic - Cover" },
-{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/a704435ef1dc4b6fee08d71e56671f14bf44eca5/Comic%20Logo_03.png", title: "Sara & Luis Comic - Logo" }
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/a704435ef1dc4b6fee08d71e56671f14bf44eca5/Comic%20Logo_03.png", title: "Sara & Luis Comic - Logo" },
+{ src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Sara%20X%20Luis_Pag%204.webp", title: "Sara & Luis Comic - Page 4" }
 ]
 },
 {
@@ -1081,6 +1212,9 @@ targets.forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
+
+
+
 
 
 
