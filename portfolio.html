@@ -1051,19 +1051,19 @@ nav.style.cssText =
 var prevBtn = document.createElement('button');
 prevBtn.textContent = '‹';
 prevBtn.style.cssText =
-'pointer-events:auto; background:rgba(255,255,255,0.2); color:#fff; border:none; ' +
-'width:50px; height:50px; border-radius:50%; font-size:2rem; cursor:pointer; ' +
-'margin:0 10px; transition:background 0.3s;';
-prevBtn.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.4)'; };
-prevBtn.onmouseout = function() { this.style.background = 'rgba(255,255,255,0.2)'; };
+'pointer-events:auto; background:#fff; color:#5a3878; border:2px solid #5a3878; ' +
+'width:50px; height:50px; border-radius:50%; font-size:2rem; font-weight:700; line-height:1; cursor:pointer; ' +
+'margin:0 10px; box-shadow:0 4px 14px rgba(0,0,0,.35); transition:background 0.3s, color 0.3s;';
+prevBtn.onmouseover = function() { this.style.background = '#5a3878'; this.style.color = '#fff'; };
+prevBtn.onmouseout = function() { this.style.background = '#fff'; this.style.color = '#5a3878'; };
 var nextBtn = document.createElement('button');
 nextBtn.textContent = '›';
 nextBtn.style.cssText =
-'pointer-events:auto; background:rgba(255,255,255,0.2); color:#fff; border:none; ' +
-'width:50px; height:50px; border-radius:50%; font-size:2rem; cursor:pointer; ' +
-'margin:0 10px; transition:background 0.3s;';
-nextBtn.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.4)'; };
-nextBtn.onmouseout = function() { this.style.background = 'rgba(255,255,255,0.2)'; };
+'pointer-events:auto; background:#fff; color:#5a3878; border:2px solid #5a3878; ' +
+'width:50px; height:50px; border-radius:50%; font-size:2rem; font-weight:700; line-height:1; cursor:pointer; ' +
+'margin:0 10px; box-shadow:0 4px 14px rgba(0,0,0,.35); transition:background 0.3s, color 0.3s;';
+nextBtn.onmouseover = function() { this.style.background = '#5a3878'; this.style.color = '#fff'; };
+nextBtn.onmouseout = function() { this.style.background = '#fff'; this.style.color = '#5a3878'; };
 var closeBtn = document.createElement('button');
 closeBtn.textContent = '✕';
 closeBtn.style.cssText =
@@ -1212,6 +1212,8 @@ targets.forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
+
+
 
 
 
