@@ -73,20 +73,25 @@
       font-size: .95rem;
       line-height: 1.3;
     }
-    .service-card .service-arrow {
-      position: absolute;
-      top: .8rem; right: .8rem;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.92);
-      color: #6B4491;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity .25s ease, transform .25s ease;
-    }
+    .service-card .service-arrow { position: absolute; top: .8rem; right: .8rem; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.92); color: #6B4491; display: flex; align-items: center; justify-content: center; z-index: 2; opacity: 0; transform: translateY(-4px); transition: opacity .25s ease, transform .25s ease; }
     .service-card:hover .service-arrow { opacity: 1; transform: translateY(0); }
+    .service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: .5rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: #fff;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.55);
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      backdrop-filter: blur(2px);
+      transition: background .2s ease, transform .2s ease;
+    }
+    .service-card:hover .service-cta { background: #fff; color: #6B4491; }
 
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
     footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
@@ -167,51 +172,51 @@
 
         <div class="col-md-6 col-lg-4">
           <a href="service-illustration.html" class="service-card">
-            <img src="http://takoiartista.free.nf/wp-content/uploads/2026/06/2026-06-15-16_11_38-2-1.png" alt="Custom Digital Illustration">
+            <img src="https://github.com/Takoiartist/takoi-artist/blob/main/Ilustraci%C3%B3n%20gatas.webp?raw=true" alt="Custom Digital Illustration">
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">Custom Digital Illustration</span>
+            <span class="service-label">Custom Digital Illustration<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
         <div class="col-md-6 col-lg-4">
           <a href="service-Comic.html" class="service-card">
-            <img src="http://takoiartista.free.nf/wp-content/uploads/2026/06/Comic-Pineda_005-scaled.png" alt="Comic / Manga / Webcomic Page Illustration">
+            <img src="https://github.com/Takoiartist/takoi-artist/blob/main/C%C3%B3mic%20Pineda_005.webp?raw=true" alt="Comic / Manga / Webcomic Page Illustration">
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">Comic / Manga / Webcomic Page Illustration</span>
+            <span class="service-label">Comic / Manga / Webcomic Page Illustration<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
         <div class="col-md-6 col-lg-4">
           <a href="2D%20Animation.html" class="service-card">
-            <img src="http://takoiartista.free.nf/wp-content/uploads/2026/06/Daniela-Streamer-scaled.png" alt="2D Animation">
+            <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/120e967652f81dd69885c0e6b5db43d4ab021d17/animacion%202d.webp" alt="2D Animation">
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">2D Animation</span>
+            <span class="service-label">2D Animation<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
         <div class="col-md-6 col-lg-4">
           <a href="Drawing%20Classes%20(Online%20and%20In-Person).html" class="service-card">
-            <img src="http://takoiartista.free.nf/wp-content/uploads/2026/06/03-scaled.png" alt="Drawing Classes (Online and In-Person)">
+            <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/120e967652f81dd69885c0e6b5db43d4ab021d17/portada%20clasesde%20de%20dibujos.webp" alt="Drawing Classes (Online and In-Person)">
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">Drawing Classes (Online and In-Person)</span>
+            <span class="service-label">Drawing Classes (Online and In-Person)<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
         <div class="col-md-6 col-lg-4">
           <a href="service-brand-identity.html" class="service-card">
-            <img src="http://takoiartista.free.nf/wp-content/uploads/2026/06/BRAND-14-scaled.png" alt="Brand Identity">
+            <img src="https://github.com/Takoiartist/takoi-artist/blob/main/manual%20de%20marca.webp?raw=true" alt="Brand Identity">
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">Brand Identity</span>
+            <span class="service-label">Brand Identity<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
@@ -221,17 +226,17 @@
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">Editorial Design</span>
+            <span class="service-label">Editorial Design<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
         <div class="col-md-6 col-lg-4 mx-auto">
           <a href="service-website-design.html" class="service-card">
-            <img src="http://takoiartista.free.nf/wp-content/uploads/2026/06/Jotako-Lolas-App-Ingreso-UI-UX_Mesa-de-trabajo-1.png" alt="Website Design">
+            <img src="https://github.com/Takoiartist/takoi-artist/blob/main/%5BJotako%5D%20Lola's%20App%20Ingreso%20UI-UX-08.webp?raw=true" alt="Website Design">
             <span class="service-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </span>
-            <span class="service-label">Website Design</span>
+            <span class="service-label">Website Design<br><span class="service-cta">See more →</span></span>
           </a>
         </div>
 
@@ -276,7 +281,7 @@
           <a href="https://instagram.com/Takoiartist" target="_blank">
             <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/isnstagram.png" alt="Instagram" height="18"> @Takoiartist
           </a>
-          <a href="https://behance.net/Takoiartist" target="_blank">
+          <a href="https://www.behance.net/jotako" target="_blank">
             <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/behance-2.png" alt="Behance" height="18"> @Takoiartist
           </a>
         </div>
@@ -292,3 +297,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
