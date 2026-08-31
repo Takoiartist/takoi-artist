@@ -272,14 +272,30 @@
     footer a:hover { color: #fff; }
 
     .divider { border-color: #e0d6f0; margin: 0; }
+
+    .contact-photo { position: relative; min-height: 260px; }
+    .contact-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .contact-photo-caption {
+      position: absolute; top: 1.25rem; left: 1.25rem; color: #fff;
+      font-size: 1.4rem; font-weight: 700; line-height: 1.2;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+    @media (min-width: 768px) {
+      .contact-photo { min-height: 400px; }
+      .contact-photo-caption { font-size: 1.8rem; top: 1.5rem; left: 1.5rem; }
+    }
   </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="text-center">
-    <img src="https://github.com/Takoiartist/takoi-artist/blob/main/logo%20morado-convertido-de-png.webp?raw=true"
-         alt="Takoi 多画想 - Logo oficial Takoi Artist" height="80">
+    <img src="logo-purple.webp"
+         alt="Takoi 多画想 - Logo oficial Takoi Artist" width="148" height="80" loading="eager" decoding="async">
   </header>
 
   <!-- NAVBAR -->
@@ -629,18 +645,15 @@
 <section id="contacto" class="py-5">
   <div class="container-fluid px-0">
     <div class="row align-items-stretch g-0" style="overflow:hidden;">
-      <div class="col-md-5" style="position:relative; min-height:400px;">
-        <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/Jotako-Portada-Retrato-13-scaled.png"
+      <div class="col-md-4 contact-photo">
+        <img src="https://github.com/Takoiartist/takoi-artist/blob/main/retrato%20rostro.webp?raw=true"
              alt="Ilustración digital estilo pop art - Takoi Artist"
-             style="width:100%; height:100%; object-fit:cover; object-position:center top;">
-        <div style="position:absolute; top:1.5rem; left:1.5rem; color:#fff;
-                    font-size:1.8rem; font-weight:700; line-height:1.2;
-                    font-family:'Poppins',sans-serif;
-                    text-shadow:0 2px 12px rgba(0,0,0,.4);">
+             loading="lazy" decoding="async">
+        <div class="contact-photo-caption">
           Let's start<br>working
         </div>
       </div>
-      <div class="col-md-7 d-flex align-items-center justify-content-center p-5" style="background:#fff;">
+      <div class="col-md-8 d-flex align-items-center justify-content-center p-4 p-md-5" style="background:#fff;">
         <form style="width:100%; max-width:420px;" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="831fca82-c73f-49f4-b3e7-71cd59286898">
           <div class="mb-3">
@@ -696,8 +709,8 @@
         </a>
       </div>
       <div class="col-md-4 text-center">
-        <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/eeec12c1158064e65a6701b45dcc0f4b05b58a84/cambiar%20a%20web-convertido-de-png.webp"
-             alt="Takoi Artist Logo" height="65" style="opacity:.85;">
+        <img src="logo-gray.webp"
+             alt="Takoi Artist Logo" width="120" height="65" style="opacity:.85;" loading="lazy" decoding="async">
       </div>
       <div class="col-md-4 d-flex flex-column gap-2 align-items-cented">
         <a href="https://instagram.com/Takoiartist" target="_blank">
@@ -738,6 +751,12 @@
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
