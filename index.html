@@ -288,6 +288,152 @@
       .contact-photo { min-height: 400px; }
       .contact-photo-caption { font-size: 1.8rem; top: 1.5rem; left: 1.5rem; }
     }
+
+    /* ============================================================
+       ABOUT SECTION — Nuevo diseño con fondo blanco
+       ============================================================ */
+
+    .about-takoi {
+      background: #ffffff;
+      padding: 96px 0;
+      overflow: hidden;
+    }
+
+    .about-takoi .portrait-wrap {
+      position: relative;
+      aspect-ratio: 4/5;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .about-takoi .portrait-wrap svg.splash {
+      position: absolute;
+      inset: -6%;
+      width: 112%;
+      height: 112%;
+      z-index: 0;
+      filter: drop-shadow(0 18px 40px rgba(74, 47, 102, .15));
+    }
+
+    .about-takoi .portrait-frame {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      clip-path: url(#ink-clip-about);
+      overflow: hidden;
+      background: #4A2F66;
+    }
+
+    .about-takoi .portrait-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0;
+      transition: opacity 1.1s ease;
+    }
+
+    .about-takoi .portrait-frame img.is-active { opacity: 1; }
+
+    .about-takoi .team-caption {
+      position: absolute;
+      left: 8%;
+      bottom: 6%;
+      z-index: 2;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 13px;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: rgba(30, 27, 34, .55);
+      padding: 6px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+
+    .about-takoi .team-caption .name {
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity .6s ease;
+      position: absolute;
+      left: 14px;
+      white-space: nowrap;
+    }
+    .about-takoi .team-caption .name.is-active { opacity: 1; position: relative; }
+    .about-takoi .team-caption .role { color: #C9BEDD; }
+
+    .about-takoi .about-copy {
+      font-family: 'Poppins', sans-serif;
+      color: #222;
+      padding-left: 24px;
+    }
+
+    .about-takoi .about-copy h2 {
+      font-size: clamp(32px, 3.6vw, 46px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 22px;
+      color: #222;
+    }
+
+    .about-takoi .about-copy h2 .stroke {
+      position: relative;
+      white-space: nowrap;
+    }
+    .about-takoi .about-copy h2 .stroke svg {
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: -6px;
+      width: calc(100% + 8px);
+      height: 14px;
+    }
+
+    .about-takoi .about-copy p {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #555;
+      max-width: 46ch;
+      margin: 0 0 18px;
+    }
+
+    .about-takoi .about-copy p:last-of-type { margin-bottom: 32px; }
+
+    .about-takoi .about-copy .btn-takoi {
+      background: #6B4491;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: .5rem 1.8rem;
+      font-size: .82rem;
+      border: none;
+      display: inline-block;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .about-takoi .about-copy .btn-takoi:hover {
+      background: #5a3878;
+      color: #fff;
+    }
+
+    @media (max-width: 767.98px) {
+      .about-takoi .about-copy {
+        padding-left: 0;
+        margin-top: 36px;
+        text-align: center;
+      }
+      .about-takoi .about-copy p { margin-left: auto; margin-right: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-takoi .portrait-frame img { transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -366,23 +512,68 @@
 </section>
 <section id="about" class="py-5" style="padding-top: 5rem !important;"></section>
 
-  <!-- ABOUT -->
-<section id="about" class="py-5">
+  <!-- ABOUT - Nuevo diseño -->
+<section id="about" class="about-takoi">
   <div class="container">
-    <h2 class="section-title">ABOUT</h2>
-    <div class="text-center mb-4">
-      <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-9 text-center">
-        <p>At Takoi Artist, we aim to develop and produce bold animated projects that redefine visual entertainment. Under the creative direction of visual designers Jorge Armando Castaño and Melisa Sánchez, we seamlessly blend conceptual art with commercial viability, the magic of animation with licensing and merchandising strategy, and global trends with our own local identity.</p>
+    <div class="row align-items-center g-5">
+
+      <div class="col-md-5">
+        <div class="portrait-wrap">
+          <svg class="splash" viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 90 C10 140 5 230 40 300 C70 360 40 420 110 450 C190 485 280 470 330 410
+                     C375 355 360 280 380 210 C400 130 350 60 270 45 C190 30 110 45 60 90 Z"
+                  fill="none" stroke="#6B4491" stroke-width="3" opacity="0.55"/>
+            <path d="M60 90 C10 140 5 230 40 300 C70 360 40 420 110 450 C190 485 280 470 330 410
+                     C375 355 360 280 380 210 C400 130 350 60 270 45 C190 30 110 45 60 90 Z"
+                  fill="#4A2F66" opacity="0.15"/>
+          </svg>
+
+          <svg width="0" height="0" style="position:absolute">
+            <clipPath id="ink-clip-about" clipPathUnits="objectBoundingBox">
+              <path d="M0.16,0.19 C0.03,0.30 0.01,0.49 0.10,0.64 C0.18,0.77 0.10,0.90 0.28,0.96
+                       C0.48,1.03 0.70,0.99 0.83,0.86 C0.94,0.75 0.90,0.59 0.95,0.44
+                       C1.00,0.28 0.87,0.13 0.68,0.10 C0.48,0.06 0.28,0.10 0.16,0.19 Z"/>
+            </clipPath>
+          </svg>
+
+          <div class="portrait-frame">
+            <img class="is-active"
+                 src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/77e60b45b4500ff0b0478d23d104b7ca42c233b1/jorge%20%20imagen.webp"
+                 alt="Jorge, illustrator and 2D animator at Takoi Artist"
+                 loading="lazy" decoding="async">
+            <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/77e60b45b4500ff0b0478d23d104b7ca42c233b1/melisa%20foto.webp"
+                 alt="Melisa, designer at Takoi Artist"
+                 loading="lazy" decoding="async">
+          </div>
+
+          <div class="team-caption">
+            <span class="name is-active">Jorge</span>
+            <span class="name">Melisa</span>
+            <span class="role">— the Takoi team</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="text-center mt-4">
-      <a href="about.html" class="btn-takoi">View more</a>
+
+      <div class="col-md-7">
+        <div class="about-copy">
+          <h2>Stories drawn
+            <span class="stroke">by hand
+              <svg viewBox="0 0 200 14" preserveAspectRatio="none">
+                <path d="M2 8 C 40 2, 90 12, 130 6 S 180 3, 198 9"
+                      fill="none" stroke="#6B4491" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            , one stroke at a time</h2>
+          <p>We're an illustration and 2D animation studio built around Japanese visual storytelling — manga, anime, and characters with a strong sense of self.</p>
+          <p>Every project moves through hands that draw, animate, and design with the same obsession: making the story feel alive from the very first line.</p>
+          <a href="about.html" class="btn-takoi">Meet the team</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 <!-- SERVICES -->
 <section id="services" class="py-5" style="background:#fff;">
   <div class="container">
@@ -749,6 +940,25 @@
 </script>
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  (function(){
+    const images = document.querySelectorAll('.about-takoi .portrait-frame img');
+    const names = document.querySelectorAll('.about-takoi .team-caption .name');
+    let idx = 0;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced && images.length > 1) {
+      setInterval(() => {
+        images[idx].classList.remove('is-active');
+        names[idx].classList.remove('is-active');
+        idx = (idx + 1) % images.length;
+        images[idx].classList.add('is-active');
+        names[idx].classList.add('is-active');
+      }, 4200);
+    }
+  })();
+</script>
 </body>
 </html>
 
