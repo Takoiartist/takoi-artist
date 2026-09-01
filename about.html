@@ -87,6 +87,45 @@ line-height: 1.9;
 font-size: 1rem;
 }
 
+/* VIDEO */
+.video-wrapper {
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 8px 32px rgba(0,0,0,.12);
+transition: transform .3s ease, box-shadow .3s ease;
+}
+.video-wrapper:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 48px rgba(0,0,0,.18);
+}
+.video-wrapper img {
+width: 100%;
+display: block;
+}
+.video-play-btn {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 72px;
+height: 72px;
+background: rgba(107, 68, 145, .85);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background .3s, transform .3s;
+}
+.video-play-btn:hover {
+background: #6B4491;
+transform: translate(-50%, -50%) scale(1.08);
+}
+.video-play-btn i {
+color: #fff;
+font-size: 2rem;
+margin-left: 4px;
+}
+
 /* TEAM CARDS */
 .team-card {
 background: #fff;
@@ -180,6 +219,8 @@ footer a:hover { color: #fff; }
 @media (max-width: 767.98px) {
 .team-photo { width: 140px; height: 140px; }
 .modal-body { height: 60vh; min-height: 300px; }
+.video-play-btn { width: 56px; height: 56px; }
+.video-play-btn i { font-size: 1.5rem; }
 }
 </style>
 </head>
@@ -226,6 +267,22 @@ footer a:hover { color: #fff; }
         <p class="text-center">Every project moves through hands that draw, animate, and design with the same obsession: making the story feel alive from the very first line.</p>
       </div>
     </div>
+
+    <!-- VIDEO DE YOUTUBE - RESTAURADO -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-10">
+        <div class="video-wrapper position-relative">
+          <a href="https://www.youtube.com/watch?v=dPWCOaRSGB0" target="_blank" style="display:block; position:relative; text-decoration:none;">
+            <img src="https://img.youtube.com/vi/dPWCOaRSGB0/maxresdefault.jpg" alt="Watch our demo reel" class="img-fluid">
+            <div class="video-play-btn">
+              <i class="bi bi-play-fill"></i>
+            </div>
+          </a>
+        </div>
+        <p class="text-center text-muted mt-3" style="font-size:.85rem;">🎬 Watch our demo reel on YouTube</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
