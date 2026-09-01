@@ -176,11 +176,47 @@
       text-align: center;
       margin-bottom: .3rem;
     }
-#services a.srv-card {
-  display: block;
-  cursor: pointer;
-  text-decoration: none;
-}
+
+    /* ===== SERVICES (carrusel hecho con código: íconos + texto traducible) ===== */
+    #services a.srv-card {
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 1.5rem 1rem;
+      border-radius: 16px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    #services a.srv-card:hover {
+      background: #f7f3fb;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(107,68,145,.12);
+    }
+    #services .srv-icon-wrap {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #f1ebf7;
+      color: #6B4491;
+      font-size: 2rem;
+      transition: background .2s, color .2s;
+    }
+    #services a.srv-card:hover .srv-icon-wrap {
+      background: #6B4491;
+      color: #fff;
+    }
+    .srv-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      color: #4a2d6e;
+      margin: 0;
+      line-height: 1.3;
+    }
+
     #about p { font-family: 'Poppins', sans-serif; color: #444; line-height: 1.8; font-size: .95rem; }
 
     #services .carousel-item img { width: 100%; height: auto; border-radius: 12px; }
@@ -581,34 +617,22 @@
         <div class="carousel-item active">
           <div class="row justify-content-center g-4">
             <div class="col-md-3">
-              <div class="srv-card text-center">
-             
-                <div class="srv-icon-wrap">
-                  <a href="service-illustration.html" class="d-block">
-                    <img src="custom%20digital.png" alt="Custom Digital Illustration">
-                  </a>
-                </div>
-              </div>
+              <a href="service-illustration.html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-brush"></i></div>
+                <h3 class="srv-title">Custom Digital<br>Illustration</h3>
+              </a>
             </div>
             <div class="col-md-3">
-              <div class="srv-card text-center">
-               
-                <div class="srv-icon-wrap">
-                  <a href="service-brand-identity.html" class="d-block">
-                    <img src="brand%20identity.png" alt="Brand Identity">
-                  </a>
-                </div>
-              </div>
+              <a href="service-brand-identity.html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-palette2"></i></div>
+                <h3 class="srv-title">Brand Identity</h3>
+              </a>
             </div>
             <div class="col-md-3">
-              <div class="srv-card text-center">
-                
-                <div class="srv-icon-wrap">
-                  <a href="service-editorial-design.html" class="d-block">
-                    <img src="editorial.png" alt="Editorial Design">
-                  </a>
-                </div>
-              </div>
+              <a href="service-editorial-design.html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-newspaper"></i></div>
+                <h3 class="srv-title">Editorial Design</h3>
+              </a>
             </div>
           </div>
         </div>
@@ -617,34 +641,22 @@
         <div class="carousel-item">
           <div class="row justify-content-center g-4">
             <div class="col-md-3">
-              <div class="srv-card text-center">
-              
-                <div class="srv-icon-wrap">
-                  <a href="2D%20Animation.html" class="d-block">
-                    <img src="2d%20animation.png" alt="2D Animation">
-                  </a>
-                </div>
-              </div>
+              <a href="2D%20Animation.html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-film"></i></div>
+                <h3 class="srv-title">2D Animation</h3>
+              </a>
             </div>
             <div class="col-md-3">
-              <div class="srv-card text-center">
-               
-                <div class="srv-icon-wrap">
-                  <a href="service-Comic.html" class="d-block">
-                    <img src="comic.png" alt="Comic & Manga Art">
-                  </a>
-                </div>
-              </div>
+              <a href="service-Comic.html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-book-half"></i></div>
+                <h3 class="srv-title">Comic &amp; Manga Art</h3>
+              </a>
             </div>
             <div class="col-md-3">
-              <div class="srv-card text-center">
-                
-                <div class="srv-icon-wrap">
-                  <a href="service-website-design.html" class="d-block">
-                    <img src="website.png" alt="Website Design">
-                  </a>
-                </div>
-              </div>
+              <a href="service-website-design.html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-window-stack"></i></div>
+                <h3 class="srv-title">Website Design</h3>
+              </a>
             </div>
           </div>
         </div>
@@ -653,14 +665,10 @@
         <div class="carousel-item">
           <div class="row justify-content-center g-4">
             <div class="col-md-3">
-              <div class="srv-card text-center">
-          
-                <div class="srv-icon-wrap">
-                  <a href="Drawing%20Classes%20(Online%20and%20In-Person).html" class="d-block">
-                    <img src="drawing%20clases.png" alt="Drawing Classes">
-                  </a>
-                </div>
-              </div>
+              <a href="Drawing%20Classes%20(Online%20and%20In-Person).html" class="srv-card text-center">
+                <div class="srv-icon-wrap"><i class="bi bi-pencil-square"></i></div>
+                <h3 class="srv-title">Drawing Classes</h3>
+              </a>
             </div>
           </div>
         </div>
@@ -953,13 +961,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
