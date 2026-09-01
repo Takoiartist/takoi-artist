@@ -40,63 +40,103 @@
     .back-link:hover { color: #5a3878; }
     .divider { border-color: #e0d6f0; }
 
-    /* NOTICE BOXES */
-    .ts-notice {
-      background: linear-gradient(135deg, #f0eef5, #e8e4f3);
-      border-left: 4px solid #6B4491;
-      border-radius: 10px;
-      padding: 1.2rem 1.5rem;
+    /* ---- HOW IT WORKS (replaces long text notices) ---- */
+    .steps-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1.6rem;
     }
-    .ts-notice h2 {
-      font-size: .95rem;
-      font-weight: 700;
-      color: #6B4491;
-      margin-bottom: .4rem;
+    .step-card {
+      flex: 1 1 190px;
+      max-width: 220px;
+      background: #f7f5fb;
+      border-radius: 16px;
+      padding: 1.3rem 1rem;
+      text-align: center;
+      transition: transform .2s ease;
     }
-    .ts-notice p {
+    .step-card:hover { transform: translateY(-3px); }
+    .step-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #6B4491;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin: 0 auto .7rem;
+    }
+    .step-card h3 {
       font-size: .82rem;
-      color: #444;
-      line-height: 1.7;
+      font-weight: 700;
+      color: #1A1028;
+      margin-bottom: .3rem;
+    }
+    .step-card p {
+      font-size: .72rem;
+      color: #888;
+      line-height: 1.5;
       margin: 0;
     }
 
-    .payment-notice {
-      background: #fff;
-      border: 1.5px dashed #6B4491;
-      border-radius: 10px;
-      padding: 1.2rem 1.5rem;
+    .origin-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-size: .76rem;
+      color: #6B4491;
+      font-weight: 600;
       text-align: center;
+      margin-bottom: 2rem;
     }
-    .payment-notice h2 {
-      font-size: .95rem;
+
+    /* ---- PAYMENT STRIP (graphic badges, replaces text block) ---- */
+    .pay-strip {
+      display: flex;
+      gap: .7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .pay-badge {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      background: #fff;
+      border: 1.5px solid #eee2f7;
+      border-radius: 12px;
+      padding: .55rem 1.1rem;
+      font-size: .78rem;
       font-weight: 700;
-      color: #6B4491;
-      margin-bottom: .5rem;
+      color: #333;
+      box-shadow: 0 2px 10px rgba(107,68,145,.06);
     }
-    .payment-notice p {
-      font-size: .8rem;
-      color: #555;
-      margin-bottom: .8rem;
+    .pay-badge .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
-    .payment-pill {
-      display: inline-block;
-      background: #f2edf7;
-      color: #6B4491;
-      font-size: .75rem;
-      font-weight: 700;
-      padding: .35rem 1rem;
-      border-radius: 20px;
-      margin: .2rem;
+    .pay-strip-label {
+      width: 100%;
+      text-align: center;
+      font-size: .72rem;
+      color: #999;
+      margin-bottom: .6rem;
     }
 
     .category-note {
       background: #f7f5fb;
       border-radius: 10px;
-      padding: 1rem 1.3rem;
+      padding: .7rem 1.1rem;
       margin-bottom: 1.5rem;
-      font-size: .82rem;
+      font-size: .78rem;
       color: #555;
-      line-height: 1.7;
+      line-height: 1.6;
+      display: none;
     }
     .category-note strong { color: #6B4491; }
 
@@ -136,7 +176,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: .5rem;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1rem;
     }
     .shop-filters .filter-btn {
       font-family: 'Poppins', sans-serif;
@@ -178,6 +218,22 @@
       transition: transform .3s ease;
     }
     .product-img-wrap:hover img { transform: scale(1.05); }
+    .product-img-wrap::after {
+      content: "🔍";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: rgba(26,16,40,0);
+      opacity: 0;
+      transition: all .25s ease;
+    }
+    .product-img-wrap:hover::after {
+      background: rgba(26,16,40,.25);
+      opacity: 1;
+    }
     .badge-sample {
       position: absolute;
       top: 8px;
@@ -189,6 +245,7 @@
       padding: .25rem .6rem;
       border-radius: 12px;
       letter-spacing: .03em;
+      z-index: 2;
     }
     .product-name {
       font-size: .82rem;
@@ -299,6 +356,7 @@
       font-weight: 700;
       padding: .15rem .5rem;
       border-radius: 10px;
+      z-index: 2;
     }
 
     /* FOOTER */
@@ -364,20 +422,33 @@
         <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
       </div>
 
-      <!-- General notice -->
-      <div class="ts-notice mb-4">
-        <h2>🎨 We sell designs, not shirts</h2>
-        <p>All the designs you see here are <strong>original illustrations available for merchandising</strong>. You can order the design to be printed on t-shirts, mugs, bags, or any product you choose. We can also get you a quote from a trusted supplier if you need the physical item, and <strong>bulk orders qualify for a discount</strong>. Custom prints for stores are available too. <strong>Contact us</strong> to quote your personalized order.</p>
+      <!-- How it works: 3 quick steps, replaces the two long text boxes -->
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-icon">🎨</div>
+          <h3>Pick a design</h3>
+          <p>Browse originals below — each one is ready to print on t-shirts, mugs, bags & more.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">💬</div>
+          <h3>Order on WhatsApp</h3>
+          <p>Tap "Buy on WhatsApp" on any design to start your order — bulk orders get a discount.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">✅</div>
+          <h3>Pay & receive</h3>
+          <p>Confirm payment and get your print-ready design or product quote.</p>
+        </div>
       </div>
+      <p class="origin-note">🖌️ 100% original illustrations — not AI-generated</p>
 
-      <!-- Payment / WhatsApp notice -->
-      <div class="payment-notice mb-5">
-        <h2>🛒 How to buy</h2>
-        <p>Tap <strong>"Buy on WhatsApp"</strong> on any design below to order it directly. We accept the following payment methods:</p>
-        <span class="payment-pill">Bancolombia</span>
-        <span class="payment-pill">Nequi</span>
-        <span class="payment-pill">PayPal</span>
-        <p class="mt-2 mb-0">Payment details are shared with you once you message us on WhatsApp.</p>
+      <!-- Payment methods: graphic badges -->
+      <div class="pay-strip-label">Accepted payment methods</div>
+      <div class="pay-strip">
+        <div class="pay-badge"><span class="dot" style="background:#FFD100;"></span>Bancolombia</div>
+        <div class="pay-badge"><span class="dot" style="background:#D925C9;"></span>Nequi</div>
+        <div class="pay-badge"><span class="dot" style="background:#E4032E;"></span>Davivienda</div>
+        <div class="pay-badge"><span class="dot" style="background:#0070BA;"></span>PayPal</div>
       </div>
 
       <!-- Cover banner -->
@@ -389,18 +460,12 @@
         <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/d4f9797cc72f61ebb00cfc1c6bb517cc38f02288/%5BJotako%5D%20RRSS%20PORTADA-21.png" alt="Takoi Artist shop cover">
       </div>
 
-      <!-- Prints on products teaser -->
-      <div class="text-center mb-5">
-        <img src="" alt="" style="max-width:100%; border-radius:12px;">
-        <p style="font-size:.8rem; color:#888; margin-top:.6rem;">See how our illustrations look printed on real products.</p>
-      </div>
-
       <hr class="divider mb-5">
 
       <!-- Category filters -->
       <div class="shop-filters d-flex" id="shopFilters"></div>
 
-      <!-- Category note (dynamic) -->
+      <!-- Category note (dynamic, compact) -->
       <div class="category-note" id="categoryNote"></div>
 
       <!-- PRODUCT GRID -->
@@ -482,19 +547,20 @@
     const ITEMS_PER_PAGE = 9;
 
     // ---- Categories ----
+    // Notes kept short — they now show as a compact chip instead of a big paragraph.
     const categories = [
       { id: "all", label: "All" },
-      { id: "tshirt-prints", label: "T-Shirt Prints", note: "We sell the print design only. Need the actual t-shirt? We can get you a quote from one of our trusted suppliers. Bulk orders qualify for a discount, and we also create custom prints for stores." },
-      { id: "city-pop", label: "City Pop", note: "Original city-pop style illustrations, available as prints." },
-      { id: "bluey", label: "Bluey", note: "Custom Bluey-inspired illustrations, including a mini version and a 'maxi' puppy version." },
+      { id: "tshirt-prints", label: "T-Shirt Prints", note: "Print design only — we can quote the physical shirt too. Bulk orders get a discount." },
+      { id: "city-pop", label: "City Pop", note: "Original city-pop style illustrations." },
+      { id: "bluey", label: "Bluey", note: "Custom Bluey-inspired illustrations, mini or 'maxi' puppy version." },
       { id: "pet-illustration", label: "Pet Illustration", note: "Custom illustrated designs featuring your pet." },
-      { id: "custom-characters", label: "Custom Characters", note: "Custom character illustrations in a range of styles — like this Roblox-inspired piece." },
-      { id: "minecraft", label: "Minecraft Style", note: "We'll draw you and your friends as these characters, Minecraft style!" },
-      { id: "realistic-pets", label: "Realistic Pets", note: "Want a realistic portrait of your pet? We offer realistic pet illustrations as prints, Beastars-inspired style." },
-      { id: "commissions", label: "Commission Samples", note: "These are samples from our commission rate sheet — and yes, the samples themselves are also for sale." },
-      { id: "ghibli", label: "Ghibli Style", note: "Important: this piece is hand-drawn digitally by our artist — not AI-generated." },
-      { id: "colombian-birds", label: "Colombian Birds", note: "These illustrations are display samples only and are not for sale, but we do take commissions in this style." },
-      { id: "prints-sale", label: "Prints For Sale", note: "Original Inktober illustrations, available for purchase now." }
+      { id: "custom-characters", label: "Custom Characters", note: "Custom character illustrations in a range of styles." },
+      { id: "minecraft", label: "Minecraft Style", note: "You and your friends, drawn Minecraft style." },
+      { id: "realistic-pets", label: "Realistic Pets", note: "Realistic pet portraits, Beastars-inspired style." },
+      { id: "commissions", label: "Commission Samples", note: "Samples from our rate sheet — also for sale." },
+      { id: "ghibli", label: "Ghibli Style", note: "Hand-drawn digitally by our artist — not AI-generated." },
+      { id: "colombian-birds", label: "Colombian Birds", note: "Display samples only — commissions available in this style." },
+      { id: "prints-sale", label: "Prints For Sale", note: "Original Inktober illustrations, ready to buy." }
     ];
 
     // ---- Products ----
@@ -569,8 +635,7 @@
         ]
       },
 
-     // Commission Samples - two distinct sets
-     // Commission Samples - diferentes tipos de comisiones
+     // Commission Samples - dos tipos de comisiones (color y tinta)
 {
   name: "Commission - HEADSHOT (Stylized Color)",
   price: 13,
@@ -599,7 +664,6 @@
   ]
 },
 
-           // Commission Samples - diferentes tipos de comisiones
 {
   name: "Commission - HEADSHOT (Ink version)",
   price: 9,
@@ -702,7 +766,7 @@
       const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
       currentPage = Math.min(currentPage, totalPages);
 
-      // Category note
+      // Category note — short chip, only shown when relevant
       const cat = categories.find(c => c.id === activeCategory);
       noteEl.style.display = cat && cat.note ? 'block' : 'none';
       if (cat && cat.note) {
@@ -786,4 +850,3 @@
   </script>
 </body>
 </html>
-
