@@ -187,6 +187,43 @@
       z-index: 2;
     }
 
+    /* COMING SOON CARD */
+    .short-card.coming-soon {
+      cursor: default;
+      background: linear-gradient(160deg, #6B4491, #3d2657);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      aspect-ratio: 9/16;
+    }
+    .short-card.coming-soon .cs-inner {
+      padding: .9rem .7rem;
+      color: #fff;
+    }
+    .short-card.coming-soon .cs-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.4);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: .2rem .55rem;
+      border-radius: 10px;
+      margin-bottom: .5rem;
+    }
+    .short-card.coming-soon .cs-title {
+      font-size: .72rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: .3rem;
+    }
+    .short-card.coming-soon .cs-sub {
+      font-size: .62rem;
+      opacity: .85;
+      line-height: 1.3;
+    }
+
     /* CONTROLES */
     .btn-takoi {
       background: #6B4491;
@@ -288,7 +325,7 @@
   <nav class="navbar navbar-expand-lg py-0">
     <div class="container-fluid justify-content-center">
       <button class="navbar-toggler border-0 my-2" type="button"
-              data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
+        data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
         <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="menu">
@@ -342,6 +379,10 @@
       <!-- SHORTS -->
       <div class="blog-subhead"><h3>Shorts</h3><div class="line"></div></div>
       <div class="shorts-strip" id="shortsStrip"></div>
+
+      <!-- MAXICRAFT CREATIVE -->
+      <div class="blog-subhead"><h3>Maxicraft Creative</h3><div class="line"></div></div>
+      <div class="shorts-strip" id="maxicraftStrip"></div>
 
       <!-- VIDEO GRID -->
       <div class="blog-subhead"><h3>All videos</h3><div class="line"></div></div>
@@ -426,7 +467,7 @@
   <script>
     // ---- Videos ----
     // "title" values marked (edítame) are placeholders — reemplázalos por el título real de YouTube.
-    // "order" controls el orden por defecto (0 = más reciente). Cámbialo si agregas más videos.
+    // "order" controla el orden por defecto (0 = más reciente). Cámbialo si agregas más videos.
     const videos = [
       { id: "cHcrx709b4Q", title: "Illustration process — speed video (edítame)", order: 0 },
       { id: "Wo0DpYXuiVs", title: "Digital painting timelapse (edítame)", order: 1 },
@@ -436,9 +477,29 @@
       { id: "6e-k0FejA9k", title: "【Speed Inking Manga Series 4】Hometown | Clip Studio Paint | Takoii", order: 5 }
     ];
 
+    // ---- Shorts (tira principal) ----
     const shorts = [
       { id: "8bT2WC4iBJs", title: "Short 1" },
-      { id: "UUkWolqoGnY", title: "Short 2" }
+      { id: "UUkWolqoGnY", title: "Short 2" },
+      { id: "q7W8cw4FPuU", title: "Short 3" },
+      { id: "C7IMBA8KWMk", title: "Short 4" },
+      { id: "eEhituk4Nsk", title: "Short 5" }
+    ];
+
+    // ---- Tarjeta "Próximamente" (sin video todavía) ----
+    // Cuando tengas el video real, muévelo al array `shorts` con su id de YouTube.
+    const comingSoon = {
+      badge: "Próximamente",
+      title: "Cortometraje \"Nómada\"",
+      sub: "Animación digital realizada por aprendices del SENA"
+    };
+
+    // ---- Shorts de Maxicraft Creative (nuestro hijo) ----
+    const maxicraftShorts = [
+      { id: "6y_xfFM3j3o", title: "Animación 3D — Blender" },
+      { id: "aDLkn0b5d3s", title: "Maxicraft Creative" },
+      { id: "QhdzrUrQAGU", title: "Maxicraft Creative" },
+      { id: "i1N-ZZdtRWE", title: "Maxicraft Creative" }
     ];
 
     const ITEMS_PER_PAGE = 4;
@@ -447,6 +508,7 @@
 
     const gridEl = document.getElementById('videoGrid');
     const shortsEl = document.getElementById('shortsStrip');
+    const maxicraftEl = document.getElementById('maxicraftStrip');
     const pagInfoEl = document.getElementById('pagInfo');
     const featuredImg = document.getElementById('featuredImg');
     const featuredTitle = document.getElementById('featuredTitle');
@@ -466,14 +528,35 @@
     featuredTitle.textContent = featured.title;
     featuredThumb.addEventListener('click', () => openPlayer(featured.id, featured.title, '16-9'));
 
-    // Shorts strip
+    // Shorts strip (incluye la tarjeta "Próximamente" al final)
     shortsEl.innerHTML = shorts.map(s => `
-      <div class="short-card" data-id="${s.id}" data-title="${s.title}">
-        <span class="shorts-badge">Short</span>
-        <img src="${shortThumbUrl(s.id)}" alt="${s.title}">
-        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>`).join('');
-    shortsEl.querySelectorAll('.short-card').forEach(card => {
+        <div class="short-card" data-id="${s.id}" data-title="${s.title}">
+          <span class="shorts-badge">Short</span>
+          <img src="${shortThumbUrl(s.id)}" alt="${s.title}">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>`).join('')
+      + `
+        <div class="short-card coming-soon">
+          <div class="cs-inner">
+            <span class="cs-badge">${comingSoon.badge}</span>
+            <p class="cs-title">${comingSoon.title}</p>
+            <p class="cs-sub">${comingSoon.sub}</p>
+          </div>
+        </div>`;
+
+    shortsEl.querySelectorAll('.short-card:not(.coming-soon)').forEach(card => {
+      card.addEventListener('click', () => openPlayer(card.dataset.id, card.dataset.title, '9-16'));
+    });
+
+    // Maxicraft Creative strip
+    maxicraftEl.innerHTML = maxicraftShorts.map(s => `
+        <div class="short-card" data-id="${s.id}" data-title="${s.title}">
+          <span class="shorts-badge">Short</span>
+          <img src="${shortThumbUrl(s.id)}" alt="${s.title}">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>`).join('');
+
+    maxicraftEl.querySelectorAll('.short-card').forEach(card => {
       card.addEventListener('click', () => openPlayer(card.dataset.id, card.dataset.title, '9-16'));
     });
 
@@ -547,3 +630,4 @@
   </script>
 </body>
 </html>
+
