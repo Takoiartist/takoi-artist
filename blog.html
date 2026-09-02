@@ -40,66 +40,151 @@
     .back-link:hover { color: #5a3878; }
     .divider { border-color: #e0d6f0; }
 
-    /* VIDEO PRINCIPAL */
-    .video-thumb {
+    /* SECTION HEADINGS */
+    .blog-subhead {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.2rem;
+    }
+    .blog-subhead h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #6B4491;
+      font-size: 1rem;
+      margin: 0;
+    }
+    .blog-subhead .line {
+      flex: 1;
+      height: 1px;
+      background: #e6dcf0;
+    }
+
+    /* FEATURED VIDEO */
+    .featured-thumb {
       position: relative;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       display: block;
-      text-decoration: none;
+      cursor: pointer;
       background: #000;
+      box-shadow: 0 8px 28px rgba(107,68,145,.14);
     }
-    .video-thumb img {
+    .featured-thumb img {
       width: 100%;
       display: block;
       aspect-ratio: 16/9;
       object-fit: cover;
-      transition: opacity .3s;
+      transition: transform .4s ease, opacity .3s;
     }
-    .video-thumb:hover img { opacity: .85; }
-    .video-play-btn {
+    .featured-thumb:hover img { transform: scale(1.03); opacity: .9; }
+    .featured-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1A1028;
+      margin-top: .9rem;
+      margin-bottom: 0;
+    }
+    .featured-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: #6B4491;
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: .3rem .8rem;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    /* PLAY BUTTON (shared) */
+    .play-btn {
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 68px; height: 48px;
-      background: #ff0000;
-      border-radius: 12px;
+      width: 60px; height: 60px;
+      background: rgba(255,255,255,.92);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       pointer-events: none;
+      transition: transform .25s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
     }
-    .video-play-btn svg { fill: #fff; width: 24px; height: 24px; }
-    .video-title {
-      font-size: .9rem;
-      font-weight: 600;
-      color: #1A1028;
-      margin-top: .8rem;
-    }
-    .video-link {
-      font-size: .78rem;
-      color: #6B4491;
-      text-decoration: none;
-      display: block;
-      margin-top: .2rem;
-    }
-    .video-link:hover { color: #5a3878; }
+    .featured-thumb:hover .play-btn,
+    .video-card:hover .play-btn,
+    .short-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.08); }
+    .play-btn svg { fill: #6B4491; width: 22px; height: 22px; margin-left: 3px; }
+    .short-card .play-btn { width: 44px; height: 44px; }
+    .short-card .play-btn svg { width: 16px; height: 16px; }
 
-    /* SHORTS */
-    .short-card {
+    /* VIDEO GRID CARDS */
+    .video-card {
+      position: relative;
       display: block;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,.15);
-      text-decoration: none;
-      transition: transform .3s ease;
+      cursor: pointer;
+      background: #000;
+      box-shadow: 0 3px 14px rgba(0,0,0,.08);
     }
-    .short-card:hover { transform: scale(1.02); }
+    .video-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      transition: transform .35s ease, opacity .3s;
+    }
+    .video-card:hover img { transform: scale(1.05); opacity: .88; }
+    .video-card-title {
+      font-size: .8rem;
+      font-weight: 600;
+      color: #1A1028;
+      margin-top: .6rem;
+      line-height: 1.4;
+    }
+
+    /* SHORTS STRIP */
+    .shorts-strip {
+      display: flex;
+      gap: .9rem;
+      overflow-x: auto;
+      padding: .3rem .2rem 1rem;
+      scroll-behavior: smooth;
+      margin-bottom: 2.5rem;
+    }
+    .shorts-strip::-webkit-scrollbar { height: 6px; }
+    .shorts-strip::-webkit-scrollbar-thumb { background: #e1dcea; border-radius: 10px; }
+    .short-card {
+      position: relative;
+      flex: 0 0 auto;
+      width: 150px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,.15);
+      cursor: pointer;
+      background: #000;
+    }
     .short-card img {
       width: 100%;
       display: block;
       object-fit: cover;
       aspect-ratio: 9/16;
+      transition: transform .3s ease;
+    }
+    .short-card:hover img { transform: scale(1.04); }
+    .shorts-badge {
+      position: absolute;
+      top: 8px; right: 8px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: .6rem;
+      font-weight: 700;
+      padding: .2rem .5rem;
+      border-radius: 10px;
+      z-index: 2;
     }
 
     /* CONTROLES */
@@ -114,8 +199,10 @@
       border: none;
       display: inline-block;
       text-decoration: none;
+      cursor: pointer;
     }
     .btn-takoi:hover { background: #5a3878; color: #fff; }
+    .btn-takoi:disabled { opacity: .45; cursor: not-allowed; }
 
     .sort-select {
       background: #f5f3fa;
@@ -142,7 +229,47 @@
       font-size: .85rem;
       color: #6B4491;
     }
-    .pag-btn:hover { background: #f5f3fa; }
+    .pag-btn:hover:not(:disabled) { background: #f5f3fa; }
+    .pag-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+    /* PLAYER MODAL */
+    #playerModal .modal-content { background: transparent; border: none; }
+    #playerModal .modal-body { padding: 0; position: relative; }
+    .player-frame-wrap {
+      position: relative;
+      width: 100%;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .player-frame-wrap.ratio-16-9 { aspect-ratio: 16/9; }
+    .player-frame-wrap.ratio-9-16 {
+      aspect-ratio: 9/16;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .player-frame-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    #playerModal .btn-close {
+      background-color: #fff;
+      opacity: 1;
+      position: absolute;
+      top: -42px;
+      right: 0;
+      z-index: 10;
+    }
+    #playerModal .player-title {
+      text-align: center;
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-top: .8rem;
+    }
 
     /* FOOTER */
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
@@ -200,70 +327,68 @@
         <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
       </div>
 
-      <!-- VIDEO PRINCIPAL -->
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-9">
-          <a href="https://www.youtube.com/watch?v=6e-k0FejA9k" class="video-thumb" target="_blank">
-            <img src="https://img.youtube.com/vi/6e-k0FejA9k/maxresdefault.jpg" alt="Speed Inking Manga Series 4">
-            <div class="video-play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </a>
-          <p class="video-title mt-3">【Speed Inking Manga Series 4】Hometown | Clip Studio Paint | Takoii</p>
-          <a href="https://www.youtube.com/watch?v=6e-k0FejA9k" class="video-link" target="_blank">https://www.youtube.com/watch?v=6e-k0FejA9k</a>
-        </div>
-      </div>
-
-      <!-- SHORTS (2 thumbnails) -->
-      <div class="row justify-content-center g-4 mb-4">
-        <div class="col-6 col-lg-4">
-          <a href="https://www.youtube.com/shorts/8bT2WC4iBJs" class="short-card" target="_blank">
-            <img src="https://img.youtube.com/vi/8bT2WC4iBJs/0.jpg" alt="Short 1">
-          </a>
-        </div>
-        <div class="col-6 col-lg-4">
-          <a href="https://www.youtube.com/shorts/UUkWolqoGnY" class="short-card" target="_blank">
-            <img src="https://img.youtube.com/vi/UUkWolqoGnY/0.jpg" alt="Short 2">
-          </a>
-        </div>
-      </div>
-
-      <!-- VIDEO SECUNDARIO -->
+      <!-- FEATURED VIDEO (el más reciente, siempre visible) -->
       <div class="row justify-content-center mb-5">
         <div class="col-lg-9">
-          <a href="https://www.youtube.com/watch?v=ZIIBFkty3H8" class="video-thumb" target="_blank">
-            <img src="https://img.youtube.com/vi/ZIIBFkty3H8/maxresdefault.jpg" alt="Video Takoi">
-            <div class="video-play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </a>
-          <a href="https://www.youtube.com/watch?v=ZIIBFkty3H8" class="video-link mt-2" target="_blank">https://www.youtube.com/watch?v=ZIIBFkty3H8</a>
+          <div class="featured-thumb" id="featuredThumb">
+            <span class="featured-badge">Latest</span>
+            <img id="featuredImg" src="" alt="">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <p class="featured-title" id="featuredTitle"></p>
         </div>
       </div>
+
+      <!-- SHORTS -->
+      <div class="blog-subhead"><h3>Shorts</h3><div class="line"></div></div>
+      <div class="shorts-strip" id="shortsStrip"></div>
+
+      <!-- VIDEO GRID -->
+      <div class="blog-subhead"><h3>All videos</h3><div class="line"></div></div>
+      <div class="row g-4 mb-4" id="videoGrid"></div>
 
       <!-- CONTROLES -->
       <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap mb-3">
-        <button class="btn-takoi">View more</button>
         <div class="d-flex align-items-center gap-2">
           <span style="font-size:.78rem; color:#666; white-space:nowrap;">Ordenar por:</span>
-          <select class="sort-select">
-            <option>Fecha (más reciente)</option>
-            <option>Fecha (más antigua)</option>
+          <select class="sort-select" id="sortSelect">
+            <option value="new">Fecha (más reciente)</option>
+            <option value="old">Fecha (más antigua)</option>
           </select>
         </div>
       </div>
 
       <!-- PAGINACIÓN -->
-      <div class="d-flex align-items-center justify-content-center gap-2 pb-3">
-        <span style="font-size:.78rem; color:#666;">1 – 9 de 67 elementos &nbsp;|&nbsp; Página 2 de 9</span>
-        <button class="pag-btn">&#8676;</button>
-        <button class="pag-btn">&#8249;</button>
-        <button class="pag-btn">&#8250;</button>
-        <button class="pag-btn">&#8677;</button>
+      <div class="d-flex align-items-center justify-content-center gap-2 pb-3 flex-wrap">
+        <span style="font-size:.78rem; color:#666;" id="pagInfo"></span>
+        <button class="pag-btn" id="pagFirst">&#8676;</button>
+        <button class="pag-btn" id="pagPrev">&#8249;</button>
+        <button class="pag-btn" id="pagNext">&#8250;</button>
+        <button class="pag-btn" id="pagLast">&#8677;</button>
+      </div>
+
+      <p class="text-center" style="font-size:.72rem; color:#aaa;">Suscríbete al canal para no perderte los próximos videos.</p>
+      <div class="text-center mb-3">
+        <a class="btn-takoi" href="https://www.youtube.com/@Takoiartist" target="_blank" rel="noopener">Ver canal completo</a>
       </div>
 
     </div>
   </section>
+
+  <!-- PLAYER MODAL (reproduce sin salir del sitio) -->
+  <div class="modal fade" id="playerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="player-frame-wrap ratio-16-9" id="playerFrameWrap">
+            <iframe id="playerIframe" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="player-title" id="playerTitle"></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -298,5 +423,127 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ---- Videos ----
+    // "title" values marked (edítame) are placeholders — reemplázalos por el título real de YouTube.
+    // "order" controls el orden por defecto (0 = más reciente). Cámbialo si agregas más videos.
+    const videos = [
+      { id: "cHcrx709b4Q", title: "Illustration process — speed video (edítame)", order: 0 },
+      { id: "Wo0DpYXuiVs", title: "Digital painting timelapse (edítame)", order: 1 },
+      { id: "hK2whSEUHRM", title: "Character design process (edítame)", order: 2 },
+      { id: "x-_EQlNPYWc", title: "Behind the scenes — Takoi Artist (edítame)", order: 3 },
+      { id: "ZIIBFkty3H8", title: "Video Takoi", order: 4 },
+      { id: "6e-k0FejA9k", title: "【Speed Inking Manga Series 4】Hometown | Clip Studio Paint | Takoii", order: 5 }
+    ];
+
+    const shorts = [
+      { id: "8bT2WC4iBJs", title: "Short 1" },
+      { id: "UUkWolqoGnY", title: "Short 2" }
+    ];
+
+    const ITEMS_PER_PAGE = 4;
+    let currentPage = 1;
+    let sortDir = "new"; // "new" = order asc (0 first), "old" = order desc
+
+    const gridEl = document.getElementById('videoGrid');
+    const shortsEl = document.getElementById('shortsStrip');
+    const pagInfoEl = document.getElementById('pagInfo');
+    const featuredImg = document.getElementById('featuredImg');
+    const featuredTitle = document.getElementById('featuredTitle');
+    const featuredThumb = document.getElementById('featuredThumb');
+
+    function thumbUrl(id) {
+      return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    }
+    function shortThumbUrl(id) {
+      return `https://img.youtube.com/vi/${id}/0.jpg`;
+    }
+
+    // Featured = most recent video (order 0)
+    const featured = videos.find(v => v.order === 0);
+    featuredImg.src = thumbUrl(featured.id);
+    featuredImg.alt = featured.title;
+    featuredTitle.textContent = featured.title;
+    featuredThumb.addEventListener('click', () => openPlayer(featured.id, featured.title, '16-9'));
+
+    // Shorts strip
+    shortsEl.innerHTML = shorts.map(s => `
+      <div class="short-card" data-id="${s.id}" data-title="${s.title}">
+        <span class="shorts-badge">Short</span>
+        <img src="${shortThumbUrl(s.id)}" alt="${s.title}">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>`).join('');
+    shortsEl.querySelectorAll('.short-card').forEach(card => {
+      card.addEventListener('click', () => openPlayer(card.dataset.id, card.dataset.title, '9-16'));
+    });
+
+    function getSorted() {
+      const rest = videos.filter(v => v.order !== 0);
+      const sorted = [...rest].sort((a, b) => sortDir === 'new' ? a.order - b.order : b.order - a.order);
+      return sorted;
+    }
+
+    function render() {
+      const list = getSorted();
+      const totalPages = Math.max(1, Math.ceil(list.length / ITEMS_PER_PAGE));
+      currentPage = Math.min(currentPage, totalPages);
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const pageItems = list.slice(start, start + ITEMS_PER_PAGE);
+
+      gridEl.innerHTML = pageItems.map(v => `
+        <div class="col-6 col-md-3">
+          <div class="video-card" data-id="${v.id}" data-title="${v.title}">
+            <img src="${thumbUrl(v.id)}" alt="${v.title}" loading="lazy">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <p class="video-card-title">${v.title}</p>
+        </div>`).join('');
+
+      gridEl.querySelectorAll('.video-card').forEach(card => {
+        card.addEventListener('click', () => openPlayer(card.dataset.id, card.dataset.title, '16-9'));
+      });
+
+      const shownFrom = list.length === 0 ? 0 : start + 1;
+      const shownTo = Math.min(start + ITEMS_PER_PAGE, list.length);
+      pagInfoEl.textContent = `${shownFrom} – ${shownTo} de ${list.length} videos | Página ${currentPage} de ${totalPages}`;
+
+      document.getElementById('pagFirst').disabled = currentPage === 1;
+      document.getElementById('pagPrev').disabled = currentPage === 1;
+      document.getElementById('pagNext').disabled = currentPage === totalPages;
+      document.getElementById('pagLast').disabled = currentPage === totalPages;
+    }
+
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      sortDir = e.target.value;
+      currentPage = 1;
+      render();
+    });
+    document.getElementById('pagFirst').addEventListener('click', () => { currentPage = 1; render(); window.scrollTo({top: gridEl.offsetTop - 100, behavior: 'smooth'}); });
+    document.getElementById('pagPrev').addEventListener('click', () => { currentPage = Math.max(1, currentPage - 1); render(); window.scrollTo({top: gridEl.offsetTop - 100, behavior: 'smooth'}); });
+    document.getElementById('pagNext').addEventListener('click', () => { currentPage = currentPage + 1; render(); window.scrollTo({top: gridEl.offsetTop - 100, behavior: 'smooth'}); });
+    document.getElementById('pagLast').addEventListener('click', () => {
+      const totalPages = Math.max(1, Math.ceil(getSorted().length / ITEMS_PER_PAGE));
+      currentPage = totalPages; render();
+      window.scrollTo({top: gridEl.offsetTop - 100, behavior: 'smooth'});
+    });
+
+    // ---- Player modal ----
+    const playerModalEl = document.getElementById('playerModal');
+    const playerModal = new bootstrap.Modal(playerModalEl);
+    const playerIframe = document.getElementById('playerIframe');
+    const playerFrameWrap = document.getElementById('playerFrameWrap');
+    const playerTitle = document.getElementById('playerTitle');
+
+    function openPlayer(id, title, ratio) {
+      playerFrameWrap.className = `player-frame-wrap ratio-${ratio}`;
+      playerIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      playerTitle.textContent = title;
+      playerModal.show();
+    }
+    // Stop playback when the modal closes
+    playerModalEl.addEventListener('hidden.bs.modal', () => { playerIframe.src = ''; });
+
+    render();
+  </script>
 </body>
 </html>
