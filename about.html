@@ -21,6 +21,139 @@ padding: .4rem .9rem;
 .navbar .nav-link:hover { opacity: .8; }
 .navbar .nav-link.active { text-decoration: underline; }
 
+/* ===== NAVBAR IGUAL AL HOME (idioma + redes + whatsapp) ===== */
+.navbar-lang { margin-right: .5rem; }
+
+.navbar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 46px;
+  padding: .3rem 2rem;
+}
+
+@media (min-width: 992px) {
+  .navbar-container .navbar-toggler { display: none; }
+  .navbar-container #menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    display: flex !important;
+  }
+  .navbar-container .menu-social { margin-left: auto; }
+  .navbar-container #menu .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+    gap: .15rem !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-container { flex-wrap: wrap; padding: .3rem 1rem; }
+  .navbar-container .menu-social { margin-left: auto; }
+  .navbar-container #menu { order: 3; width: 100%; }
+  .navbar-container #menu .navbar-nav { align-items: center; padding: .5rem 0; }
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  color: #fff !important;
+  font-size: .95rem;
+  transition: background .2s, transform .2s;
+}
+.social-icon:hover {
+  background: rgba(255,255,255,.32);
+  transform: translateY(-2px);
+}
+.btn-whatsapp-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: #6B4491 !important;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: .8rem;
+  padding: 6px 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+  white-space: nowrap;
+}
+.btn-whatsapp-nav:hover {
+  background: #f1ebf7;
+  color: #6B4491 !important;
+  transform: translateY(-2px);
+}
+.wa-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.35);
+  z-index: 999;
+  animation: wa-pulse 2s infinite;
+  text-decoration: none;
+}
+.wa-float:hover { color:#fff; transform: scale(1.08); }
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+  70%  { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+#google_translate_element { display: flex; align-items: center; }
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+body { top: 0 !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+#google_translate_element .goog-te-gadget-simple {
+  background: rgba(255,255,255,.15) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 6px 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  transition: background .2s, transform .2s;
+}
+#google_translate_element .goog-te-gadget-simple:hover {
+  background: rgba(255,255,255,.32) !important;
+  transform: translateY(-2px);
+}
+#google_translate_element .goog-te-gadget-simple,
+#google_translate_element .goog-te-gadget-simple a,
+#google_translate_element .goog-te-gadget-simple a span,
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value,
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value span {
+  color: #fff !important;
+  font-size: .8rem !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  line-height: normal !important;
+}
+#google_translate_element .goog-te-gadget-icon,
+#google_translate_element img { display: none !important; }
+.goog-logo-link { display: none !important; }
+/* ===== FIN NAVBAR IGUAL AL HOME ===== */
+
 .section-title {
 font-family: 'Potta One', cursive;
 color: #6B4491;
@@ -231,12 +364,29 @@ footer a:hover { color: #fff; }
   <img src="logo-purple.webp" alt="Takoi Artist Logo" width="148" height="80" loading="eager" decoding="async">
 </header>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg py-0">
-  <div class="container">
-    <button class="navbar-toggler border-0 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
+<!-- NAVBAR (igual al Home) -->
+<nav class="navbar navbar-expand-lg py-0" role="navigation" aria-label="Menú principal">
+  <div class="navbar-container">
+
+    <button class="navbar-toggler border-0 my-2" type="button"
+            data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Abrir menú">
       <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
     </button>
+
+    <div class="navbar-lang d-flex align-items-center">
+      <div id="google_translate_element"></div>
+    </div>
+
+    <div class="menu-social d-flex align-items-center gap-2 py-1">
+      <a href="https://instagram.com/Takoiartist" target="_blank" rel="noopener" title="Instagram" class="social-icon"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.behance.net/jotako" target="_blank" rel="noopener" title="Behance" class="social-icon"><i class="bi bi-behance"></i></a>
+      <a href="https://x.com/takoiartist" target="_blank" rel="noopener" title="Twitter / X" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.youtube.com/@TakoiArtist" target="_blank" rel="noopener" title="YouTube" class="social-icon"><i class="bi bi-youtube"></i></a>
+      <a href="https://wa.me/573145641237" target="_blank" rel="noopener" class="btn-whatsapp-nav">
+        <i class="bi bi-whatsapp"></i> <span class="d-none d-md-inline">Write to us</span>
+      </a>
+    </div>
+
     <div class="collapse navbar-collapse justify-content-center" id="menu">
       <ul class="navbar-nav py-2">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -245,9 +395,11 @@ footer a:hover { color: #fff; }
         <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
         <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
         <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contacto">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="sitemap.html">sitemap</a></li>
       </ul>
     </div>
+
   </div>
 </nav>
 
@@ -387,8 +539,27 @@ footer a:hover { color: #fff; }
   </div>
 </footer>
 
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573145641237" target="_blank" rel="noopener" class="wa-float" title="Escríbenos por WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,ja',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
+
 
 
