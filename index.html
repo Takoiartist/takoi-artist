@@ -471,6 +471,18 @@
     @media (prefers-reduced-motion: reduce) {
       .about-takoi .portrait-frame img { transition: none; }
     }
+
+    .form-success, .form-error {
+      font-size: .85rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      padding: .75rem 1rem;
+      border-radius: 8px;
+      display: none;
+    }
+    .form-success { color: #2e7d32; background: #e6f4ea; border: 1px solid #2e7d32; }
+    .form-error { color: #c62828; background: #fdecea; border: 1px solid #c62828; }
   </style>
 </head>
 <body>
@@ -704,29 +716,38 @@
 
     <div class="row justify-content-center mb-5">
       <div class="col-md-7 review-form">
-        <div class="mb-3 row">
-          <div class="col">
-            <label class="form-label">First</label>
-            <input type="text" class="form-control">
+        <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="831fca82-c73f-49f4-b3e7-71cd59286898">
+          <input type="hidden" name="subject" value="Nueva reseña - Takoi Artist">
+          <input type="hidden" name="from_name" value="Takoi Artist - Reviews">
+
+          <p class="form-success">✓ ¡Gracias! Tu reseña fue enviada correctamente.</p>
+          <p class="form-error">✗ Hubo un problema al enviar. Intenta de nuevo.</p>
+
+          <div class="mb-3 row">
+            <div class="col">
+              <label class="form-label">First</label>
+              <input type="text" name="first_name" class="form-control" required>
+            </div>
+            <div class="col">
+              <label class="form-label">Last</label>
+              <input type="text" name="last_name" class="form-control" required>
+            </div>
           </div>
-          <div class="col">
-            <label class="form-label">Last</label>
-            <input type="text" class="form-control">
+          <div class="mb-3">
+            <label class="form-label">Share your experience</label>
+            <textarea name="review" class="form-control" rows="4" required></textarea>
           </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Share your experience</label>
-          <textarea class="form-control" rows="4"></textarea>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Rating</label>
-          <select class="form-control">
-            <option>⭐⭐⭐⭐⭐ Excellent</option>
-            <option>⭐⭐⭐⭐ Good</option>
-            <option>⭐⭐⭐ Average</option>
-          </select>
-        </div>
-        <button class="btn-takoi">Send Review</button>
+          <div class="mb-3">
+            <label class="form-label">Rating</label>
+            <select name="rating" class="form-control">
+              <option>⭐⭐⭐⭐⭐ Excellent</option>
+              <option>⭐⭐⭐⭐ Good</option>
+              <option>⭐⭐⭐ Average</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-takoi">Send Review</button>
+        </form>
       </div>
     </div>
     
@@ -766,16 +787,16 @@
             <div class="col-md-4">
               <div class="review-card">
                 <div class="d-flex align-items-center gap-3 mb-3">
-                  <img src="http://takoiartista.free.nf/wp-content/uploads/2026/03/imiagenes-para-la-web-01-1.png" alt="Meiw Creative">
+                  <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/c1780f8d0b1908a055d731f9ca1e11c937876520/dani%20amrin.png" alt="Daniela Marin">
                   <div>
-                    <strong style="font-size:.9rem;">Meiw Creative</strong>
+                    <strong style="font-size:.9rem;">Daniela Marin</strong>
                     <div class="stars">★★★★★</div>
                   </div>
                 </div>
                 <p style="font-size:.82rem; color:#444; line-height:1.6;">
-                  Working with Takoi has been an amazing experience. He is incredibly creative,
-                  and I truly enjoy collaborating with him. His perspective brings a special touch
-                  to every project.
+                  Exceptional Talent &amp; Creativity! Working with Takoi has been an amazing experience.
+                  He brings my ideas to life effortlessly and always adds a creative, professional touch
+                  to every project. He is fast, communicative, and truly dedicated to quality. Highly recommended!
                 </p>
               </div>
             </div>
@@ -958,6 +979,41 @@
       }, 4200);
     }
   })();
+</script>
+
+<script>
+  // Envío del formulario de reseñas vía fetch para mostrar feedback sin recargar la página
+  const reviewForm = document.getElementById('reviewForm');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const successMsg = reviewForm.querySelector('.form-success');
+      const errorMsg = reviewForm.querySelector('.form-error');
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const formData = new FormData(reviewForm);
+      try {
+        const response = await fetch(reviewForm.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        await response.json();
+        if (response.status === 200) {
+          successMsg.style.display = 'block';
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          reviewForm.reset();
+        } else {
+          errorMsg.style.display = 'block';
+          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } catch (err) {
+        errorMsg.style.display = 'block';
+        errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
 </script>
 </body>
 </html>
