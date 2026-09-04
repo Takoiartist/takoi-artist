@@ -337,7 +337,7 @@
           <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
           <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
+          <li class="nav-item"><a class="nav-link" href="sitemap.html">Mapa del sitio</a></li>
         </ul>
       </div>
     </div>
@@ -354,7 +354,7 @@
             <polyline points="9 14 4 9 9 4"></polyline>
             <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
           </svg>
-          Go back
+          Regresar
         </a>
       </div>
 
@@ -391,10 +391,10 @@
       <!-- CONTROLES -->
       <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap mb-3">
         <div class="d-flex align-items-center gap-2">
-          <span style="font-size:.78rem; color:#666; white-space:nowrap;">sort by:</span>
+          <span style="font-size:.78rem; color:#666; white-space:nowrap;">Ordenar por:</span>
           <select class="sort-select" id="sortSelect">
-            <option value="new">Date (most recent)</option>
-            <option value="old">Date (earliest)</option>
+            <option value="new">Fecha (más reciente)</option>
+            <option value="old">Fecha (más antigua)</option>
           </select>
         </div>
       </div>
@@ -408,9 +408,9 @@
         <button class="pag-btn" id="pagLast">&#8677;</button>
       </div>
 
-      <p class="text-center" style="font-size:.72rem; color:#aaa;">Subscribe to the channel so you don't miss the upcoming videos.</p>
+      <p class="text-center" style="font-size:.72rem; color:#aaa;">Suscríbete al canal para no perderte los próximos videos.</p>
       <div class="text-center mb-3">
-        <a class="btn-takoi" href="https://www.youtube.com/@Takoiartist" target="_blank" rel="noopener">View full channel</a>
+        <a class="btn-takoi" href="https://www.youtube.com/@Takoiartist" target="_blank" rel="noopener">Ver canal completo</a>
       </div>
 
     </div>
@@ -489,14 +489,14 @@
     // ---- Tarjeta "Próximamente" (sin video todavía) ----
     // Cuando tengas el video real, muévelo al array `shorts` con su id de YouTube.
     const comingSoon = {
-      badge: "Soon",
-      title: "Short film "Nomad",
-      sub: "Digital animation created by SENA trainees."
+      badge: "Próximamente",
+      title: "Cortometraje \"Nómada\"",
+      sub: "Animación digital realizada por aprendices del SENA"
     };
 
     // ---- Shorts de Maxicraft Creative (nuestro hijo) ----
     const maxicraftShorts = [
-      { id: "6y_xfFM3j3o", title: "Animation 3D — Blender" },
+      { id: "6y_xfFM3j3o", title: "Animación 3D — Blender" },
       { id: "aDLkn0b5d3s", title: "Maxicraft Creative" },
       { id: "QhdzrUrQAGU", title: "Maxicraft Creative" },
       { id: "i1N-ZZdtRWE", title: "Maxicraft Creative" }
@@ -588,7 +588,7 @@
 
       const shownFrom = list.length === 0 ? 0 : start + 1;
       const shownTo = Math.min(start + ITEMS_PER_PAGE, list.length);
-      pagInfoEl.textContent = `${shownFrom} – ${shownTo} of ${list.length} videos | Page ${currentPage} de ${totalPages}`;
+      pagInfoEl.textContent = `${shownFrom} – ${shownTo} de ${list.length} videos | Página ${currentPage} de ${totalPages}`;
 
       document.getElementById('pagFirst').disabled = currentPage === 1;
       document.getElementById('pagPrev').disabled = currentPage === 1;
@@ -630,4 +630,3 @@
   </script>
 </body>
 </html>
-
