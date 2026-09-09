@@ -212,6 +212,17 @@ display:flex;
 justify-content:center;
 }
 .project-pdf-wrap .dl-card{ max-width:460px; width:100%; }
+/* Tarjeta destacada (proyecto highlight) */
+.piece.featured{
+border:3px solid var(--purple);
+box-shadow:0 8px 26px rgba(107,68,145,.35);
+position:relative;
+}
+.featured-badge{
+position:absolute; top:10px; left:10px; z-index:3;
+background:var(--purple); color:#fff; font-size:.68rem; font-weight:700;
+padding:4px 10px; border-radius:20px; letter-spacing:.05em; text-transform:uppercase;
+}
 </style>
 </head>
 <body>
@@ -295,7 +306,7 @@ Back
 <div class="container">
 <p class="eyebrow">02 · Chapter</p>
 <h2 class="section-title">Editorial Design</h2>
-<p class="section-sub">Narrative illustration designed for publication and print.</p>
+<p class="section-sub">Narrative illustration designed for publication and print — including brochures and catalogs. We also offer this service.</p>
 <div class="chapter-carousel">
 <button type="button" class="chapter-arrow prev" data-target="gallery-editorial" aria-label="Previous">‹</button>
 <div class="piece-grid" id="gallery-editorial"></div>
@@ -329,6 +340,15 @@ Back
 <span class="dl-icon">↓</span>
 </a>
 </div>
+<div class="col-md-5">
+<a class="dl-card" href="https://www.behance.net/gallery/133841045/Social-Media-Medicina-Holistica" target="_blank" rel="noopener">
+<div>
+<h5>Medicina Holística</h5>
+<small>Brand line · Brochure &amp; Tríptico</small>
+</div>
+<span class="dl-icon">→</span>
+</a>
+</div>
 </div>
 </div>
 </section>
@@ -351,14 +371,26 @@ Back
 </a>
 </div>
 <div class="col-md-5">
-<a class="dl-card" href="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2FTakoiartist%2Ftakoi-artist%2Fa81043f0e833ef8e213626830310b6116fd72b17%2FPUNTO%2520PET%2520EDITABLE%2520LOGOS.pdf&embedded=true" target="_blank" rel="noopener">
-<div><h5>Brandbook</h5><small>PDF punto pet</small></div>
+<a class="dl-card" href="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2FTakoiartist%2Ftakoi-artist%2F6938281607dd1b318e3aeab0f6dd1145a798b9e3%2FPuntoPet%2520BrandBook%25202025.pdf&embedded=true" target="_blank" rel="noopener">
+<div><h5>Punto Pet Brandbook</h5><small>PDF · 2025</small></div>
 <span class="dl-icon">↓</span>
 </a>
 </div>
 <div class="col-md-5">
 <a class="dl-card" href="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2FTakoiartist%2Ftakoi-artist%2Ff62f983ea1b8aea4c5377824cc3172d34a43121f%2FMDM%2520DALI%252012.06.2020.pdf&embedded=true" target="_blank" rel="noopener">
 <div><h5>Dali Brand Identity 2023 — Manual</h5><small>PDF jotako studio</small></div>
+<span class="dl-icon">↓</span>
+</a>
+</div>
+<div class="col-md-5">
+<a class="dl-card" href="https://www.behance.net/gallery/193735735/BAR-Better-Auto-Rentals-Brand" target="_blank" rel="noopener">
+<div><h5>B Better Auto Rentals</h5><small>Brandbook · Behance</small></div>
+<span class="dl-icon">→</span>
+</a>
+</div>
+<div class="col-md-5">
+<a class="dl-card" href="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2FTakoiartist%2Ftakoi-artist%2F6938281607dd1b318e3aeab0f6dd1145a798b9e3%2FIngrid%2520Rivas%2520BrandBook%25202025.pdf&embedded=true" target="_blank" rel="noopener">
+<div><h5>Ingrid Rivas Brandbook</h5><small>PDF · 2025</small></div>
 <span class="dl-icon">↓</span>
 </a>
 </div>
@@ -599,7 +631,6 @@ images: [
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5be58f55a383c4d36510ba80b50f1a96e059550b/03.webp", title:"Inktober — 03" }
 ]
 }
-// 👉 Si tienes más ilustraciones de retrato/anime, agrégalas aquí con cat:"retrato"
 ];
 var editorial = [
 {
@@ -643,10 +674,35 @@ images: [
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6533b8b742638f026d5962522c7db44171520d5f/Sin%20t%C3%ADtulo-1-23.jpg", title:"Art Portfolio — 5" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6533b8b742638f026d5962522c7db44171520d5f/Sin%20t%C3%ADtulo-1-28.jpg", title:"Art Portfolio — 6" }
 ]
+},
+{
+title: "Life Panama — Revista Inmobiliaria",
+client: "Editorial · Brochure / Revista",
+description: "Real-estate magazine layout and brochure design",
+link: "https://www.behance.net/gallery/82111929/Life-Panama-Revista-Inmobiliaria",
+linkLabel: "View on Behance →",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/life%20panama%20editorial.webp", title:"Life Panama — Revista Inmobiliaria" }
+]
 }
 ];
 
 var marca = [
+{
+title: "Hangar Emprendedor",
+client: "Brand Identity · Featured",
+description: "Logo, brand line, corporate video editing and stand merchandising",
+link: "https://www.behance.net/gallery/133050217/Hangar-Emprendedor",
+linkLabel: "View on Behance →",
+featured: true,
+cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp", title:"Hangar — Logo" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp", title:"Hangar — Brand Line" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20volantes.webp", title:"Hangar — Flyers" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp", title:"Hangar — Advertising / Stand" }
+]
+},
 {
 title: "Jotako Brand Identity 2023",
 client: "Brand Identity",
@@ -798,8 +854,6 @@ images: [
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/los%20viajes%20de%20danis.webp", title:"Los Viajes de Dianis", client:"Logo Design" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/mis%20empanada.webp", title:"Miss Empanada", client:"Logo Design" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/sasha.webp", title:"Sasha Boutique", client:"Logo Design" }
-// 👉 Agrega aquí tus ilustraciones corporativas cuando tengas las URLs reales, por ejemplo:
-// { src: "https://raw.githubusercontent.com/.../mi-imagen.png", title: "Nombre del proyecto", client: "Corporate", description: "Descripción" }
 ];
 var comisiones = [
 {
@@ -978,6 +1032,26 @@ images: [
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/d7108be573b5cc656803380f1f9c4f3a20dda7e2/%5BJotako%5D%20Lola's%20App%20Ingreso%20UI-UX-05.webp", title:"Lolas App — Login UI 3" },
 { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/d7108be573b5cc656803380f1f9c4f3a20dda7e2/%5BJotako%5D%20Lola's%20App%20Ingreso%20UI-UX-07.webp", title:"Lolas App — Login UI 4" }
 ]
+},
+{
+title: "By Alexas — Social Media Web Design",
+client: "UI/UX · Web Design",
+description: "Website design for By Alexas Social Media",
+link: "https://www.behance.net/gallery/161527893/DISENO-WEB-BY-ALEXAS-SOCIAL-MEDIA",
+linkLabel: "View on Behance →",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/by%20alexas%20web.webp", title:"By Alexas — Web Design" }
+]
+},
+{
+title: "Kayak Florida — Web Design",
+client: "UI/UX · Web Design",
+description: "Website design for Kayak Florida",
+link: "https://www.behance.net/gallery/161172011/DISENO-WEB-KAYAK-FLORIDA",
+linkLabel: "View on Behance →",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/kayaj%20web.webp", title:"Kayak Florida — Web Design" }
+]
 }
 ];
 function pieceEl(item){
@@ -1054,9 +1128,10 @@ document.addEventListener('keydown', handleKeydown);
 }
 function renderProjectCard(project) {
 var div = document.createElement('div');
-div.className = 'piece project-card';
+div.className = 'piece project-card' + (project.featured ? ' featured' : '');
 if(project.cat){ div.setAttribute('data-cat', project.cat); }
 div.innerHTML =
+(project.featured ? '<span class="featured-badge">Featured</span>' : '') +
 '<div class="img-box">' +
 '<img src="'+project.cover+'" alt="'+project.title+'" loading="lazy">' +
 '<div class="project-badge">'+project.images.length+' images</div>' +
@@ -1273,19 +1348,3 @@ targets.forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
