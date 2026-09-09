@@ -227,6 +227,39 @@
     }
     .service-card:hover .service-cta { background: #fff; color: #6B4491; }
 
+    .service-card .service-badge {
+      position: absolute;
+      top: .8rem;
+      left: .8rem;
+      z-index: 2;
+      background: rgba(107,68,145,.92);
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .service-card .service-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.5);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2;
+    }
+    .service-card .service-play::after {
+      content: "";
+      width: 0; height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 16px solid #fff;
+      margin-left: 3px;
+    }
+
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
     footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
     footer a:hover { color: #fff; }
@@ -319,7 +352,7 @@
       </div>
 
       <!-- Services grid -->
-      <div class="row g-4 mb-5">
+      <div class="row g-4 mb-5 justify-content-center">
 
         <div class="col-md-6 col-lg-4">
           <a href="service-illustration.html" class="service-card">
@@ -362,13 +395,14 @@
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <a href="service-brand-identity.html" class="service-card">
-            <img src="https://github.com/Takoiartist/takoi-artist/blob/main/manual%20de%20marca.webp?raw=true" alt="Brand Identity">
-            <span class="service-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          <div class="service-card">
+            <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp" alt="Brand Identity — Hangar Emprendedor">
+            <span class="service-badge">Hangar Project</span>
+            <span class="service-label">Brand Identity — Logo, Mascot Logos, Logo Animation &amp; Full Brand Packs (Website, Stationery, Merch)<br>
+              <a href="service-brand-identity.html" class="service-cta" style="margin-right:6px;">See more →</a>
+              <a href="https://www.behance.net/gallery/133050217/Hangar-Emprendedor" target="_blank" rel="noopener" class="service-cta">Hangar on Behance →</a>
             </span>
-            <span class="service-label">Brand Identity<br><span class="service-cta">See more →</span></span>
-          </a>
+          </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
@@ -381,7 +415,7 @@
           </a>
         </div>
 
-        <div class="col-md-6 col-lg-4 mx-auto">
+        <div class="col-md-6 col-lg-4">
           <a href="service-website-design.html" class="service-card">
             <img src="https://github.com/Takoiartist/takoi-artist/blob/main/%5BJotako%5D%20Lola's%20App%20Ingreso%20UI-UX-08.webp?raw=true" alt="Website Design">
             <span class="service-arrow">
@@ -389,6 +423,18 @@
             </span>
             <span class="service-label">Website Design<br><span class="service-cta">See more →</span></span>
           </a>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="service-card">
+            <img src="https://drive.google.com/thumbnail?id=1sr-mVDmUmZUOSlrZLTfuO_GaA9p0Ti4o&sz=w1000" alt="Reels Editing & Corporate Video">
+            <span class="service-badge">Video</span>
+            <span class="service-play"></span>
+            <span class="service-label">Reels Editing &amp; Corporate Video<br>
+              <a href="https://drive.google.com/file/d/1sr-mVDmUmZUOSlrZLTfuO_GaA9p0Ti4o/view?usp=sharing" target="_blank" rel="noopener" class="service-cta" style="margin-right:6px;">Reels sample →</a>
+              <a href="https://drive.google.com/file/d/1Ovz9IxfJ3Hpqnm4fd1TbalycgVIG-hTU/view?usp=sharing" target="_blank" rel="noopener" class="service-cta">Corporate sample →</a>
+            </span>
+          </div>
         </div>
 
       </div>
@@ -466,4 +512,3 @@
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
