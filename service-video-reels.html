@@ -81,49 +81,172 @@
 
     .divider { border-color: #e0d6f0; }
 
-    /* ---- Animation video grid ---- */
-    .anim-grid {
+    /* ---- Reel-style thumbnail grid ---- */
+    .reel-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
       max-width: 1100px;
       margin: 0 auto;
     }
-    .anim-card {
+    .reel-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 9 / 16;
       background: linear-gradient(180deg, #f7f4fb 0%, #f0eaf7 100%);
+      box-shadow: 0 8px 26px rgba(107,68,145,.16);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .reel-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 34px rgba(107,68,145,.3);
+    }
+    .reel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .reel-card:hover img { transform: scale(1.06); }
+
+    .reel-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55) 100%);
+    }
+
+    .reel-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,.35);
+      transition: background .2s ease, transform .2s ease;
+    }
+    .reel-card:hover .reel-play-btn {
+      background: #6B4491;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .reel-play-btn svg { transition: fill .2s ease; }
+    .reel-card:hover .reel-play-btn svg { fill: #fff; }
+
+    .reel-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(107,68,145,.88);
+      color: #fff;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      padding: 4px 10px;
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(107,68,145,.12);
-      padding: .6rem;
+      backdrop-filter: blur(3px);
+      z-index: 2;
+    }
+
+    .reel-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 700;
+      text-shadow: 0 2px 6px rgba(0,0,0,.6);
+      z-index: 2;
+    }
+
+    .fallback-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg,#eee0f5,#eee0f5 10px,#f6f1fa 10px,#f6f1fa 20px);
+      color: #9c8fb0;
+      font-size: .75rem;
+      text-align: center;
+      padding: 12px;
+    }
+
+    @media (max-width: 991px) {
+      .reel-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .reel-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .reel-play-btn { width: 44px; height: 44px; }
+    }
+
+    /* ---- Video lightbox (plays the actual embed on click) ---- */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0,0,0,.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+    }
+    .video-overlay.open { display: flex; }
+    .video-overlay-card {
+      width: min(92vw, 420px);
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
-    .anim-card .video-wrap {
+    .video-overlay-card.landscape { width: min(92vw, 820px); }
+    .video-overlay-frame {
+      position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 14px;
-      overflow: hidden;
+      aspect-ratio: 9 / 16;
       background: #000;
     }
-    .anim-card .video-wrap iframe {
+    .video-overlay-card.landscape .video-overlay-frame { aspect-ratio: 16 / 9; }
+    .video-overlay-frame iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
     }
-    .anim-caption {
-      font-size: .8rem;
+    .video-overlay-cap {
+      padding: 12px 18px;
+      background: #fff;
+      font-size: .85rem;
+      font-weight: 700;
       color: #6B4491;
-      font-weight: 600;
       text-align: center;
-      margin-top: .6rem;
     }
-
-    @media (max-width: 991px) {
-      .anim-grid { grid-template-columns: repeat(2, 1fr); }
+    .video-overlay-close {
+      position: absolute;
+      top: -46px;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: #6B4491;
+      font-size: 1.1rem;
+      cursor: pointer;
     }
-    @media (max-width: 600px) {
-      .anim-grid { grid-template-columns: 1fr; }
-    }
+    .video-overlay-close:hover { background: #6B4491; color: #fff; }
 
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
     footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
@@ -194,57 +317,8 @@
         <span class="tag">Corporate Video Editing</span>
       </div>
 
-      <!-- Animation grid -->
-      <div class="anim-grid" id="animGrid">
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/1sr-mVDmUmZUOSlrZLTfuO_GaA9p0Ti4o/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Reel Edit</p>
-        </div>
-
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/1Ovz9IxfJ3Hpqnm4fd1TbalycgVIG-hTU/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Reel Edit</p>
-        </div>
-
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/1bfYByZtJsRdLJm8C4PkKIZBjrmxJh5xV/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Reel Edit</p>
-        </div>
-
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/1hl-N0C545cEM7i8zo3ozPYrC-mmCO5pS/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Video Edit</p>
-        </div>
-
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/17MF5_SV0e38KBtAYIgBRA__eIuie6lOX/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Video Edit</p>
-        </div>
-
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/1u-HeVXWIAImp8yr3It2eI_ODLAPCOwJJ/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Video Edit</p>
-        </div>
-
-        <div class="anim-card">
-          <div class="video-wrap">
-            <iframe src="https://drive.google.com/file/d/19nFfJhodJs38qAgpLy_QcP5gqcjd50qf/preview" allow="autoplay" allowfullscreen></iframe>
-          </div>
-          <p class="anim-caption">Video Edit</p>
-        </div>
-      </div>
+      <!-- Reel-style grid: thumbnail + play button, video opens on click -->
+      <div class="reel-grid" id="reelGrid"></div>
 
       <hr class="divider my-5">
 
@@ -289,6 +363,85 @@
     </div>
   </footer>
 
+  <!-- Video overlay (plays the clicked video) -->
+  <div class="video-overlay" id="videoOverlay">
+    <div class="video-overlay-card" id="videoOverlayCard">
+      <button type="button" class="video-overlay-close" id="videoOverlayClose" aria-label="Close">✕</button>
+      <div class="video-overlay-frame" id="videoOverlayFrame"></div>
+      <div class="video-overlay-cap" id="videoOverlayCap"></div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ---- Reel / video data ----
+    // orientation: "portrait" (reels, 9:16) or "landscape" (corporate videos, 16:9)
+    const clips = [
+      { id: "1sr-mVDmUmZUOSlrZLTfuO_GaA9p0Ti4o", label: "Reel Edit", orientation: "portrait" },
+      { id: "1Ovz9IxfJ3Hpqnm4fd1TbalycgVIG-hTU", label: "Reel Edit", orientation: "portrait" },
+      { id: "1bfYByZtJsRdLJm8C4PkKIZBjrmxJh5xV", label: "Reel Edit", orientation: "portrait" },
+      { id: "1hl-N0C545cEM7i8zo3ozPYrC-mmCO5pS", label: "Video Edit", orientation: "landscape" },
+      { id: "17MF5_SV0e38KBtAYIgBRA__eIuie6lOX", label: "Video Edit", orientation: "landscape" },
+      { id: "1u-HeVXWIAImp8yr3It2eI_ODLAPCOwJJ", label: "Video Edit", orientation: "landscape" },
+      { id: "19nFfJhodJs38qAgpLy_QcP5gqcjd50qf", label: "Video Edit", orientation: "landscape" }
+    ];
+
+    const grid = document.getElementById('reelGrid');
+
+    clips.forEach((clip) => {
+      const card = document.createElement('div');
+      card.className = 'reel-card';
+      card.innerHTML = `
+        <span class="reel-tag">${clip.label}</span>
+        <img src="https://drive.google.com/thumbnail?id=${clip.id}&sz=w800" alt="${clip.label} thumbnail" loading="lazy">
+        <div class="reel-shade"></div>
+        <div class="reel-play-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#6B4491">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </div>
+        <span class="reel-label">${clip.label}</span>
+      `;
+      const img = card.querySelector('img');
+      img.addEventListener('error', () => {
+        img.style.display = 'none';
+        const fb = document.createElement('div');
+        fb.className = 'fallback-thumb';
+        fb.textContent = 'Preview not available';
+        card.insertBefore(fb, card.querySelector('.reel-shade'));
+      });
+      card.addEventListener('click', () => openVideo(clip));
+      grid.appendChild(card);
+    });
+
+    // ---- Video overlay ----
+    const overlay = document.getElementById('videoOverlay');
+    const overlayCard = document.getElementById('videoOverlayCard');
+    const overlayFrame = document.getElementById('videoOverlayFrame');
+    const overlayCap = document.getElementById('videoOverlayCap');
+    const overlayClose = document.getElementById('videoOverlayClose');
+    let lastFocused = null;
+
+    function openVideo(clip){
+      lastFocused = document.activeElement;
+      overlayCard.classList.toggle('landscape', clip.orientation === 'landscape');
+      overlayFrame.innerHTML = `<iframe src="https://drive.google.com/file/d/${clip.id}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+      overlayCap.textContent = clip.label;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      overlayClose.focus();
+    }
+    function closeVideo(){
+      overlay.classList.remove('open');
+      overlayFrame.innerHTML = '';
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+    overlayClose.addEventListener('click', closeVideo);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeVideo(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeVideo();
+    });
+  </script>
 </body>
 </html>
