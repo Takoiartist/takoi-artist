@@ -70,8 +70,27 @@
       text-decoration: none;
     }
     .btn-takoi:hover { background: #5a3878; color: #fff; }
+    .btn-takoi.outline { background: transparent; color: #6B4491; border: 2px solid #6B4491; }
+    .btn-takoi.outline:hover { background: #6B4491; color: #fff; }
 
     .divider { border-color: #e0d6f0; }
+
+    .eyebrow{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #6B4491;
+      margin-bottom: .5rem;
+    }
+    .section-sub{
+      text-align: center;
+      color: #6b6b6b;
+      max-width: 60ch;
+      margin: 0 auto 1.4rem;
+      font-size: .95rem;
+    }
 
     /* ---- Logo folders (tabs) ---- */
     .folder-tabs {
@@ -131,7 +150,7 @@
       margin-bottom: 0;
     }
 
-    /* ---- Logo carousel (big viewer) ---- */
+    /* ---- Logo carousel (big viewer) — reused for the featured Brand Package ---- */
     .logo-carousel {
       max-width: 900px;
       margin: 0 auto;
@@ -229,7 +248,7 @@
       .carousel-nav-btn { width: 38px; height: 38px; }
     }
 
-    /* Lightbox modal */
+    /* Lightbox modal (bootstrap) for logo carousel + package zoom */
     #lightboxModal .modal-content {
       background: transparent;
       border: none;
@@ -253,6 +272,231 @@
       top: -40px;
       right: 0;
     }
+
+    /* ---- Featured Brand Package ---- */
+    .pkg-heading{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #6B4491;
+      font-size: 1.3rem;
+      margin-bottom: .6rem;
+      text-align: center;
+    }
+    .pkg-ref{
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: .85rem;
+      text-align: center;
+    }
+    .pkg-ref a{ color: #6B4491; font-weight: 600; text-decoration: none; }
+    .pkg-ref a:hover{ color: #5a3878; }
+    .pkg-info{
+      background: #f7f4fb;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      height: 100%;
+    }
+    .pkg-price{
+      display: flex;
+      align-items: baseline;
+      gap: .7rem;
+      margin-bottom: .3rem;
+      flex-wrap: wrap;
+    }
+    .pkg-price-regular{
+      font-size: 1.15rem;
+      color: #a89bb8;
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+    .pkg-price-amount{ font-family: 'Potta One', cursive; color: #6B4491; font-size: 2.4rem; }
+    .pkg-price-note{ font-size: .85rem; color: #6b6b6b; font-weight: 600; margin-bottom: 1.3rem; }
+    .pkg-list{ list-style: none; padding: 0; margin: 0 0 1.3rem; display: flex; flex-direction: column; gap: .55rem; }
+    .pkg-list li{ font-size: .92rem; color: #444; padding-left: 1.6rem; position: relative; }
+    .pkg-list li::before{ content: "✓"; position: absolute; left: 0; color: #6B4491; font-weight: 700; }
+    .pkg-note{ font-size: .8rem; color: #888; margin-bottom: 1.5rem; }
+    .pkg-cta-row{ display: flex; gap: .8rem; flex-wrap: wrap; }
+
+    /* ---- Brand catalog: chapter-style carousel (same pattern as Portfolio > Brand Design) ---- */
+    .chapter-carousel{ position: relative; }
+    .chapter-arrow{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #5a3878;
+      background: #fff;
+      color: #5a3878;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(90,56,120,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s ease, color .15s ease;
+    }
+    .chapter-arrow:hover{ background: #5a3878; color: #fff; }
+    .chapter-arrow.prev{ left: -6px; }
+    .chapter-arrow.next{ right: -6px; }
+    @media (max-width: 560px){ .chapter-arrow.prev{ left: -2px; } .chapter-arrow.next{ right: -2px; } }
+
+    .piece-grid{
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 18px;
+      padding: 6px 4px 18px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .piece-grid::-webkit-scrollbar{ display: none; }
+    .piece{
+      border: 0;
+      padding: 0;
+      text-align: left;
+      background: transparent;
+      cursor: zoom-in;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(107,68,145,.10);
+      transition: transform .25s ease, box-shadow .25s ease;
+      flex: 0 0 auto;
+      width: min(78vw,260px);
+      scroll-snap-align: start;
+    }
+    .piece:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(107,68,145,.2); }
+    .piece .img-box{ width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #eee0f5; position: relative; }
+    .piece img{ width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .piece:hover img{ transform: scale(1.07); }
+    .piece figcaption{
+      padding: 12px 14px;
+      background: #fff;
+      font-size: .78rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .piece figcaption strong{
+      display: block;
+      font-size: .86rem;
+      line-height: 1.3;
+      color: #2b2b2b;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+    .piece figcaption small{
+      display: block;
+      white-space: normal;
+      overflow-wrap: break-word;
+      line-height: 1.3;
+    }
+    .piece figcaption .p-client{
+      color: #6B4491;
+      font-weight: 700;
+      white-space: normal;
+      overflow-wrap: break-word;
+      line-height: 1.35;
+      font-size: .76rem;
+    }
+    .fallback{
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      font-size: .75rem;
+      color: #9c8fb0;
+      background: repeating-linear-gradient(45deg,#eee0f5,#eee0f5 10px,#f6f1fa 10px,#f6f1fa 20px);
+    }
+    .img-box.broken img{ display: none; }
+    .img-box.broken .fallback{ display: flex; }
+
+    .project-badge{
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(107,68,145,.9);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+    .project-card .img-box{ position: relative; }
+    .project-card{ cursor: pointer; }
+    .piece.featured{
+      border: 3px solid #6B4491;
+      box-shadow: 0 8px 26px rgba(107,68,145,.35);
+      position: relative;
+    }
+    .featured-badge{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 3;
+      background: #6B4491;
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    /* Static lightbox for single brand-catalog images */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(43,43,43,.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 16px;
+    }
+    .lightbox.open{ display: flex; }
+    .lightbox-card{
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      max-width: min(92vw,900px);
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .lightbox-card img{ max-height: 70vh; width: auto; margin: 0 auto; display: block; }
+    .lightbox-cap{ padding: 16px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .lightbox-cap b{ color: #2b2b2b; }
+    .lightbox-cap span.tag{ color: #6B4491; font-weight: 700; font-size: .82rem; }
+    .lightbox-close{
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: #6B4491;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .lightbox-close:hover{ background: #6B4491; color: #fff; }
 
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
     footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
@@ -309,11 +553,94 @@
         <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
       </div>
 
-      <!-- Folder tabs (logo categories) -->
-      <ul class="nav folder-tabs flex-wrap" id="folderTabs" role="tablist"></ul>
+      <!-- ============================================= -->
+      <!-- 1. FEATURED BRAND PACKAGE                       -->
+      <!-- ============================================= -->
+      <section id="brand-package" class="mb-5 pb-2">
+        <p class="eyebrow text-center">Featured Package</p>
+        <h3 class="pkg-heading">Brand Package</h3>
+        <p class="section-sub">A real example of what a full identity package looks like in practice — built for Hangar Emprendedor: logo, brand line, advertising and promotional materials.</p>
 
-      <!-- Folder panes -->
-      <div class="tab-content" id="folderTabsContent"></div>
+        <div class="row align-items-stretch g-4 justify-content-center">
+          <div class="col-lg-6">
+            <div class="logo-carousel">
+              <div class="carousel-stage">
+                <button class="carousel-nav-btn prev" id="pkg-prev" aria-label="Previous image">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <img id="pkg-stage-img"
+                     src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp"
+                     alt="Brand Package example — Hangar Emprendedor"
+                     data-bs-toggle="modal" data-bs-target="#lightboxModal">
+                <button class="carousel-nav-btn next" id="pkg-next" aria-label="Next image">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <span class="carousel-counter" id="pkg-counter">1 / 4</span>
+              </div>
+              <div class="thumb-strip" id="pkg-thumbs"></div>
+            </div>
+            <p class="pkg-ref">
+              <span class="tag">Featured project</span>
+              <a href="https://www.behance.net/gallery/133050217/Hangar-Emprendedor" target="_blank" rel="noopener">Hangar Emprendedor — View on Behance ↗</a>
+            </p>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="pkg-info">
+              <div class="pkg-price">
+                <span class="pkg-price-regular">US$9,500</span>
+                <span class="pkg-price-amount">US$7,500</span>
+              </div>
+              <p class="pkg-price-note">Current investment · Full brand identity package</p>
+              <ul class="pkg-list">
+                <li>Logo design + variations</li>
+                <li>Color palette &amp; typography</li>
+                <li>Corporate stationery (business card, letterhead)</li>
+                <li>Advertising &amp; flyer pieces</li>
+                <li>Basic brand manual</li>
+                <li>Final files ready for print &amp; digital use</li>
+              </ul>
+              <p class="pkg-note">Specific deliverables are adjusted to the needs and scope of each brand during the initial project stage.</p>
+              <div class="pkg-cta-row">
+                <a href="index.html#contacto" class="btn-takoi">Request this package</a>
+                <a href="https://www.behance.net/gallery/133050217/Hangar-Emprendedor" target="_blank" rel="noopener" class="btn-takoi outline">View project ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider my-5">
+
+      <!-- ============================================= -->
+      <!-- 2. LOGO CATALOG (existing folder tabs)          -->
+      <!-- ============================================= -->
+      <section id="logo-catalog" class="mb-5 pb-2">
+        <p class="eyebrow text-center">Logo Catalog</p>
+
+        <!-- Folder tabs (logo categories) -->
+        <ul class="nav folder-tabs flex-wrap" id="folderTabs" role="tablist"></ul>
+
+        <!-- Folder panes -->
+        <div class="tab-content" id="folderTabsContent"></div>
+      </section>
+
+      <hr class="divider my-5">
+
+      <!-- ============================================= -->
+      <!-- 3. BRAND IDENTITY CATALOG (project carousel)    -->
+      <!-- ============================================= -->
+      <section id="brand-catalog" class="mb-5 pb-2">
+        <p class="eyebrow text-center">Brand Identity Catalog</p>
+        <h3 class="pkg-heading">Brand Design Projects</h3>
+        <p class="section-sub">Complete identity projects developed for brands, businesses and corporate clients — logo, applications and brand systems.</p>
+
+        <div class="chapter-carousel">
+          <button type="button" class="chapter-arrow prev" data-target="gallery-brandcatalog" aria-label="Previous">‹</button>
+          <div class="piece-grid" id="gallery-brandcatalog"></div>
+          <button type="button" class="chapter-arrow next" data-target="gallery-brandcatalog" aria-label="Next">›</button>
+        </div>
+      </section>
 
       <hr class="divider my-5">
 
@@ -333,7 +660,7 @@
     </div>
   </section>
 
-  <!-- Lightbox modal -->
+  <!-- Lightbox modal (bootstrap) — used by logo carousel + package image zoom -->
   <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
@@ -341,6 +668,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <img id="lightboxImg" src="" alt="">
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Static lightbox — used by Brand Identity Catalog single-image pieces -->
+  <div class="lightbox" id="brandLightbox" role="dialog" aria-modal="true" aria-label="Enlarged brand piece view">
+    <button class="lightbox-close" id="brandLightboxClose" aria-label="Close">✕</button>
+    <div class="lightbox-card">
+      <img id="brandLightboxImg" src="" alt="">
+      <div class="lightbox-cap">
+        <b id="brandLightboxTitle"></b>
+        <span class="tag" id="brandLightboxClient"></span>
       </div>
     </div>
   </div>
@@ -603,5 +942,390 @@
       goTo(folder, carouselState[folder.id] + (e.key === 'ArrowRight' ? 1 : -1));
     });
   </script>
+
+  <!-- ============================================= -->
+  <!-- Featured Brand Package mini-carousel + Brand Identity Catalog -->
+  <!-- ============================================= -->
+  <script>
+  (function(){
+
+    // ---- Featured Brand Package: mini carousel (reuses .logo-carousel styles) ----
+    const packageImages = [
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp",
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp",
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20volantes.webp",
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp"
+    ];
+    let pkgIndex = 0;
+
+    const pkgThumbs = document.getElementById('pkg-thumbs');
+    pkgThumbs.innerHTML = packageImages.map((src, idx) => `
+      <div class="thumb-item${idx === 0 ? ' active' : ''}" data-idx="${idx}">
+        <img src="${src}" alt="Brand Package example ${idx + 1}" loading="lazy">
+      </div>`).join('');
+
+    function renderPkgStage(){
+      const total = packageImages.length;
+      const stage = document.getElementById('pkg-stage-img');
+      const counter = document.getElementById('pkg-counter');
+      stage.style.opacity = 0;
+      setTimeout(() => {
+        stage.setAttribute('src', packageImages[pkgIndex]);
+        stage.style.opacity = 1;
+      }, 120);
+      counter.textContent = `${pkgIndex + 1} / ${total}`;
+      document.querySelectorAll('#pkg-thumbs .thumb-item').forEach((el, i) => {
+        el.classList.toggle('active', i === pkgIndex);
+      });
+    }
+    function goToPkg(newIdx){
+      const total = packageImages.length;
+      pkgIndex = (newIdx + total) % total;
+      renderPkgStage();
+    }
+    document.getElementById('pkg-prev').addEventListener('click', () => goToPkg(pkgIndex - 1));
+    document.getElementById('pkg-next').addEventListener('click', () => goToPkg(pkgIndex + 1));
+    document.querySelectorAll('#pkg-thumbs .thumb-item').forEach(thumb => {
+      thumb.addEventListener('click', () => goToPkg(parseInt(thumb.getAttribute('data-idx'), 10)));
+    });
+
+    // ---- Brand Identity Catalog: same project-carousel pattern as Portfolio > Brand Design ----
+    const brandCatalogItems = [
+      {
+        title: "Hangar Emprendedor",
+        client: "Brand Identity · Featured",
+        description: "Logo, brand line, corporate video editing and stand merchandising",
+        link: "https://www.behance.net/gallery/133050217/Hangar-Emprendedor",
+        linkLabel: "View on Behance →",
+        featured: true,
+        cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp", title:"Hangar — Logo" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp", title:"Hangar — Brand Line" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20volantes.webp", title:"Hangar — Flyers" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp", title:"Hangar — Advertising / Stand" }
+        ]
+      },
+      {
+        title: "Jotako Brand Identity 2023",
+        client: "Brand Identity",
+        description: "Complete brand identity system",
+        images: [
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20Behance%20Jotako%20Brand%202023_Mesa%20de%20trabajo%201.png", title: "Jotako Brand Identity 2023 — Cover" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20Behance%20Jotako%20Brand%202023-10.png", title: "Jotako Brand Identity 2023 — 1" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-02.png", title: "Jotako Brand Identity 2023 — 2" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-03.png", title: "Jotako Brand Identity 2023 — 3" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-05.png", title: "Jotako Brand Identity 2023 — 4" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-08.png", title: "Jotako Brand Identity 2023 — 5" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-09.png", title: "Jotako Brand Identity 2023 — 6" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-10.png", title: "Jotako Brand Identity 2023 — 7" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/7c500b3e2e3b110b00afb8ef2bfbb9d18d88fef3/%5BJotako%5D%20%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88%E3%81%AE%E6%9C%AC%20%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%93%E5%B9%B4-12.png", title: "Jotako Brand Identity 2023 — 8" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/manual%20de%20marca.webp", title: "Jotako Brand Identity 2023 — Manual" },
+          { src: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/manual%20de%20marca.webp", title: "Dali Brand Identity 2023 — Manual" }
+        ]
+      },
+      {
+        title: "Madelon Collection",
+        client: "Corporate Illustration",
+        description: "Corporate illustration collection for Madelon",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05dc60f86363e25df88ad62445e7a09055e7f244/%5BJotako%5D%20Madelon%20Collection-02.png", title:"Madelon Collection — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ee6f7e432eee781755ca35be93ffee36ab43259/%5BJotako%5D%20Madelon%20Collection-03.png", title:"Madelon Collection — 2" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ee6f7e432eee781755ca35be93ffee36ab43259/%5BJotako%5D%20Madelon%20Collection-04.png", title:"Madelon Collection — 3" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ee6f7e432eee781755ca35be93ffee36ab43259/%5BJotako%5D%20Madelon%20Collection-05.png", title:"Madelon Collection — 4" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ee6f7e432eee781755ca35be93ffee36ab43259/%5BJotako%5D%20Madelon%20Collection-06.png", title:"Madelon Collection — 5" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ee6f7e432eee781755ca35be93ffee36ab43259/%5BJotako%5D%20Madelon%20Collection-07.png", title:"Madelon Collection — 6" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/4ee6f7e432eee781755ca35be93ffee36ab43259/%5BJotako%5D%20Madelon%20Collection_Mesa%20de%20trabajo%201.png", title:"Madelon Collection — 7" }
+        ]
+      },
+      {
+        title: "El Rico Guarapo de Mary",
+        client: "Corporate Illustration",
+        description: "Brand illustration for Guarapo de Mary",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05dc60f86363e25df88ad62445e7a09055e7f244/Guarapo%20Mary.png", title:"Guarapo de Mary — Illustration" },
+          { src:"https://github.com/Takoiartist/takoi-artist/blob/main/El%20Rico%20Guarapo%20De%20Mary%20-%20Banner%201,35cm%20x%2054,5cm-01.png?raw=true", title:"Guarapo de Mary — Banner" }
+        ]
+      },
+      {
+        title: "Retro Recycling Phrase Proposals",
+        client: "Brand Illustration",
+        description: "Retro-style recycling Tote Bag",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/3ac5231e8562a2e800c5b111c232b9f658ad92ec/PROPUESTAS%20FRASE%20RECICLAJE%20RETRO-02.png", title:"Retro Recycling — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/3ac5231e8562a2e800c5b111c232b9f658ad92ec/PROPUESTAS%20FRASE%20RECICLAJE%20RETRO_Mesa%20de%20trabajo%201.png", title:"Retro Recycling — 2" }
+        ]
+      },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/10f6d504cdf2d26db2bd1bf6280a3d55d8db7367/pajaro%20a%20color.png", title:"Realistic Condor — Tote Bag", client:"Corporate Card", description:"Realistic condor illustration for tote bag / corporate card" },
+      {
+        title: "Colombian Birds",
+        client: "T-Shirt Brand",
+        description: "Brand illustrations of Colombian birds for a t-shirt brand",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-02.png", title:"Colombian Birds — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-03.png", title:"Colombian Birds — 2" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-04.png", title:"Colombian Birds — 3" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-05.png", title:"Colombian Birds — 4" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas-06.png", title:"Colombian Birds — 5" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/bb2383a5fb9f75422629d3370e09f571d5a6888d/%5BJotako%5D%20Reels%20Miniaturas_Mesa%20de%20trabajo%201.png", title:"Colombian Birds — 6" }
+        ]
+      },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/f32a7c78723ca3fc7af863a9a7590a731c693ff8/Dora%20La%20Catadora%20Ilustraci%C3%B3n%20Personaje_Mesa%20de%20trabajo%201.png", title:"Dora La Catadora", client:"Brand Illustration", description:"Character illustration for brand" },
+      {
+        title: "Uniform Design — Kausay",
+        client: "Brand Identity",
+        description: "Daily blazer & PE uniform design for Kausay",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/f32a7c78723ca3fc7af863a9a7590a731c693ff8/Ilustraci%C3%B3n%20Prom2026.png", title:"Kausay Uniforms — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/b47207581172d6b643db8abe0c3ec33e2916a136/CHAQUETA%20ATRAS.png", title:"Kausay Uniforms — Jacket Back" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/b47207581172d6b643db8abe0c3ec33e2916a136/Prom2026-03.png", title:"Kausay Uniforms — 3" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/b47207581172d6b643db8abe0c3ec33e2916a136/Prom2026-04.png", title:"Kausay Uniforms — 4" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/b47207581172d6b643db8abe0c3ec33e2916a136/SUDADERA%2001.png", title:"Kausay Uniforms — Sweatshirt" }
+        ]
+      },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/Fivver%20Logos-08.png", title:"Tender wings", client:"chicken wings" },
+      {
+        title: "Sabor & Vari",
+        client: "milkshakes",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/Sabor%20%26%20Vari%20Logo.png", title:"Sabor & Vari — Logo" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/Saboryvari_Logo-10.png", title:"Sabor & Vari — Variation" }
+        ]
+      },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/%5BJotako%5D%20Logofolio%202022-08.png", title:"Comic Wings", client:"chicken wings" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/%5BJotako%5D%20Negos%20Logo%20Ilustrado-12.png", title:"Moto - Moto", client:"motorcycle repair shop" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/%5BJotako%5D%20Negos%20Logo%20Lettering-02.png", title:"Rocca", client:"gym" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/b28d5d955a7396165c6122c90ad877f404fa3cea/toro%20autos.webp", title:"Toro Autos", client:"car rental" },
+      {
+        title: "Focus Box",
+        client: "Logo Design",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/%5BJotako%5D%20Negos%20Logo%20Minimalista-07.png", title:"Focus Box" }
+        ]
+      },
+      {
+        title: "Renter Autos",
+        client: "Logo Design",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/182cab60f1771b58f633d91652f2b0569750b6ff/Fivver%20Logos-07.png", title:"Renter Autos — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/83ff959fa81b7478e3b32b97f84976ded449f1ce/%5BJotako%5D%20Negos%20Logo%20Minimalista-10.png", title:"Renter Autos — 2" }
+        ]
+      },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/182cab60f1771b58f633d91652f2b0569750b6ff/Fivver%20Logos-06.png", title:"Dachi Dana", client:"Logo Design" },
+      {
+        title: "CCR Brand Manual",
+        client: "Brand Identity",
+        description: "CCR brand manual and identity guidelines",
+        cover: "https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-10-convertido-de-png.webp",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-05-convertido-de-jpg.webp", title:"CCR Brand Manual — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-08-convertido-de-jpg.webp", title:"CCR Brand Manual — 2" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-13-convertido-de-png.webp", title:"CCR Brand Manual — 3" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BCCRe%5D%20Manual%20de%20Marca-23-convertido-de-jpg.webp", title:"CCR Brand Manual — 4" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-04-convertido-de-jpg.webp", title:"CCR Brand Manual — 5" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-05-convertido-de-jpg.webp", title:"CCR Brand Manual — 6" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-06-convertido-de-jpg.webp", title:"CCR Brand Manual — 7" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-07-convertido-de-jpg.webp", title:"CCR Brand Manual — 8" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/66fbbf42704583b718890dbc45c41b65eed6a56b/%5BJotako%5D%20Behance%20CCR-10-convertido-de-png.webp", title:"CCR Brand Manual — 9" }
+        ]
+      },
+      {
+        title: "Delicias Santeñas",
+        client: "Restaurant Branding",
+        description: "Branding illustrations for Delicias Santeñas restaurant",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Viernes%20de%20Delicias_v3.0-06-convertido-de-jpg.webp", title:"Delicias Santeñas — 1" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Viernes%20de%20Delicias_v3.0-08-convertido-de-jpg.webp", title:"Delicias Santeñas — 2" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/Viernes%20de%20Delicias_v3.0-09-convertido-de-jpg.webp", title:"Delicias Santeñas — 3" }
+        ]
+      },
+      {
+        title: "YouTuber Logo — La Calma y Katanuchi",
+        client: "Logo Design",
+        description: "Logo design for a YouTube channel",
+        images: [
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/05498a0554493232152c3c31cb51157139bf022c/La%20Calma%20y%20Katanuchi_Mesa%20de%20trabajo%201.webp", title:"La Calma y Katanuchi — Logo" }
+        ]
+      },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/%5BJotako%5D%20Negos%20Geometricos-17.webp", title:"Neuro Children", client:"Logo Design" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/amalia.webp", title:"Amalia Embroidery", client:"Logo Design" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/asmr.webp", title:"ASMR", client:"Logo Design" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/feme%20basics.webp", title:"Femme Basics", client:"Underwear Store" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/lolas.webp", title:"Lola's Day Care", client:"Logo Design" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/los%20viajes%20de%20danis.webp", title:"Los Viajes de Dianis", client:"Logo Design" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/mis%20empanada.webp", title:"Miss Empanada", client:"Logo Design" },
+      { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5eede8a1326d475e631812f9b764db507917949a/sasha.webp", title:"Sasha Boutique", client:"Logo Design" }
+    ];
+
+    let brandLastFocused = null;
+
+    function openBrandLightbox(item){
+      brandLastFocused = document.activeElement;
+      const lb = document.getElementById('brandLightbox');
+      document.getElementById('brandLightboxImg').src = item.src;
+      document.getElementById('brandLightboxImg').alt = `${item.title} — ${item.client}`;
+      document.getElementById('brandLightboxTitle').textContent = item.title;
+      document.getElementById('brandLightboxClient').textContent = item.client;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('brandLightboxClose').focus();
+    }
+    function closeBrandLightbox(){
+      const lb = document.getElementById('brandLightbox');
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      document.getElementById('brandLightboxImg').src = '';
+      if (brandLastFocused) brandLastFocused.focus();
+    }
+
+    function brandPieceEl(item){
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'piece';
+      btn.innerHTML = `
+        <div class="img-box">
+          <img src="${item.src}" alt="${item.title} — ${item.client}" loading="lazy">
+          <div class="fallback">Preview not available<br>${item.title}</div>
+        </div>
+        <figcaption>
+          <span><strong>${item.title}</strong><br><small style="font-weight:400;color:#888;">${item.client}</small></span>
+          <span class="p-client">${item.description || item.client}</span>
+        </figcaption>`;
+      const img = btn.querySelector('img');
+      const box = btn.querySelector('.img-box');
+      img.addEventListener('error', () => box.classList.add('broken'));
+      btn.addEventListener('click', () => openBrandLightbox(item));
+      return btn;
+    }
+
+    function renderBrandProjectCard(project){
+      const div = document.createElement('div');
+      div.className = 'piece project-card' + (project.featured ? ' featured' : '');
+      div.innerHTML = `
+        ${project.featured ? '<span class="featured-badge">Featured</span>' : ''}
+        <div class="img-box">
+          <img src="${project.cover}" alt="${project.title}" loading="lazy">
+          <div class="project-badge">${project.images.length} images</div>
+        </div>
+        <figcaption>
+          <span><strong>${project.title}</strong><br><small style="font-weight:400;color:#888;">${project.client}</small></span>
+          <span class="p-client">${project.description || project.client}</span>
+        </figcaption>`;
+      div.addEventListener('click', () => openBrandCarousel(project));
+      return div;
+    }
+
+    function renderBrandItem(item){
+      if (item.images && item.images.length){
+        if (!item.cover) item.cover = item.images[0].src;
+        return renderBrandProjectCard(item);
+      }
+      return brandPieceEl(item);
+    }
+
+    function openBrandCarousel(project){
+      let currentIndex = 0;
+      const total = project.images.length;
+      const overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed; inset:0; z-index:400; background:rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; flex-direction:column;';
+      const container = document.createElement('div');
+      container.style.cssText = 'max-width:90vw; max-height:80vh; position:relative; background:#fff; border-radius:12px; overflow:hidden;';
+      const img = document.createElement('img');
+      img.src = project.images[currentIndex].src;
+      img.alt = project.images[currentIndex].title;
+      img.style.cssText = 'max-width:100%; max-height:70vh; display:block; margin:0 auto;';
+      const info = document.createElement('div');
+      info.style.cssText = 'padding:12px 20px; background:#fff; display:flex; justify-content:space-between; align-items:center;';
+      info.innerHTML = `<span><strong>${project.images[currentIndex].title}</strong></span><span style="color:#6B4491;font-weight:700;">${project.client}</span>`;
+      let linkRow = null;
+      if (project.link){
+        linkRow = document.createElement('div');
+        linkRow.style.cssText = 'padding:0 20px 14px; background:#fff; text-align:center;';
+        linkRow.innerHTML = `<a href="${project.link}" target="_blank" rel="noopener" style="color:#6B4491;font-weight:700;font-size:.85rem;text-decoration:none;">${project.linkLabel || 'Read more →'}</a>`;
+      }
+      const counter = document.createElement('div');
+      counter.style.cssText = 'color:#fff; text-align:center; padding:8px; font-size:0.85rem;';
+      counter.textContent = `${currentIndex + 1} / ${total}`;
+      const nav = document.createElement('div');
+      nav.style.cssText = 'position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; pointer-events:none;';
+      const prevBtn = document.createElement('button');
+      prevBtn.textContent = '‹';
+      prevBtn.style.cssText = 'pointer-events:auto; background:#fff; color:#5a3878; border:2px solid #5a3878; width:50px; height:50px; border-radius:50%; font-size:2rem; font-weight:700; line-height:1; cursor:pointer; margin:0 10px; box-shadow:0 4px 14px rgba(0,0,0,.35); transition:background 0.3s, color 0.3s;';
+      prevBtn.onmouseover = function(){ this.style.background = '#5a3878'; this.style.color = '#fff'; };
+      prevBtn.onmouseout = function(){ this.style.background = '#fff'; this.style.color = '#5a3878'; };
+      const nextBtn = document.createElement('button');
+      nextBtn.textContent = '›';
+      nextBtn.style.cssText = prevBtn.style.cssText;
+      nextBtn.onmouseover = prevBtn.onmouseover;
+      nextBtn.onmouseout = prevBtn.onmouseout;
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = '✕';
+      closeBtn.style.cssText = 'position:absolute; top:10px; right:15px; background:rgba(0,0,0,0.5); color:#fff; border:none; width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:5;';
+      function updateImage(index){
+        currentIndex = index;
+        img.src = project.images[currentIndex].src;
+        img.alt = project.images[currentIndex].title;
+        info.innerHTML = `<span><strong>${project.images[currentIndex].title}</strong></span><span style="color:#6B4491;font-weight:700;">${project.client}</span>`;
+        counter.textContent = `${currentIndex + 1} / ${total}`;
+      }
+      prevBtn.addEventListener('click', (e) => { e.stopPropagation(); updateImage((currentIndex - 1 + total) % total); });
+      nextBtn.addEventListener('click', (e) => { e.stopPropagation(); updateImage((currentIndex + 1) % total); });
+      function handleKeydown(e){
+        if (e.key === 'Escape') closeCarousel();
+        if (e.key === 'ArrowLeft') prevBtn.click();
+        if (e.key === 'ArrowRight') nextBtn.click();
+      }
+      function closeCarousel(){
+        document.removeEventListener('keydown', handleKeydown);
+        overlay.remove();
+        document.body.style.overflow = '';
+      }
+      closeBtn.addEventListener('click', closeCarousel);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeCarousel(); });
+      nav.appendChild(prevBtn);
+      nav.appendChild(nextBtn);
+      container.appendChild(img);
+      container.appendChild(info);
+      if (linkRow) container.appendChild(linkRow);
+      container.appendChild(nav);
+      container.appendChild(closeBtn);
+      overlay.appendChild(container);
+      overlay.appendChild(counter);
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKeydown);
+      if (total === 1){ prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; }
+    }
+
+    function fillBrandGallery(id, items){
+      const el = document.getElementById(id);
+      items.forEach(item => el.appendChild(renderBrandItem(item)));
+    }
+    fillBrandGallery('gallery-brandcatalog', brandCatalogItems);
+
+    // Chapter arrow scroll (brand catalog)
+    document.querySelectorAll('#brand-catalog .chapter-arrow').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const grid = document.getElementById(btn.getAttribute('data-target'));
+        if (!grid) return;
+        const card = grid.querySelector('.piece');
+        const w = card ? card.getBoundingClientRect().width + 18 : 280;
+        const dir = btn.classList.contains('prev') ? -1 : 1;
+        grid.scrollBy({ left: dir * w, behavior: 'smooth' });
+      });
+    });
+
+    // Static lightbox open/close (single images)
+    document.getElementById('brandLightboxClose').addEventListener('click', closeBrandLightbox);
+    document.getElementById('brandLightbox').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('brandLightbox')) closeBrandLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.getElementById('brandLightbox').classList.contains('open')) closeBrandLightbox();
+    });
+
+  })();
+  </script>
+
 </body>
 </html>
