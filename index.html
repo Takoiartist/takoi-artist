@@ -179,11 +179,15 @@
 
     /* ===== SERVICES (carrusel hecho con código: íconos + texto traducible) ===== */
     #services a.srv-card {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       cursor: pointer;
       text-decoration: none;
-      padding: 1.5rem 1rem;
-      border-radius: 16px;
+      padding: 2.75rem 1.5rem;
+      min-height: 300px;
+      border-radius: 20px;
       transition: transform .2s, box-shadow .2s, background .2s;
     }
     #services a.srv-card:hover {
@@ -192,17 +196,18 @@
       box-shadow: 0 10px 24px rgba(107,68,145,.12);
     }
     #services .srv-icon-wrap {
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 1rem;
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 1.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: #f1ebf7;
       color: #6B4491;
-      font-size: 2rem;
+      font-size: 2.4rem;
       transition: background .2s, color .2s;
+      flex-shrink: 0;
     }
     #services a.srv-card:hover .srv-icon-wrap {
       background: #6B4491;
@@ -211,10 +216,18 @@
     .srv-title {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: .95rem;
+      font-size: 1.05rem;
       color: #4a2d6e;
-      margin: 0;
+      margin: 0 0 .6rem;
       line-height: 1.3;
+    }
+    .srv-desc {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: .85rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.55;
     }
 
     #about p { font-family: 'Poppins', sans-serif; color: #444; line-height: 1.8; font-size: .95rem; }
@@ -636,18 +649,21 @@
               <a href="service-illustration.html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-brush"></i></div>
                 <h3 class="srv-title">Custom Digital<br>Illustration</h3>
+                <p class="srv-desc">Original character art and illustrations tailored to your story and style.</p>
               </a>
             </div>
             <div class="col-md-3">
               <a href="service-brand-identity.html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-palette2"></i></div>
                 <h3 class="srv-title">Brand Identity</h3>
+                <p class="srv-desc">Logos, color palettes and visual systems that give your brand a distinct voice.</p>
               </a>
             </div>
             <div class="col-md-3">
               <a href="service-editorial-design.html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-newspaper"></i></div>
                 <h3 class="srv-title">Editorial Design</h3>
+                <p class="srv-desc">Layouts and artwork for magazines, books and publications, built to be read.</p>
               </a>
             </div>
           </div>
@@ -660,18 +676,21 @@
               <a href="2D%20Animation.html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-film"></i></div>
                 <h3 class="srv-title">2D Animation</h3>
+                <p class="srv-desc">Fluid, hand-drawn motion for shorts, intros and animated scenes.</p>
               </a>
             </div>
             <div class="col-md-3">
               <a href="service-Comic.html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-book-half"></i></div>
                 <h3 class="srv-title">Comic &amp; Manga Art</h3>
+                <p class="srv-desc">Full page layouts, panels and character design in manga and comic style.</p>
               </a>
             </div>
             <div class="col-md-3">
               <a href="service-website-design.html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-window-stack"></i></div>
                 <h3 class="srv-title">Website Design</h3>
+                <p class="srv-desc">Clean, visual websites designed to showcase your work and convert visitors.</p>
               </a>
             </div>
           </div>
@@ -684,6 +703,7 @@
               <a href="Drawing%20Classes%20(Online%20and%20In-Person).html" class="srv-card text-center">
                 <div class="srv-icon-wrap"><i class="bi bi-pencil-square"></i></div>
                 <h3 class="srv-title">Drawing Classes</h3>
+                <p class="srv-desc">Online and in-person lessons to build your skills from basics to your own style.</p>
               </a>
             </div>
           </div>
@@ -1019,4 +1039,3 @@
 </script>
 </body>
 </html>
-
