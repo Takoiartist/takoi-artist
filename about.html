@@ -495,10 +495,17 @@ footer a:hover { color: #fff; }
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <iframe src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/CV%20MELISA%20SANCHEZ%202025.pdf" title="Melisa Sánchez CV"></iframe>
+        <!--
+          FIX: el iframe ya no usa "drive.google.com/viewerng/viewer" (endpoint roto que
+          forzaba la descarga con el nombre "viewer"). Ahora carga el PDF directamente
+          desde GitHub Pages, donde los navegadores modernos lo muestran embebido.
+          Requisito: el PDF debe estar publicado en la raíz del repo, junto a index.html
+          (https://takoiartist.github.io/takoi-artist/CV%20MELISA%20SANCHEZ%202025.pdf)
+        -->
+        <iframe src="https://takoiartist.github.io/takoi-artist/CV%20MELISA%20SANCHEZ%202025.pdf" title="Melisa Sánchez CV" loading="lazy"></iframe>
       </div>
       <div class="modal-footer">
-        <a href="https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/CV%20MELISA%20SANCHEZ%202025.pdf" download class="btn-takoi">
+        <a href="https://takoiartist.github.io/takoi-artist/CV%20MELISA%20SANCHEZ%202025.pdf" download class="btn-takoi">
           <i class="bi bi-download"></i> Download CV
         </a>
         <button type="button" class="btn-takoi-outline" data-bs-dismiss="modal">Close</button>
@@ -560,6 +567,3 @@ footer a:hover { color: #fff; }
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
-
-
