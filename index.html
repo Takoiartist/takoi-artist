@@ -565,34 +565,51 @@
 
 <!-- HERO -->
 <section id="hero" style="overflow:hidden; position:relative; height:550px; background:#fff;">
-  
-  <!-- Video de fondo -->
-  <video autoplay muted loop playsinline
-       style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; opacity:0.85;">
-    <source src="https://takoiartist.github.io/takoi-artist/DEMO%20REEL.mp4" type="video/mp4">
-  </video>
 
-  <!-- Flechas -->
-  <button onclick="heroSlide(-1)"
-          style="position:absolute; top:50%; left:15px; transform:translateY(-50%); background:rgba(0,0,0,0.4); border:none; color:#fff; font-size:1.5rem; border-radius:50%; width:40px; height:40px; cursor:pointer; z-index:10;">‹</button>
-  <button onclick="heroSlide(1)"
-          style="position:absolute; top:50%; right:15px; transform:translateY(-50%); background:rgba(0,0,0,0.4); border:none; color:#fff; font-size:1.5rem; border-radius:50%; width:40px; height:40px; cursor:pointer; z-index:10;">›</button>
+  <div id="carouselHero" class="carousel slide" data-bs-ride="carousel" style="height:100%;">
+    <div class="carousel-inner" style="height:100%;">
 
-  <!-- Texto y botón -->
-  <div style="position:absolute; bottom:30px; left:30px; color:#fff; z-index:10;">
-    <p style="font-size:.8rem; margin:0; opacity:.9;"></p>
-    <h1 style="font-family:'Potta One',cursive; font-size:4rem; margin:0; line-height:1; text-shadow:2px 2px 8px rgba(0,0,0,.8);"></h1>
-    <p style="font-size:1.3rem; margin:0;"></p>
+      <!-- Slide 1: Video demo reel -->
+      <div class="carousel-item active" style="height:100%; position:relative;">
+        <video autoplay muted loop playsinline
+             style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; opacity:0.85;">
+          <source src="https://takoiartist.github.io/takoi-artist/DEMO%20REEL.mp4" type="video/mp4">
+        </video>
+
+        <!-- Texto y botón -->
+        <div style="position:absolute; bottom:30px; left:30px; color:#fff; z-index:10;">
+          <p style="font-size:.8rem; margin:0; opacity:.9;"></p>
+          <h1 style="font-family:'Potta One',cursive; font-size:4rem; margin:0; line-height:1; text-shadow:2px 2px 8px rgba(0,0,0,.8);"></h1>
+          <p style="font-size:1.3rem; margin:0;"></p>
+        </div>
+        <div style="position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:10;">
+          <a href="#contacto" class="btn-takoi">Write to me</a>
+        </div>
+      </div>
+
+      <!-- Slide 2: Banner Coming Soon -->
+      <div class="carousel-item" style="height:100%; position:relative; background:#eceaec;">
+        <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/cb1b457946cdb88d45a28680b50b5ba550b8603d/coming-soon-banner.png.png"
+             alt="Coming Soon - Short Film: La libertad iluminando al mundo"
+             loading="lazy" decoding="async"
+             style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain;">
+      </div>
+
+    </div>
+
+    <!-- Flechas (mismo estilo que antes, ahora controlando el carrusel real) -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev"
+            style="width:40px; z-index:10;">
+      <span style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.4); color:#fff; font-size:1.5rem; border-radius:50%; width:40px; height:40px; margin:0 auto;">‹</span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next"
+            style="width:40px; z-index:10;">
+      <span style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.4); color:#fff; font-size:1.5rem; border-radius:50%; width:40px; height:40px; margin:0 auto;">›</span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
   </div>
- <div style="position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:10;">
-  <a href="#contacto" class="btn-takoi">Write to me</a>
-</div>
 
-</section>
-
-<!-- BANNER COMING SOON -->
-<section class="coming-soon-banner">
-  <img src="coming-soon-banner.png" alt="Coming Soon - Short Film: La libertad iluminando al mundo" loading="lazy" decoding="async">
 </section>
 
   <!-- ABOUT - Nuevo diseño con esquinas redondeadas -->
