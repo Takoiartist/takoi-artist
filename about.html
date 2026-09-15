@@ -21,7 +21,6 @@ padding: .4rem .9rem;
 .navbar .nav-link:hover { opacity: .8; }
 .navbar .nav-link.active { text-decoration: underline; }
 
-/* ===== NAVBAR IGUAL AL HOME (idioma + redes + whatsapp) ===== */
 .navbar-lang { margin-right: .5rem; }
 
 .navbar-container {
@@ -152,7 +151,6 @@ body { top: 0 !important; }
 #google_translate_element .goog-te-gadget-icon,
 #google_translate_element img { display: none !important; }
 .goog-logo-link { display: none !important; }
-/* ===== FIN NAVBAR IGUAL AL HOME ===== */
 
 .section-title {
 font-family: 'Potta One', cursive;
@@ -213,14 +211,12 @@ font-size: 2.5rem;
 color: #222;
 }
 
-/* ABOUT TEXT */
 .about-text p {
 color: #444;
 line-height: 1.9;
 font-size: 1rem;
 }
 
-/* VIDEO */
 .video-wrapper {
 border-radius: 16px;
 overflow: hidden;
@@ -259,7 +255,6 @@ font-size: 2rem;
 margin-left: 4px;
 }
 
-/* TEAM CARDS */
 .team-card {
 background: #fff;
 border-radius: 24px;
@@ -314,7 +309,6 @@ justify-content: center;
 gap: .6rem;
 }
 
-/* CV MODAL */
 .modal-content {
 border-radius: 24px;
 overflow: hidden;
@@ -344,7 +338,6 @@ border: none;
 display: block;
 }
 
-/* FOOTER */
 footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; margin-top: 3rem; }
 footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
 footer a:hover { color: #fff; }
@@ -359,12 +352,10 @@ footer a:hover { color: #fff; }
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="text-center">
   <img src="logo-purple.webp" alt="Takoi Artist Logo" width="148" height="80" loading="eager" decoding="async">
 </header>
 
-<!-- NAVBAR (igual al Home) -->
 <nav class="navbar navbar-expand-lg py-0" role="navigation" aria-label="Menú principal">
   <div class="navbar-container">
 
@@ -403,7 +394,6 @@ footer a:hover { color: #fff; }
   </div>
 </nav>
 
-<!-- ABOUT HERO -->
 <section class="py-5">
   <div class="container">
     <div class="text-center mb-4">
@@ -420,7 +410,6 @@ footer a:hover { color: #fff; }
       </div>
     </div>
 
-    <!-- VIDEO DE YOUTUBE - RESTAURADO -->
     <div class="row justify-content-center mt-5">
       <div class="col-lg-10">
         <div class="video-wrapper position-relative">
@@ -438,7 +427,6 @@ footer a:hover { color: #fff; }
   </div>
 </section>
 
-<!-- TEAM SECTION -->
 <section class="py-4">
   <div class="container">
     <h2 class="section-title">Meet the Team</h2>
@@ -449,7 +437,6 @@ footer a:hover { color: #fff; }
 
     <div class="row justify-content-center g-4">
 
-      <!-- JORGE -->
       <div class="col-md-6 col-lg-5">
         <div class="team-card">
           <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/77e60b45b4500ff0b0478d23d104b7ca42c233b1/jorge%20%20imagen.webp" alt="Jorge Armando Castaño - Illustrator & Animator" class="team-photo">
@@ -464,7 +451,6 @@ footer a:hover { color: #fff; }
         </div>
       </div>
 
-      <!-- MELISA -->
       <div class="col-md-6 col-lg-5">
         <div class="team-card">
           <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/77e60b45b4500ff0b0478d23d104b7ca42c233b1/melisa%20foto.webp" alt="Melisa Sánchez - Visual designer" class="team-photo">
@@ -475,9 +461,9 @@ footer a:hover { color: #fff; }
           </div>
           <div class="team-links">
             <a href="https://www.behance.net/melisasanchezmeiw" target="_blank" class="btn-takoi">View Portfolio</a>
-            <button type="button" class="btn-takoi-outline" data-bs-toggle="modal" data-bs-target="#cvModal">
-              <i class="bi bi-file-earmark-pdf"></i> View CV
-            </button>
+            <a href="https://takoiartist.github.io/cv-melisa-sanchez-/" target="_blank" rel="noopener" class="btn-takoi-outline">
+              <i class="bi bi-globe2"></i> Web CV
+            </a>
           </div>
         </div>
       </div>
@@ -486,35 +472,6 @@ footer a:hover { color: #fff; }
   </div>
 </section>
 
-<!-- CV MODAL -->
-<div class="modal fade" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="cvModalLabel"><i class="bi bi-file-earmark-pdf"></i> Melisa Sánchez — CV</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!--
-          FIX: el iframe ya no usa "drive.google.com/viewerng/viewer" (endpoint roto que
-          forzaba la descarga con el nombre "viewer"). Ahora carga el PDF directamente
-          desde GitHub Pages, donde los navegadores modernos lo muestran embebido.
-          Requisito: el PDF debe estar publicado en la raíz del repo, junto a index.html
-          (https://takoiartist.github.io/takoi-artist/CV%20MELISA%20SANCHEZ%202025.pdf)
-        -->
-        <iframe src="https://takoiartist.github.io/takoi-artist/CV%20MELISA%20SANCHEZ%202025.pdf" title="Melisa Sánchez CV" loading="lazy"></iframe>
-      </div>
-      <div class="modal-footer">
-        <a href="" download class="btn-takoi">
-          <i class="bi bi-download"></i> Download CV
-        </a>
-        <button type="button" class="btn-takoi-outline" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="row align-items-center text-center g-4">
@@ -546,7 +503,6 @@ footer a:hover { color: #fff; }
   </div>
 </footer>
 
-<!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/573145641237" target="_blank" rel="noopener" class="wa-float" title="Escríbenos por WhatsApp">
   <i class="bi bi-whatsapp"></i>
 </a>
