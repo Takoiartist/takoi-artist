@@ -58,7 +58,7 @@ transition:transform .3s ease, box-shadow .3s ease;
 .port-card:hover{ transform:translateY(-4px); box-shadow:0 12px 28px rgba(107,68,145,.22); }
 .port-card .img-box{ width:100%; aspect-ratio:4/5; overflow:hidden; background:#fff; }
 .port-card img{
-width:100%; height:100%; object-fit:cover; display:block;
+width:100%; height:100%; object-fit:contain; display:block;
 transition:transform .5s ease;
 }
 .port-card:hover img{ transform:scale(1.08); }
@@ -113,7 +113,7 @@ background:#fff; border-radius:20px; padding:.4rem 1rem; cursor:pointer; transit
 .chip:hover{ background:var(--purple-soft); }
 .chip.active{ background:var(--purple); color:#fff; }
 .piece-grid{
-display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:18px;
+display:flex; align-items:flex-start; overflow-x:auto; scroll-snap-type:x mandatory; gap:18px;
 padding:6px 4px 18px;
 scrollbar-width:none; -ms-overflow-style:none;
 }
@@ -126,7 +126,7 @@ flex:0 0 auto; width:min(78vw,260px); scroll-snap-align:start;
 }
 .piece:hover{ transform:translateY(-3px); box-shadow:0 10px 24px rgba(107,68,145,.2); }
 .piece .img-box{ width:100%; aspect-ratio:4/5; overflow:hidden; background:#fff; position:relative; }
-.piece img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.piece img{ width:100%; height:100%; object-fit:contain; transition:transform .5s ease; }
 .piece:hover img{ transform:scale(1.07); }
 .piece figcaption{
 padding:12px 14px; background:#fff; font-size:.78rem;
