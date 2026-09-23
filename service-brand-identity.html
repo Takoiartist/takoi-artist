@@ -10,6 +10,72 @@
     body { font-family: 'Poppins', sans-serif; }
     header { background: #fff; padding: 12px 0; }
     .navbar { background: #6B4491 !important; }
+
+    /* Navbar container: menu centrado en escritorio, selector de idioma a la derecha */
+    .navbar-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 46px;
+      padding: .3rem 2rem;
+    }
+    @media (min-width: 992px) {
+      .navbar-container .navbar-toggler { display: none; }
+      .navbar-container #menu {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        display: flex !important;
+      }
+      .navbar-container .navbar-lang { margin-left: auto; }
+    }
+    @media (max-width: 991.98px) {
+      .navbar-container { flex-wrap: wrap; padding: .3rem 1rem; }
+      .navbar-container .navbar-lang { margin-left: auto; }
+      .navbar-container #menu { order: 3; width: 100%; }
+      .navbar-container #menu .navbar-nav { align-items: center; padding: .5rem 0; }
+    }
+
+    /* ===== Selector de idioma (Google Translate) integrado al navbar ===== */
+    #google_translate_element {
+      display: flex;
+      align-items: center;
+    }
+    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    body { top: 0 !important; }
+    .goog-text-highlight { background: none !important; box-shadow: none !important; }
+    #google_translate_element .goog-te-gadget-simple {
+      background: rgba(255,255,255,.15) !important;
+      border: none !important;
+      border-radius: 50px !important;
+      padding: 6px 12px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      cursor: pointer !important;
+      transition: background .2s, transform .2s;
+    }
+    #google_translate_element .goog-te-gadget-simple:hover {
+      background: rgba(255,255,255,.32) !important;
+      transform: translateY(-2px);
+    }
+    #google_translate_element .goog-te-gadget-simple,
+    #google_translate_element .goog-te-gadget-simple a,
+    #google_translate_element .goog-te-gadget-simple a span,
+    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value,
+    #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span {
+      color: #fff !important;
+      font-size: .8rem !important;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+      line-height: normal !important;
+    }
+    #google_translate_element .goog-te-gadget-icon,
+    #google_translate_element img { display: none !important; }
+    .goog-logo-link { display: none !important; }
+
     .navbar .nav-link {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
@@ -504,10 +570,10 @@
 
     /* ---- Mascot Branding section ---- */
     .mascot-section{
-      background:#6B4491;
+      background:linear-gradient(180deg, #f7f4fb 0%, #f1ebf7 100%);
       border-radius:28px;
       padding:3rem 1.5rem;
-      color:#fff;
+      color:#444;
       position:relative;
       overflow:hidden;
     }
@@ -515,47 +581,15 @@
       content:"";
       position:absolute; top:-80px; right:-80px;
       width:260px; height:260px; border-radius:50%;
-      background:rgba(255,255,255,.06);
+      background:rgba(107,68,145,.06);
     }
-    .mascot-section .eyebrow{ color:#e1dcea; }
     .mascot-title{
       font-family:'Potta One',cursive;
-      font-size:2.2rem; text-align:center; margin-bottom:.4rem; color:#fff;
+      font-size:2.2rem; text-align:center; margin-bottom:.4rem; color:#6B4491;
     }
     .mascot-sub{
-      text-align:center; color:#e1dcea; max-width:60ch;
+      text-align:center; color:#6b6b6b; max-width:60ch;
       margin:0 auto 2rem; font-size:.95rem;
-    }
-
-    .mascot-gallery{
-      display:grid;
-      grid-template-columns:1.4fr 1fr;
-      grid-template-rows:1fr 1fr;
-      gap:14px;
-      max-width:980px;
-      margin:0 auto 2.5rem;
-    }
-    .mascot-gallery figure{
-      margin:0; border-radius:18px; overflow:hidden;
-      background:#f7f4fb; position:relative; cursor:zoom-in;
-      box-shadow:0 8px 24px rgba(0,0,0,.25);
-    }
-    .mascot-gallery figure:first-child{ grid-row:1 / span 2; }
-    .mascot-gallery img{
-      width:100%; height:100%; object-fit:cover; display:block;
-      transition:transform .5s ease;
-    }
-    .mascot-gallery figure:hover img{ transform:scale(1.05); }
-    .mascot-gallery figcaption{
-      position:absolute; left:12px; bottom:12px;
-      background:rgba(255,255,255,.92); color:#6B4491;
-      font-size:.72rem; font-weight:700;
-      padding:.25rem .8rem; border-radius:20px;
-    }
-    @media (max-width:767px){
-      .mascot-gallery{ grid-template-columns:1fr 1fr; grid-template-rows:auto; }
-      .mascot-gallery figure:first-child{ grid-column:1 / span 2; grid-row:auto; aspect-ratio:4/3; }
-      .mascot-gallery figure{ aspect-ratio:1/1; }
     }
 
     .mascot-tiers{ max-width:1000px; margin:0 auto; }
@@ -566,8 +600,8 @@
       position:relative;
       transition:transform .25s ease, box-shadow .25s ease;
     }
-    .tier:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.25); }
-    .tier.popular{ border:3px solid #e1dcea; box-shadow:0 14px 34px rgba(0,0,0,.3); }
+    .tier:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(107,68,145,.18); }
+    .tier.popular{ border:3px solid #6B4491; box-shadow:0 14px 34px rgba(107,68,145,.2); }
     .tier-badge{
       position:absolute; top:-14px; left:50%; transform:translateX(-50%);
       background:#6B4491; color:#fff; border:2px solid #fff;
@@ -589,10 +623,6 @@
       display:flex; justify-content:center; gap:.8rem;
       flex-wrap:wrap; margin-top:2.5rem;
     }
-    .btn-takoi.white{ background:#fff; color:#6B4491; }
-    .btn-takoi.white:hover{ background:#e1dcea; color:#5a3878; }
-    .btn-takoi.ghost-white{ background:transparent; color:#fff; border:2px solid #fff; }
-    .btn-takoi.ghost-white:hover{ background:#fff; color:#6B4491; }
 
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
     footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
@@ -607,12 +637,17 @@
   </header>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg py-0">
-    <div class="container-fluid justify-content-center">
+  <nav class="navbar navbar-expand-lg py-0" role="navigation" aria-label="Main menu">
+    <div class="navbar-container">
       <button class="navbar-toggler border-0 my-2" type="button"
               data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Open menu">
         <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
       </button>
+
+      <div class="navbar-lang d-flex align-items-center">
+        <div id="google_translate_element"></div>
+      </div>
+
       <div class="collapse navbar-collapse justify-content-center" id="menu">
         <ul class="navbar-nav gap-2 py-2">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -671,7 +706,7 @@
                 <button class="carousel-nav-btn next" id="pkg-next" aria-label="Next image">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </button>
-                <span class="carousel-counter" id="pkg-counter">1 / 4</span>
+                <span class="carousel-counter" id="pkg-counter">1 / 5</span>
               </div>
               <div class="thumb-strip" id="pkg-thumbs"></div>
             </div>
@@ -739,26 +774,22 @@
           <h3 class="mascot-title">MASCOT BRANDING PACK</h3>
           <p class="mascot-sub">Turn your character into a brand asset — a custom mascot, logo and visual system designed to make your business memorable.</p>
 
-          <!-- Gallery (opens in the existing lightbox) -->
-          <div class="mascot-gallery">
-            <figure>
-              <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND_MASCOTA.webp"
-                   alt="Colombian coffee brand mascot" loading="lazy"
+          <!-- Gallery: same viewer structure as the Hangar Brand Package -->
+          <div class="logo-carousel">
+            <div class="carousel-stage">
+              <button class="carousel-nav-btn prev" id="mascot-prev" aria-label="Previous image">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <img id="mascot-stage-img"
+                   src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND_MASCOTA.webp"
+                   alt="Mascot branding example — Colombian coffee brand"
                    data-bs-toggle="modal" data-bs-target="#lightboxModal">
-              <figcaption>Custom mascot</figcaption>
-            </figure>
-            <figure>
-              <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-08.webp"
-                   alt="Colombian coffee brand application 1" loading="lazy"
-                   data-bs-toggle="modal" data-bs-target="#lightboxModal">
-              <figcaption>Brand application</figcaption>
-            </figure>
-            <figure>
-              <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-09.webp"
-                   alt="Colombian coffee brand application 2" loading="lazy"
-                   data-bs-toggle="modal" data-bs-target="#lightboxModal">
-              <figcaption>Brand application</figcaption>
-            </figure>
+              <button class="carousel-nav-btn next" id="mascot-next" aria-label="Next image">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+              <span class="carousel-counter" id="mascot-counter">1 / 3</span>
+            </div>
+            <div class="thumb-strip" id="mascot-thumbs"></div>
           </div>
 
           <!-- Tiers -->
@@ -824,8 +855,8 @@
           <!-- CTAs -->
           <div class="mascot-cta">
             <a href="https://drive.google.com/file/d/1_AxCGBWKWiF8DgNY9DHkNZsBELKI7g5P/view?usp=sharing"
-               target="_blank" rel="noopener" class="btn-takoi white">📄 View Brand Book (PDF)</a>
-            <a href="index.html#contacto" class="btn-takoi ghost-white">Let's build your brand character</a>
+               target="_blank" rel="noopener" class="btn-takoi outline">📄 View Brand Book (PDF)</a>
+            <a href="index.html#contacto" class="btn-takoi">Let's build your brand character</a>
           </div>
         </div>
       </section>
@@ -1159,7 +1190,8 @@
       "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp",
       "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp",
       "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20volantes.webp",
-      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp"
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp",
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/8190c3d476fab186f932e1edddad22e5fc168421/%5BJotako%5D%20Negos%20Geometricos-20.webp"
     ];
     let pkgIndex = 0;
 
@@ -1194,6 +1226,45 @@
       thumb.addEventListener('click', () => goToPkg(parseInt(thumb.getAttribute('data-idx'), 10)));
     });
 
+    // ---- Mascot Branding gallery: same mini-carousel pattern as the Featured Brand Package ----
+    const mascotImages = [
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND_MASCOTA.webp",
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-08.webp",
+      "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-09.webp"
+    ];
+    let mascotIndex = 0;
+
+    const mascotThumbs = document.getElementById('mascot-thumbs');
+    mascotThumbs.innerHTML = mascotImages.map((src, idx) => `
+      <div class="thumb-item${idx === 0 ? ' active' : ''}" data-idx="${idx}">
+        <img src="${src}" alt="Mascot branding example ${idx + 1}" loading="lazy">
+      </div>`).join('');
+
+    function renderMascotStage(){
+      const total = mascotImages.length;
+      const stage = document.getElementById('mascot-stage-img');
+      const counter = document.getElementById('mascot-counter');
+      stage.style.opacity = 0;
+      setTimeout(() => {
+        stage.setAttribute('src', mascotImages[mascotIndex]);
+        stage.style.opacity = 1;
+      }, 120);
+      counter.textContent = `${mascotIndex + 1} / ${total}`;
+      document.querySelectorAll('#mascot-thumbs .thumb-item').forEach((el, i) => {
+        el.classList.toggle('active', i === mascotIndex);
+      });
+    }
+    function goToMascot(newIdx){
+      const total = mascotImages.length;
+      mascotIndex = (newIdx + total) % total;
+      renderMascotStage();
+    }
+    document.getElementById('mascot-prev').addEventListener('click', () => goToMascot(mascotIndex - 1));
+    document.getElementById('mascot-next').addEventListener('click', () => goToMascot(mascotIndex + 1));
+    document.querySelectorAll('#mascot-thumbs .thumb-item').forEach(thumb => {
+      thumb.addEventListener('click', () => goToMascot(parseInt(thumb.getAttribute('data-idx'), 10)));
+    });
+
     // ---- Brand Identity Catalog: same project-carousel pattern as Portfolio > Brand Design ----
     const brandCatalogItems = [
       {
@@ -1208,7 +1279,8 @@
           { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp", title:"Hangar — Logo" },
           { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp", title:"Hangar — Brand Line" },
           { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20volantes.webp", title:"Hangar — Flyers" },
-          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp", title:"Hangar — Advertising / Stand" }
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp", title:"Hangar — Advertising / Stand" },
+          { src:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/8190c3d476fab186f932e1edddad22e5fc168421/%5BJotako%5D%20Negos%20Geometricos-20.webp", title:"Hangar — Additional Application" }
         ]
       },
       {
@@ -1531,6 +1603,20 @@
 
   })();
   </script>
+
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          includedLanguages: 'en,es,ja',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        'google_translate_element'
+      );
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
