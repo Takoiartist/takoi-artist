@@ -1156,50 +1156,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="reviews" class="py-5" style="background:#fff; padding-top: 5rem !important; padding-bottom: 5rem !important;">
   <div class="container">
 
-    <h2 class="section-title">Leave your review here</h2>
-    <div class="text-center mb-4">
-      <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
-    </div>
-
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-7 review-form">
-        <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="831fca82-c73f-49f4-b3e7-71cd59286898">
-          <input type="hidden" name="subject" value="Nueva reseña - Takoi Artist">
-          <input type="hidden" name="from_name" value="Takoi Artist - Reviews">
-
-          <p class="form-success">✓ Thank you! Your review was successfully submitted.</p>
-          <p class="form-error">✗ There was a problem sending. Please try again.</p>
-
-          <div class="mb-3 row">
-            <div class="col">
-              <label class="form-label">First</label>
-              <input type="text" name="first_name" class="form-control" required>
-            </div>
-            <div class="col">
-              <label class="form-label">Last</label>
-              <input type="text" name="last_name" class="form-control" required>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Share your experience</label>
-            <textarea name="review" class="form-control" rows="4" required></textarea>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Rating</label>
-            <select name="rating" class="form-control">
-              <option>⭐⭐⭐⭐⭐ Excellent</option>
-              <option>⭐⭐⭐⭐ Good</option>
-              <option>⭐⭐⭐ Average</option>
-            </select>
-          </div>
-          <button type="submit" class="btn-takoi">Send Review</button>
-        </form>
-      </div>
-    </div>
-    
-<hr class="divider" style="margin-top: 4rem; margin-bottom: 4rem;">
-
     <h2 class="section-title">Reviews</h2>
     <div class="text-center mb-4">
       <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
@@ -1289,7 +1245,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="text-center mt-4">
-      <a href="#" class="btn-takoi">Leave a review</a>
+      <a href="#reviewForm" class="btn-takoi">Leave a review</a>
+    </div>
+
+<hr class="divider" style="margin-top: 4rem; margin-bottom: 4rem;">
+
+    <h2 class="section-title">Leave your review here</h2>
+    <div class="text-center mb-4">
+      <img src="http://takoiartista.free.nf/wp-content/uploads/2026/01/ESPADA-ICON@3x.png" alt="" height="12">
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-7 review-form">
+        <form id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="831fca82-c73f-49f4-b3e7-71cd59286898">
+          <input type="hidden" name="subject" value="Nueva reseña - Takoi Artist">
+          <input type="hidden" name="from_name" value="Takoi Artist - Reviews">
+
+          <p class="form-success">✓ Thank you! Your review was successfully submitted.</p>
+          <p class="form-error">✗ There was a problem sending. Please try again.</p>
+
+          <div class="mb-3 row">
+            <div class="col">
+              <label class="form-label">First</label>
+              <input type="text" name="first_name" class="form-control" required>
+            </div>
+            <div class="col">
+              <label class="form-label">Last</label>
+              <input type="text" name="last_name" class="form-control" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Share your experience</label>
+            <textarea name="review" class="form-control" rows="4" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rating</label>
+            <select name="rating" class="form-control">
+              <option>⭐⭐⭐⭐⭐ Excellent</option>
+              <option>⭐⭐⭐⭐ Good</option>
+              <option>⭐⭐⭐ Average</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-takoi">Send Review</button>
+        </form>
+      </div>
     </div>
 
   </div>
@@ -1297,9 +1297,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <hr class="divider" style="margin: 3rem 0;">
 
-
 <!-- CONTACT -->
-<section id="contacto" class="py-5">
+<section id="contacto" class="pt-5">
   <div class="container-fluid px-0">
     <div class="row align-items-stretch g-0" style="overflow:hidden;">
       <div class="col-md-4 contact-photo">
