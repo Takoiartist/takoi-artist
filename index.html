@@ -540,6 +540,284 @@
       .cookie-banner { flex-direction: column; align-items: stretch; text-align: left; }
       .cookie-actions { justify-content: flex-start; }
     }
+
+    /* ============================================================
+       FEATURED SERVICES — BRANDING PACKAGES (carrusel editorial)
+       ============================================================ */
+    #featured-services { background: #faf8fc; }
+    .fs-eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: .04em;
+      color: #6B4491;
+      text-align: center;
+      margin: 0 0 .4rem;
+    }
+    .fs-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: .98rem;
+      color: #777;
+      text-align: center;
+      margin: 0 0 2.4rem;
+    }
+    .fs-carousel {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .fs-track-wrap {
+      overflow: hidden;
+      border-radius: 24px;
+    }
+    .fs-track {
+      display: flex;
+      transition: transform .5s ease;
+    }
+    .fs-slide {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    .fs-slide-inner {
+      display: flex;
+      align-items: stretch;
+      background: #fff;
+      box-shadow: 0 10px 32px rgba(107,68,145,.10);
+      min-height: 380px;
+    }
+    .fs-media {
+      position: relative;
+      flex: 0 0 46%;
+      max-width: 46%;
+      background: #f7f4fb;
+      padding: 1.4rem 1.4rem 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .fs-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #6B4491;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 20px;
+      z-index: 3;
+    }
+    .fs-stage {
+      position: relative;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(107,68,145,.10);
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .fs-stage img {
+      max-width: 82%;
+      max-height: 80%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: opacity .25s ease;
+    }
+    .fs-stage-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: #6B4491;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,.15);
+      cursor: pointer;
+      z-index: 2;
+      transition: background .2s ease, color .2s ease;
+    }
+    .fs-stage-nav:hover { background: #6B4491; color: #fff; }
+    .fs-stage-nav.prev { left: 10px; }
+    .fs-stage-nav.next { right: 10px; }
+    .fs-stage-counter {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      background: rgba(255,255,255,.9);
+      color: #6B4491;
+      font-family: 'Poppins', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      padding: .2rem .6rem;
+      border-radius: 20px;
+    }
+    .fs-thumbs {
+      display: flex;
+      gap: .55rem;
+      overflow-x: auto;
+      padding: .9rem .1rem .2rem;
+      scroll-behavior: smooth;
+    }
+    .fs-thumbs::-webkit-scrollbar { height: 5px; }
+    .fs-thumbs::-webkit-scrollbar-thumb { background: #e1dcea; border-radius: 10px; }
+    .fs-thumb {
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+      background: #fff;
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: .6;
+      transition: border-color .2s ease, opacity .2s ease;
+      padding: 0;
+    }
+    .fs-thumb img {
+      max-width: 78%;
+      max-height: 78%;
+      object-fit: contain;
+    }
+    .fs-thumb:hover { opacity: .9; }
+    .fs-thumb.active {
+      border-color: #6B4491;
+      opacity: 1;
+    }
+    .fs-info {
+      flex: 1;
+      padding: 2.4rem 2.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .fs-info h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #4a2d6e;
+      font-size: 1.35rem;
+      margin: 0 0 .5rem;
+    }
+    .fs-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #6B4491;
+      display: block;
+      margin-bottom: .15rem;
+    }
+    .fs-price {
+      font-family: 'Potta One', cursive;
+      color: #6B4491;
+      font-size: 2rem;
+      line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .fs-price small {
+      font-family: 'Poppins', sans-serif;
+      font-size: .82rem;
+      color: #888;
+      font-weight: 600;
+    }
+    .fs-desc {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: .92rem;
+      color: #555;
+      margin: 0 0 1.1rem;
+    }
+    .fs-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .fs-list li {
+      font-family: 'Poppins', sans-serif;
+      font-size: .87rem;
+      color: #444;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .fs-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #6B4491;
+      font-weight: 700;
+    }
+    .fs-info .btn-takoi { align-self: flex-start; }
+
+    .fs-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: #6B4491;
+      box-shadow: 0 4px 14px rgba(107,68,145,.22);
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      transition: background .2s, color .2s;
+    }
+    .fs-arrow:hover { background: #6B4491; color: #fff; }
+    .fs-arrow.prev { left: -22px; }
+    .fs-arrow.next { right: -22px; }
+
+    .fs-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.6rem;
+    }
+    .fs-dots button {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: none;
+      background: #e1dcea;
+      cursor: pointer;
+      padding: 0;
+      transition: background .2s, transform .2s;
+    }
+    .fs-dots button.active {
+      background: #6B4491;
+      transform: scale(1.25);
+    }
+
+    @media (max-width: 767.98px) {
+      .fs-slide-inner { flex-direction: column; min-height: 0; }
+      .fs-track-wrap { border-radius: 20px; }
+      .fs-media { max-width: 100%; flex: 0 0 auto; padding: 1.2rem 1.1rem .6rem; }
+      .fs-stage { height: 220px; }
+      .fs-info { padding: 1.6rem 1.4rem 2rem; }
+      .fs-arrow { width: 38px; height: 38px; font-size: 1.15rem; }
+      .fs-arrow.prev { left: 4px; }
+      .fs-arrow.next { right: 4px; }
+    }
   </style>
 </head>
 <body>
@@ -550,8 +828,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- HEADER -->
   <header class="text-center">
-    <img src="logo-purple.webp"
-         alt="https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/logo-purple.webp" alt="Logo Takoi Artist" width="148" height="80" loading="eager" decoding="async">
+    <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/main/logo-purple.webp"
+         alt="Logo Takoi Artist" width="148" height="80" loading="eager" decoding="async">
   </header>
 
   <!-- NAVBAR -->
@@ -790,6 +1068,92 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="0" class="active" aria-current="true"></button>
         <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#carouselServices" data-bs-slide-to="2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SERVICES — BRANDING PACKAGES -->
+<section id="featured-services" class="py-5">
+  <div class="container">
+    <h2 class="section-title">FEATURED SERVICES</h2>
+    <p class="fs-eyebrow">BRANDING PACKAGES</p>
+    <p class="fs-subtitle">Build a brand people remember.</p>
+
+    <div class="fs-carousel">
+      <div class="fs-track-wrap">
+        <div class="fs-track" id="fsTrack">
+
+          <!-- Slide 1: Mascot Branding Pack -->
+          <div class="fs-slide">
+            <div class="fs-slide-inner">
+              <div class="fs-media">
+                <span class="fs-badge">MOST REQUESTED</span>
+                <div class="fs-stage">
+                  <button type="button" class="fs-stage-nav prev" data-gallery="mascot" aria-label="Previous photo">‹</button>
+                  <img id="fsStage-mascot" src="" alt="Mascot Branding Pack" loading="lazy" decoding="async">
+                  <button type="button" class="fs-stage-nav next" data-gallery="mascot" aria-label="Next photo">›</button>
+                  <span class="fs-stage-counter" id="fsCounter-mascot">1 / 1</span>
+                </div>
+                <div class="fs-thumbs" id="fsThumbs-mascot"></div>
+              </div>
+              <div class="fs-info">
+                <h3>Mascot Branding Pack</h3>
+                <span class="fs-label">Starting at</span>
+                <div class="fs-price">$250 <small>USD</small></div>
+                <p class="fs-desc">Custom mascot + branding system</p>
+                <ul class="fs-list">
+                  <li>Custom mascot illustration</li>
+                  <li>Mascot head / sticker</li>
+                  <li>Line-art version</li>
+                  <li>Mascot logo</li>
+                  <li>Brand visuals</li>
+                </ul>
+                <a href="service-brand-identity.html" class="btn-takoi">Explore Branding →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Hangar Emprendedor / Brand Experience Package -->
+          <div class="fs-slide">
+            <div class="fs-slide-inner">
+              <div class="fs-media">
+                <div class="fs-stage">
+                  <button type="button" class="fs-stage-nav prev" data-gallery="hangar" aria-label="Previous photo">‹</button>
+                  <img id="fsStage-hangar" src="" alt="Brand Experience Package — Hangar Emprendedor" loading="lazy" decoding="async">
+                  <button type="button" class="fs-stage-nav next" data-gallery="hangar" aria-label="Next photo">›</button>
+                  <span class="fs-stage-counter" id="fsCounter-hangar">1 / 1</span>
+                </div>
+                <div class="fs-thumbs" id="fsThumbs-hangar"></div>
+              </div>
+              <div class="fs-info">
+                <h3>Brand Experience Package</h3>
+                <div class="fs-price">US$7,500</div>
+                <p class="fs-desc">Full brand identity &amp; launch package</p>
+                <ul class="fs-list">
+                  <li>Brand strategy &amp; creative direction</li>
+                  <li>Complete logo system &amp; visual identity</li>
+                  <li>Color palette, typography &amp; graphic system</li>
+                  <li>Packaging &amp; branded applications</li>
+                  <li>Social media kit</li>
+                  <li>Launch Reel</li>
+                  <li>Logo animation / motion</li>
+                  <li>Complete Brand Book</li>
+                </ul>
+                <a href="service-brand-identity.html" class="btn-takoi">Explore Branding →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button type="button" class="fs-arrow prev" id="fsPrev" aria-label="Previous package">‹</button>
+      <button type="button" class="fs-arrow next" id="fsNext" aria-label="Next package">›</button>
+
+      <div class="fs-dots" id="fsDots">
+        <button type="button" class="active" data-idx="0" aria-label="Go to slide 1"></button>
+        <button type="button" data-idx="1" aria-label="Go to slide 2"></button>
       </div>
     </div>
   </div>
@@ -1152,6 +1516,116 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 <!-- End Google Tag Manager -->
+
+<!-- Carrusel de Featured Services (Branding Packages) -->
+<script>
+  (function(){
+    const track = document.getElementById('fsTrack');
+    if (!track) return;
+
+    // ---- Navegación entre paquetes (Mascot <-> Hangar) ----
+    const slides = track.querySelectorAll('.fs-slide');
+    const dots = document.querySelectorAll('#fsDots button');
+    const prevBtn = document.getElementById('fsPrev');
+    const nextBtn = document.getElementById('fsNext');
+    const total = slides.length;
+    let idx = 0;
+
+    function render(){
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+    function goTo(n){
+      idx = (n + total) % total;
+      render();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(idx - 1));
+    nextBtn.addEventListener('click', () => goTo(idx + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.getAttribute('data-idx'), 10))));
+
+    // Swipe en móvil (arrastra para cambiar de paquete)
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 40) { diff > 0 ? goTo(idx - 1) : goTo(idx + 1); }
+    }, { passive: true });
+
+    // ---- Galerías de fotos dentro de cada paquete (mismas imágenes que service-brand-identity.html) ----
+    const galleries = {
+      mascot: [
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND_MASCOTA.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND_SELLO.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-08.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-09.webp"
+      ],
+      hangar: [
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20logo%20panama.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20publicidad.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar%20volantes.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/6938281607dd1b318e3aeab0f6dd1145a798b9e3/hangar.webp",
+        "https://raw.githubusercontent.com/Takoiartist/takoi-artist/8190c3d476fab186f932e1edddad22e5fc168421/%5BJotako%5D%20Negos%20Geometricos-20.webp"
+      ]
+    };
+
+    const galleryState = { mascot: 0, hangar: 0 };
+
+    function renderGallery(key){
+      const images = galleries[key];
+      const total = images.length;
+      const i = galleryState[key];
+      const stage = document.getElementById(`fsStage-${key}`);
+      const counter = document.getElementById(`fsCounter-${key}`);
+
+      stage.style.opacity = 0;
+      setTimeout(() => {
+        stage.setAttribute('src', images[i]);
+        stage.style.opacity = 1;
+      }, 120);
+      counter.textContent = `${i + 1} / ${total}`;
+
+      document.querySelectorAll(`#fsThumbs-${key} .fs-thumb`).forEach((el, thumbIdx) => {
+        el.classList.toggle('active', thumbIdx === i);
+      });
+      const activeThumb = document.querySelector(`#fsThumbs-${key} .fs-thumb.active`);
+      if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    function goToGallery(key, newIdx){
+      const total = galleries[key].length;
+      galleryState[key] = (newIdx + total) % total;
+      renderGallery(key);
+    }
+
+    Object.keys(galleries).forEach(key => {
+      const images = galleries[key];
+
+      // Miniaturas
+      const thumbsEl = document.getElementById(`fsThumbs-${key}`);
+      thumbsEl.innerHTML = images.map((src, i) => `
+        <button type="button" class="fs-thumb${i === 0 ? ' active' : ''}" data-idx="${i}">
+          <img src="${src}" alt="${key === 'mascot' ? 'Mascot Branding Pack' : 'Hangar Emprendedor'} ${i + 1}" loading="lazy">
+        </button>`).join('');
+      thumbsEl.querySelectorAll('.fs-thumb').forEach(btn => {
+        btn.addEventListener('click', () => goToGallery(key, parseInt(btn.getAttribute('data-idx'), 10)));
+      });
+
+      // Imagen inicial
+      renderGallery(key);
+    });
+
+    // Flechas pequeñas del stage (navegan fotos dentro del mismo paquete)
+    document.querySelectorAll('.fs-stage-nav').forEach(btn => {
+      const key = btn.getAttribute('data-gallery');
+      const dir = btn.classList.contains('prev') ? -1 : 1;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToGallery(key, galleryState[key] + dir);
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
