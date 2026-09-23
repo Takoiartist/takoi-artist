@@ -502,6 +502,98 @@
     }
     .lightbox-close:hover{ background: #6B4491; color: #fff; }
 
+    /* ---- Mascot Branding section ---- */
+    .mascot-section{
+      background:#6B4491;
+      border-radius:28px;
+      padding:3rem 1.5rem;
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    .mascot-section::before{
+      content:"";
+      position:absolute; top:-80px; right:-80px;
+      width:260px; height:260px; border-radius:50%;
+      background:rgba(255,255,255,.06);
+    }
+    .mascot-section .eyebrow{ color:#e1dcea; }
+    .mascot-title{
+      font-family:'Potta One',cursive;
+      font-size:2.2rem; text-align:center; margin-bottom:.4rem; color:#fff;
+    }
+    .mascot-sub{
+      text-align:center; color:#e1dcea; max-width:60ch;
+      margin:0 auto 2rem; font-size:.95rem;
+    }
+
+    .mascot-gallery{
+      display:grid;
+      grid-template-columns:1.4fr 1fr;
+      grid-template-rows:1fr 1fr;
+      gap:14px;
+      max-width:980px;
+      margin:0 auto 2.5rem;
+    }
+    .mascot-gallery figure{
+      margin:0; border-radius:18px; overflow:hidden;
+      background:#f7f4fb; position:relative; cursor:zoom-in;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+    .mascot-gallery figure:first-child{ grid-row:1 / span 2; }
+    .mascot-gallery img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition:transform .5s ease;
+    }
+    .mascot-gallery figure:hover img{ transform:scale(1.05); }
+    .mascot-gallery figcaption{
+      position:absolute; left:12px; bottom:12px;
+      background:rgba(255,255,255,.92); color:#6B4491;
+      font-size:.72rem; font-weight:700;
+      padding:.25rem .8rem; border-radius:20px;
+    }
+    @media (max-width:767px){
+      .mascot-gallery{ grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+      .mascot-gallery figure:first-child{ grid-column:1 / span 2; grid-row:auto; aspect-ratio:4/3; }
+      .mascot-gallery figure{ aspect-ratio:1/1; }
+    }
+
+    .mascot-tiers{ max-width:1000px; margin:0 auto; }
+    .tier{
+      background:#fff; color:#444; border-radius:20px;
+      padding:2rem 1.6rem; height:100%;
+      display:flex; flex-direction:column;
+      position:relative;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .tier:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.25); }
+    .tier.popular{ border:3px solid #e1dcea; box-shadow:0 14px 34px rgba(0,0,0,.3); }
+    .tier-badge{
+      position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+      background:#6B4491; color:#fff; border:2px solid #fff;
+      font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      padding:.3rem 1rem; border-radius:20px; white-space:nowrap;
+    }
+    .tier-name{ font-weight:700; color:#6B4491; font-size:1.1rem; margin-bottom:.2rem; }
+    .tier-from{
+      font-size:.7rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:#888;
+    }
+    .tier-price{ font-family:'Potta One',cursive; color:#6B4491; font-size:2.1rem; line-height:1.1; }
+    .tier-price small{ font-family:'Poppins',sans-serif; font-size:.8rem; color:#888; font-weight:600; }
+    .tier-tag{ font-size:.8rem; color:#6b6b6b; font-weight:600; margin:.4rem 0 1.1rem; }
+    .tier .pkg-list{ flex-grow:1; }
+    .tier .btn-takoi{ text-align:center; width:100%; }
+
+    .mascot-cta{
+      display:flex; justify-content:center; gap:.8rem;
+      flex-wrap:wrap; margin-top:2.5rem;
+    }
+    .btn-takoi.white{ background:#fff; color:#6B4491; }
+    .btn-takoi.white:hover{ background:#e1dcea; color:#5a3878; }
+    .btn-takoi.ghost-white{ background:transparent; color:#fff; border:2px solid #fff; }
+    .btn-takoi.ghost-white:hover{ background:#fff; color:#6B4491; }
+
     footer { background: #2b2b2b; color: #ccc; padding: 2.5rem 0 1rem; }
     footer a { color: #ccc; text-decoration: none; font-family: 'Poppins', sans-serif; font-size: .85rem; }
     footer a:hover { color: #fff; }
@@ -639,6 +731,108 @@
       <hr class="divider my-5">
 
       <!-- ============================================= -->
+      <!-- MASCOT BRANDING PACK                            -->
+      <!-- ============================================= -->
+      <section id="mascot-pack" class="mb-5 pb-2">
+        <div class="mascot-section">
+          <p class="eyebrow text-center">Mascot Branding</p>
+          <h3 class="mascot-title">MASCOT BRANDING PACK</h3>
+          <p class="mascot-sub">Turn your character into a brand asset — a custom mascot, logo and visual system designed to make your business memorable.</p>
+
+          <!-- Gallery (opens in the existing lightbox) -->
+          <div class="mascot-gallery">
+            <figure>
+              <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND_MASCOTA.webp"
+                   alt="Colombian coffee brand mascot" loading="lazy"
+                   data-bs-toggle="modal" data-bs-target="#lightboxModal">
+              <figcaption>Custom mascot</figcaption>
+            </figure>
+            <figure>
+              <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-08.webp"
+                   alt="Colombian coffee brand application 1" loading="lazy"
+                   data-bs-toggle="modal" data-bs-target="#lightboxModal">
+              <figcaption>Brand application</figcaption>
+            </figure>
+            <figure>
+              <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/31f0d8241e40d17480228565463e8ce4fc5f0ff6/COLOMBIAN-COFFEE-BRAND-09.webp"
+                   alt="Colombian coffee brand application 2" loading="lazy"
+                   data-bs-toggle="modal" data-bs-target="#lightboxModal">
+              <figcaption>Brand application</figcaption>
+            </figure>
+          </div>
+
+          <!-- Tiers -->
+          <div class="mascot-tiers">
+            <div class="row g-4 align-items-stretch">
+
+              <div class="col-md-4">
+                <div class="tier">
+                  <div class="tier-name">Mascot Starter</div>
+                  <span class="tier-from">Starting at</span>
+                  <div class="tier-price">$180 <small>USD</small></div>
+                  <p class="tier-tag">A custom character to get started</p>
+                  <ul class="pkg-list">
+                    <li>Custom mascot illustration</li>
+                    <li>Mascot head / sticker</li>
+                    <li>Final digital files</li>
+                  </ul>
+                  <a href="index.html#contacto" class="btn-takoi outline">Request Starter</a>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="tier popular">
+                  <span class="tier-badge">Most popular</span>
+                  <div class="tier-name">Mascot Branding Pack</div>
+                  <span class="tier-from">Starting at</span>
+                  <div class="tier-price">$250 <small>USD</small></div>
+                  <p class="tier-tag">Custom mascot + branding pack</p>
+                  <ul class="pkg-list">
+                    <li>Custom mascot illustration</li>
+                    <li>Mascot head / sticker</li>
+                    <li>Line-art version</li>
+                    <li>Mascot logo</li>
+                    <li>Final digital files</li>
+                  </ul>
+                  <a href="index.html#contacto" class="btn-takoi">Request this pack</a>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="tier">
+                  <div class="tier-name">Mascot Brand System</div>
+                  <span class="tier-from">Starting at</span>
+                  <div class="tier-price">$350 <small>USD</small></div>
+                  <p class="tier-tag">A complete corporate mascot identity</p>
+                  <ul class="pkg-list">
+                    <li>Everything in the Branding Pack</li>
+                    <li>Extra poses &amp; expressions</li>
+                    <li>Color palette &amp; typography</li>
+                    <li>Brand book (PDF)</li>
+                    <li>Brand applications</li>
+                  </ul>
+                  <a href="index.html#contacto" class="btn-takoi outline">Request Brand System</a>
+                </div>
+              </div>
+
+            </div>
+            <p class="text-center mt-4 mb-0" style="font-size:.8rem;color:#e1dcea;">
+              Final price depends on the number of poses, applications and project scope, defined during the initial discovery stage.
+            </p>
+          </div>
+
+          <!-- CTAs -->
+          <div class="mascot-cta">
+            <a href="https://drive.google.com/file/d/1_AxCGBWKWiF8DgNY9DHkNZsBELKI7g5P/view?usp=sharing"
+               target="_blank" rel="noopener" class="btn-takoi white">📄 View Brand Book (PDF)</a>
+            <a href="index.html#contacto" class="btn-takoi ghost-white">Let's build your brand character</a>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider my-5">
+
+      <!-- ============================================= -->
       <!-- 3. BRAND IDENTITY CATALOG (project carousel)    -->
       <!-- ============================================= -->
       <section id="brand-catalog" class="mb-5 pb-2">
@@ -671,7 +865,7 @@
     </div>
   </section>
 
-  <!-- Lightbox modal (bootstrap) — used by logo carousel + package image zoom -->
+  <!-- Lightbox modal (bootstrap) — used by logo carousel + package image zoom + mascot gallery -->
   <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
