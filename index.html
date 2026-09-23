@@ -542,7 +542,9 @@
     }
 
     /* ============================================================
-       FEATURED SERVICES — BRANDING PACKAGES (carrusel editorial)
+       FEATURED SERVICES — BRANDING PACKAGES
+       (mismo patrón de galería — foto grande + miniaturas — que
+       usan Mascot Branding y el Brand Package en service-brand-identity.html)
        ============================================================ */
     #featured-services { background: #faf8fc; }
     .fs-eyebrow {
@@ -560,41 +562,34 @@
       font-size: .98rem;
       color: #777;
       text-align: center;
-      margin: 0 0 2.4rem;
+      margin: 0 0 2.6rem;
     }
     .fs-carousel {
       position: relative;
-      max-width: 980px;
-      margin: 0 auto;
+      padding: 0 46px;
     }
-    .fs-track-wrap {
-      overflow: hidden;
-      border-radius: 24px;
-    }
+    .fs-track-wrap { overflow: hidden; }
     .fs-track {
       display: flex;
+      align-items: stretch;
       transition: transform .5s ease;
     }
     .fs-slide {
       flex: 0 0 100%;
       width: 100%;
+      min-width: 0;
     }
-    .fs-slide-inner {
-      display: flex;
-      align-items: stretch;
-      background: #fff;
-      box-shadow: 0 10px 32px rgba(107,68,145,.10);
-      min-height: 380px;
+    .fs-pkg-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #4a2d6e;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 0 0 1.6rem;
     }
-    .fs-media {
-      position: relative;
-      flex: 0 0 46%;
-      max-width: 46%;
-      background: #f7f4fb;
-      padding: 1.4rem 1.4rem 1rem;
-      display: flex;
-      flex-direction: column;
-    }
+
+    /* ---- Columna de fotos: igual al logo-carousel / carousel-stage / thumb-strip ---- */
+    .fs-media-col { position: relative; }
     .fs-badge {
       position: absolute;
       top: 14px;
@@ -613,9 +608,9 @@
     .fs-stage {
       position: relative;
       background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(107,68,145,.10);
-      height: 300px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(107,68,145,.12);
+      height: 360px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -623,7 +618,7 @@
     }
     .fs-stage img {
       max-width: 82%;
-      max-height: 80%;
+      max-height: 78%;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -633,8 +628,8 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 36px;
-      height: 36px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       border: none;
       background: #fff;
@@ -642,41 +637,41 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,.15);
+      box-shadow: 0 3px 12px rgba(0,0,0,.15);
       cursor: pointer;
       z-index: 2;
       transition: background .2s ease, color .2s ease;
     }
     .fs-stage-nav:hover { background: #6B4491; color: #fff; }
-    .fs-stage-nav.prev { left: 10px; }
-    .fs-stage-nav.next { right: 10px; }
+    .fs-stage-nav.prev { left: 14px; }
+    .fs-stage-nav.next { right: 14px; }
     .fs-stage-counter {
       position: absolute;
-      bottom: 10px;
-      right: 12px;
+      bottom: 12px;
+      right: 16px;
       background: rgba(255,255,255,.9);
       color: #6B4491;
       font-family: 'Poppins', sans-serif;
-      font-size: .72rem;
+      font-size: .74rem;
       font-weight: 600;
-      padding: .2rem .6rem;
+      padding: .22rem .65rem;
       border-radius: 20px;
     }
     .fs-thumbs {
       display: flex;
-      gap: .55rem;
+      gap: .6rem;
       overflow-x: auto;
-      padding: .9rem .1rem .2rem;
+      padding: 1rem .2rem .2rem;
       scroll-behavior: smooth;
     }
     .fs-thumbs::-webkit-scrollbar { height: 5px; }
     .fs-thumbs::-webkit-scrollbar-thumb { background: #e1dcea; border-radius: 10px; }
     .fs-thumb {
       flex: 0 0 auto;
-      width: 54px;
-      height: 54px;
+      width: 62px;
+      height: 62px;
       border-radius: 10px;
-      background: #fff;
+      background: #f7f4fb;
       border: 2px solid transparent;
       display: flex;
       align-items: center;
@@ -692,40 +687,34 @@
       object-fit: contain;
     }
     .fs-thumb:hover { opacity: .9; }
-    .fs-thumb.active {
-      border-color: #6B4491;
-      opacity: 1;
-    }
+    .fs-thumb.active { border-color: #6B4491; opacity: 1; }
+
+    /* ---- Columna de info: igual al pkg-info del Brand Package ---- */
     .fs-info {
-      flex: 1;
-      padding: 2.4rem 2.6rem;
+      background: #f7f4fb;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .fs-info h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      color: #4a2d6e;
-      font-size: 1.35rem;
-      margin: 0 0 .5rem;
-    }
     .fs-label {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: .7rem;
+      font-size: .72rem;
       letter-spacing: .14em;
       text-transform: uppercase;
       color: #6B4491;
       display: block;
-      margin-bottom: .15rem;
+      margin-bottom: .3rem;
     }
     .fs-price {
       font-family: 'Potta One', cursive;
       color: #6B4491;
-      font-size: 2rem;
+      font-size: 2.2rem;
       line-height: 1.1;
-      margin-bottom: .5rem;
+      margin-bottom: .3rem;
     }
     .fs-price small {
       font-family: 'Poppins', sans-serif;
@@ -735,22 +724,22 @@
     }
     .fs-desc {
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      font-size: .92rem;
-      color: #555;
-      margin: 0 0 1.1rem;
+      font-weight: 600;
+      font-size: .88rem;
+      color: #6b6b6b;
+      margin: 0 0 1.3rem;
     }
     .fs-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 1.6rem;
+      margin: 0 0 1.4rem;
       display: flex;
       flex-direction: column;
-      gap: .45rem;
+      gap: .5rem;
     }
     .fs-list li {
       font-family: 'Poppins', sans-serif;
-      font-size: .87rem;
+      font-size: .9rem;
       color: #444;
       padding-left: 1.5rem;
       position: relative;
@@ -762,20 +751,20 @@
       color: #6B4491;
       font-weight: 700;
     }
-    .fs-info .btn-takoi { align-self: flex-start; }
 
+    /* ---- Flechas grandes: cambian entre paquetes (Mascot ↔ Hangar) ---- */
     .fs-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      border: none;
+      border: 2px solid #6B4491;
       background: #fff;
       color: #6B4491;
-      box-shadow: 0 4px 14px rgba(107,68,145,.22);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -784,14 +773,14 @@
       transition: background .2s, color .2s;
     }
     .fs-arrow:hover { background: #6B4491; color: #fff; }
-    .fs-arrow.prev { left: -22px; }
-    .fs-arrow.next { right: -22px; }
+    .fs-arrow.prev { left: 0; }
+    .fs-arrow.next { right: 0; }
 
     .fs-dots {
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-top: 1.6rem;
+      margin-top: 2rem;
     }
     .fs-dots button {
       width: 9px;
@@ -803,20 +792,16 @@
       padding: 0;
       transition: background .2s, transform .2s;
     }
-    .fs-dots button.active {
-      background: #6B4491;
-      transform: scale(1.25);
-    }
+    .fs-dots button.active { background: #6B4491; transform: scale(1.25); }
 
+    @media (max-width: 991.98px) {
+      .fs-info { margin-top: 1.6rem; height: auto; }
+    }
     @media (max-width: 767.98px) {
-      .fs-slide-inner { flex-direction: column; min-height: 0; }
-      .fs-track-wrap { border-radius: 20px; }
-      .fs-media { max-width: 100%; flex: 0 0 auto; padding: 1.2rem 1.1rem .6rem; }
-      .fs-stage { height: 220px; }
-      .fs-info { padding: 1.6rem 1.4rem 2rem; }
-      .fs-arrow { width: 38px; height: 38px; font-size: 1.15rem; }
-      .fs-arrow.prev { left: 4px; }
-      .fs-arrow.next { right: 4px; }
+      .fs-carousel { padding: 0 34px; }
+      .fs-stage { height: 240px; }
+      .fs-info { padding: 1.6rem 1.5rem; }
+      .fs-arrow { width: 34px; height: 34px; font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -1086,61 +1071,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <!-- Slide 1: Mascot Branding Pack -->
           <div class="fs-slide">
-            <div class="fs-slide-inner">
-              <div class="fs-media">
-                <span class="fs-badge">MOST REQUESTED</span>
-                <div class="fs-stage">
-                  <button type="button" class="fs-stage-nav prev" data-gallery="mascot" aria-label="Previous photo">‹</button>
-                  <img id="fsStage-mascot" src="" alt="Mascot Branding Pack" loading="lazy" decoding="async">
-                  <button type="button" class="fs-stage-nav next" data-gallery="mascot" aria-label="Next photo">›</button>
-                  <span class="fs-stage-counter" id="fsCounter-mascot">1 / 1</span>
+            <div class="row align-items-stretch g-4 justify-content-center">
+              <div class="col-lg-6">
+                <div class="fs-media-col">
+                  <span class="fs-badge">MOST REQUESTED</span>
+                  <div class="fs-stage">
+                    <button type="button" class="fs-stage-nav prev" data-gallery="mascot" aria-label="Previous photo">‹</button>
+                    <img id="fsStage-mascot" src="" alt="Mascot Branding Pack" loading="lazy" decoding="async">
+                    <button type="button" class="fs-stage-nav next" data-gallery="mascot" aria-label="Next photo">›</button>
+                    <span class="fs-stage-counter" id="fsCounter-mascot">1 / 1</span>
+                  </div>
+                  <div class="fs-thumbs" id="fsThumbs-mascot"></div>
                 </div>
-                <div class="fs-thumbs" id="fsThumbs-mascot"></div>
               </div>
-              <div class="fs-info">
-                <h3>Mascot Branding Pack</h3>
-                <span class="fs-label">Starting at</span>
-                <div class="fs-price">$250 <small>USD</small></div>
-                <p class="fs-desc">Custom mascot + branding system</p>
-                <ul class="fs-list">
-                  <li>Custom mascot illustration</li>
-                  <li>Mascot head / sticker</li>
-                  <li>Line-art version</li>
-                  <li>Mascot logo</li>
-                  <li>Brand visuals</li>
-                </ul>
-                <a href="service-brand-identity.html" class="btn-takoi">Explore Branding →</a>
+              <div class="col-lg-5">
+                <div class="fs-info">
+                  <h3 class="fs-pkg-name" style="text-align:left; margin-bottom:.2rem;">Mascot Branding Pack</h3>
+                  <span class="fs-label">Starting at</span>
+                  <div class="fs-price">$250 <small>USD</small></div>
+                  <p class="fs-desc">Custom mascot + branding system</p>
+                  <ul class="fs-list">
+                    <li>Custom mascot illustration</li>
+                    <li>Mascot head / sticker</li>
+                    <li>Line-art version</li>
+                    <li>Mascot logo</li>
+                    <li>Brand visuals</li>
+                  </ul>
+                  <a href="service-brand-identity.html" class="btn-takoi" style="align-self:flex-start;">Explore Branding →</a>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Slide 2: Hangar Emprendedor / Brand Experience Package -->
           <div class="fs-slide">
-            <div class="fs-slide-inner">
-              <div class="fs-media">
-                <div class="fs-stage">
-                  <button type="button" class="fs-stage-nav prev" data-gallery="hangar" aria-label="Previous photo">‹</button>
-                  <img id="fsStage-hangar" src="" alt="Brand Experience Package — Hangar Emprendedor" loading="lazy" decoding="async">
-                  <button type="button" class="fs-stage-nav next" data-gallery="hangar" aria-label="Next photo">›</button>
-                  <span class="fs-stage-counter" id="fsCounter-hangar">1 / 1</span>
+            <div class="row align-items-stretch g-4 justify-content-center">
+              <div class="col-lg-6">
+                <div class="fs-media-col">
+                  <div class="fs-stage">
+                    <button type="button" class="fs-stage-nav prev" data-gallery="hangar" aria-label="Previous photo">‹</button>
+                    <img id="fsStage-hangar" src="" alt="Brand Experience Package — Hangar Emprendedor" loading="lazy" decoding="async">
+                    <button type="button" class="fs-stage-nav next" data-gallery="hangar" aria-label="Next photo">›</button>
+                    <span class="fs-stage-counter" id="fsCounter-hangar">1 / 1</span>
+                  </div>
+                  <div class="fs-thumbs" id="fsThumbs-hangar"></div>
                 </div>
-                <div class="fs-thumbs" id="fsThumbs-hangar"></div>
               </div>
-              <div class="fs-info">
-                <h3>Brand Experience Package</h3>
-                <div class="fs-price">US$7,500</div>
-                <p class="fs-desc">Full brand identity &amp; launch package</p>
-                <ul class="fs-list">
-                  <li>Brand strategy &amp; creative direction</li>
-                  <li>Complete logo system &amp; visual identity</li>
-                  <li>Color palette, typography &amp; graphic system</li>
-                  <li>Packaging &amp; branded applications</li>
-                  <li>Social media kit</li>
-                  <li>Launch Reel</li>
-                  <li>Logo animation / motion</li>
-                  <li>Complete Brand Book</li>
-                </ul>
-                <a href="service-brand-identity.html" class="btn-takoi">Explore Branding →</a>
+              <div class="col-lg-5">
+                <div class="fs-info">
+                  <h3 class="fs-pkg-name" style="text-align:left; margin-bottom:.2rem;">Brand Experience Package</h3>
+                  <div class="fs-price">US$7,500</div>
+                  <p class="fs-desc">Full brand identity &amp; launch package</p>
+                  <ul class="fs-list">
+                    <li>Brand strategy &amp; creative direction</li>
+                    <li>Complete logo system &amp; visual identity</li>
+                    <li>Color palette, typography &amp; graphic system</li>
+                    <li>Packaging &amp; branded applications</li>
+                    <li>Social media kit</li>
+                    <li>Launch Reel</li>
+                    <li>Logo animation / motion</li>
+                    <li>Complete Brand Book</li>
+                  </ul>
+                  <a href="service-brand-identity.html" class="btn-takoi" style="align-self:flex-start;">Explore Branding →</a>
+                </div>
               </div>
             </div>
           </div>
