@@ -9,7 +9,10 @@
   <style>
     body { font-family: 'Poppins', sans-serif; }
     header { background: #fff; padding: 12px 0; }
-    .navbar { background: #fff !important; border-bottom: 1px solid #e1dcea; }
+    .navbar {
+  background: #6B4491 !important;
+  border-bottom: none;
+}
 
     /* Navbar container: menu centrado en escritorio, selector de idioma a la derecha */
     .navbar-container {
@@ -636,32 +639,122 @@
     <img src="http://takoiartista.free.nf/wp-content/uploads/2026/02/logo-violeta-10-scaled.png" alt="Takoi Artist Logo" height="80">
   </header>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg py-0" role="navigation" aria-label="Main menu">
-    <div class="navbar-container">
-      <button class="navbar-toggler border-0 my-2" type="button"
-              data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Open menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+ <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg py-0"
+     role="navigation"
+     aria-label="Menú principal">
 
-      <div class="navbar-lang d-flex align-items-center">
-        <div id="google_translate_element"></div>
-      </div>
+  <div class="navbar-container">
 
-      <div class="collapse navbar-collapse justify-content-center" id="menu">
-        <ul class="navbar-nav gap-2 py-2">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
-        </ul>
-      </div>
+    <button class="navbar-toggler border-0 my-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+            aria-label="Abrir menú">
+      <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+    </button>
+
+    <!-- IDIOMA -->
+    <div class="navbar-lang d-flex align-items-center">
+      <div id="google_translate_element"></div>
     </div>
-  </nav>
+
+    <!-- REDES + WHATSAPP -->
+    <div class="menu-social d-flex align-items-center gap-2 py-1">
+
+      <a href="https://www.instagram.com/meiw_creative1995"
+         target="_blank"
+         rel="noopener"
+         title="Instagram"
+         class="social-icon">
+        <i class="bi bi-instagram"></i>
+      </a>
+
+      <a href="https://www.behance.net/jotako"
+         target="_blank"
+         rel="noopener"
+         title="Behance"
+         class="social-icon">
+        <i class="bi bi-behance"></i>
+      </a>
+
+      <a href="https://x.com/takoiartist"
+         target="_blank"
+         rel="noopener"
+         title="Twitter / X"
+         class="social-icon">
+        <i class="bi bi-twitter-x"></i>
+      </a>
+
+      <a href="https://www.youtube.com/@TakoiArtist"
+         target="_blank"
+         rel="noopener"
+         title="YouTube"
+         class="social-icon">
+        <i class="bi bi-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/573145641237"
+         target="_blank"
+         rel="noopener"
+         class="btn-whatsapp-nav">
+        <i class="bi bi-whatsapp"></i>
+        <span class="d-none d-md-inline">Write to us</span>
+      </a>
+
+    </div>
+
+    <!-- MENÚ -->
+    <div class="collapse navbar-collapse justify-content-center"
+         id="menu">
+
+      <ul class="navbar-nav gap-2 py-2">
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="about.html">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active"
+             href="services.html">Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="portfolio.html">Portfolio</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="blog.html">Blog</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="shop.html">Shop</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="index.html#contacto">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"
+             href="sitemap.html">Sitemap</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
 
   <!-- CONTENT -->
   <section class="py-5" style="background:#fff;">
