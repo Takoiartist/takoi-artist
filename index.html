@@ -573,11 +573,16 @@
       position: relative;
       padding: 0 46px;
     }
-    .fs-track-wrap { overflow: hidden; }
+    .fs-track-wrap {
+      overflow: hidden;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
     .fs-track {
       display: flex;
       align-items: stretch;
       transition: transform .5s ease;
+      will-change: transform;
     }
     .fs-slide {
       flex: 0 0 100%;
@@ -1082,7 +1087,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <span class="fs-badge">MOST REQUESTED</span>
                   <div class="fs-stage">
                     <button type="button" class="fs-stage-nav prev" data-gallery="mascot" aria-label="Previous photo">‹</button>
-                    <img id="fsStage-mascot" src="" alt="Mascot Branding Pack" loading="lazy" decoding="async">
+                    <img id="fsStage-mascot" src="" alt="Mascot Branding Pack" loading="eager" decoding="async">
                     <button type="button" class="fs-stage-nav next" data-gallery="mascot" aria-label="Next photo">›</button>
                     <span class="fs-stage-counter" id="fsCounter-mascot">1 / 1</span>
                   </div>
@@ -1115,7 +1120,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="fs-media-col">
                   <div class="fs-stage">
                     <button type="button" class="fs-stage-nav prev" data-gallery="hangar" aria-label="Previous photo">‹</button>
-                    <img id="fsStage-hangar" src="" alt="Brand Experience Package — Hangar Emprendedor" loading="lazy" decoding="async">
+                    <img id="fsStage-hangar" src="" alt="Brand Experience Package — Hangar Emprendedor" loading="eager" decoding="async">
                     <button type="button" class="fs-stage-nav next" data-gallery="hangar" aria-label="Next photo">›</button>
                     <span class="fs-stage-counter" id="fsCounter-hangar">1 / 1</span>
                   </div>
@@ -1628,6 +1633,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         goToGallery(key, galleryState[key] + dir);
       });
     });
+
+    // ---- Fix de repintado en navegadores móviles ----
+    // Algunos navegadores (Chrome/WebView Android) no repintan bien un
+    // contenedor con overflow:hidden + transform hasta que el usuario
+    // hace scroll. Forzamos un reflow apenas termina de cargar todo
+    // (fuentes + imágenes) para que el carrusel se vea bien desde el
+    // primer instante, sin depender de que el usuario scrollee.
+    function forceReflow(){
+      track.style.display = 'none';
+      // eslint-disable-next-line no-unused-expressions
+      track.offsetHeight;
+      track.style.display = '';
+    }
+    window.addEventListener('load', forceReflow);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(forceReflow);
+    }
+    // Segundo intento por si alguna imagen tarda más que 'load'
+    setTimeout(forceReflow, 600);
   })();
 </script>
 
