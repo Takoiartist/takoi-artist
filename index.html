@@ -813,6 +813,12 @@
       .fs-info { padding: 1.6rem 1.5rem; }
       .fs-arrow { width: 34px; height: 34px; font-size: 1.1rem; }
     }
+
+    /* Hero en móvil: portada "Coming Soon" más grande */
+    @media (max-width: 767.98px) {
+      #hero { height: 280px !important; }
+      #hero .hero-cs-img { object-fit: cover !important; object-position: center center; }
+    }
   </style>
 </head>
 <body>
@@ -870,12 +876,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO -->
 <section id="hero" style="overflow:hidden; position:relative; height:550px; background:#fff;">
 
-  <div id="carouselHero" class="carousel slide" data-bs-ride="carousel" style="height:100%;">
+  <div id="carouselHero" class="carousel slide" data-bs-interval="false" style="height:100%;">
     <div class="carousel-inner" style="height:100%;">
 
       <!-- Slide 1: Video demo reel -->
       <div class="carousel-item active" style="height:100%; position:relative;">
-        <video autoplay muted loop playsinline
+        <video id="heroVideo" autoplay muted playsinline
              style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; opacity:0.85;">
           <source src="https://takoiartist.github.io/takoi-artist/DEMO%20REEL.mp4" type="video/mp4">
         </video>
@@ -893,7 +899,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Slide 2: Banner Coming Soon -->
       <div class="carousel-item" style="height:100%; position:relative; background:#eceaec;">
-        <img src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/cb1b457946cdb88d45a28680b50b5ba550b8603d/coming-soon-banner.png.png"
+        <img class="hero-cs-img" src="https://raw.githubusercontent.com/Takoiartist/takoi-artist/cb1b457946cdb88d45a28680b50b5ba550b8603d/coming-soon-banner.png.png"
              alt="Coming Soon - Short Film: La libertad iluminando al mundo"
              loading="lazy" decoding="async"
              style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain;">
@@ -1417,6 +1423,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 <script src="https://web3forms.com/client/script.js" async defer></script>
+<script>
+(function(){
+  var hero  = document.getElementById('carouselHero');
+  var video = document.getElementById('heroVideo');
+  if (!hero || !video) return;
+  var carousel = bootstrap.Carousel.getOrCreateInstance(hero, { interval: false, ride: false });
+  // Al terminar el video, pasa a la portada "Coming Soon"
+  video.addEventListener('ended', function(){ carousel.next(); });
+  // Si el video no carga, muestra la portada
+  var src = video.querySelector('source');
+  if (src) src.addEventListener('error', function(){ carousel.next(); });
+  // Pausa al salir del slide 1 y reinicia al volver
+  hero.addEventListener('slide.bs.carousel', function(e){ if (e.to !== 0) video.pause(); });
+  hero.addEventListener('slid.bs.carousel', function(e){
+    if (e.to === 0) { video.currentTime = 0; video.play().catch(function(){}); }
+  });
+})();
+</script>
+
   <script>
   function googleTranslateElementInit() {
     new google.translate.TranslateElement(
