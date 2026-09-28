@@ -189,6 +189,14 @@ position:absolute; top:20px; right:22px; width:40px; height:40px; border-radius:
 border:none; background:#fff; color:var(--purple); font-size:1.1rem; cursor:pointer;
 }
 .lightbox-close:hover{ background:var(--purple); color:#fff; }
+.zoom-vp{ position:relative; display:flex; justify-content:center; overflow:hidden; touch-action:none; cursor:zoom-in; background:#fff; user-select:none; -webkit-user-select:none; }
+.zoom-vp.zoomed{ cursor:grab; }
+.zoom-vp.dragging{ cursor:grabbing; }
+.zoom-vp img{ transform-origin:center center; will-change:transform; -webkit-user-drag:none; }
+.zoom-ctrl{ position:absolute; left:12px; bottom:12px; display:flex; gap:6px; z-index:6; }
+.zoom-ctrl button{ width:38px; height:38px; border-radius:50%; border:none; background:rgba(43,43,43,.78); color:#fff; font-size:1.15rem; font-weight:700; line-height:1; cursor:pointer; }
+.zoom-ctrl button:hover{ background:var(--purple,#6B4491); }
+.zoom-hint{ position:absolute; right:12px; bottom:12px; z-index:6; background:rgba(43,43,43,.7); color:#fff; font-size:.72rem; padding:5px 10px; border-radius:20px; pointer-events:none; transition:opacity .4s; }
 @media (prefers-reduced-motion: reduce){
 *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
 }
@@ -625,7 +633,7 @@ Copyright © All Rights Reserved 2026 &nbsp;|&nbsp; Designed by:
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged illustration view">
 <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
 <div class="lightbox-card">
-<img id="lightboxImg" src="" alt="">
+<div class="zoom-vp" id="lightboxVp"><img id="lightboxImg" src="" alt=""></div>
 <div class="lightbox-cap">
 <b id="lightboxTitle"></b>
 <span class="tag" id="lightboxClient"></span>
@@ -1206,6 +1214,22 @@ images: [
 ]
 },
 {
+title: "Colombian Coffee Medium High",
+client: "Coffee Packaging",
+description: "Packaging design and illustrations",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/ChatGPT%20Image%2028%20sept%202026%2C%2012_28_34.webp", title:"Colombian Coffee Medium High — Packaging 1" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/ChatGPT%20Image%2028%20sept%202026%2C%2012_26_54.webp", title:"Colombian Coffee Medium High — Packaging 2" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/ChatGPT%20Image%2028%20sept%202026%2C%2012_23_19.webp", title:"Colombian Coffee Medium High — Packaging 3" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/ChatGPT%20Image%2028%20sept%202026%2C%2012_21_04.webp", title:"Colombian Coffee Medium High — Packaging 4" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/Barranquillo.webp", title:"Colombian Coffee Medium High — Illustration: Barranquillo" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/Guacamaya.webp", title:"Colombian Coffee Medium High — Illustration: Guacamaya" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/Mula.webp", title:"Colombian Coffee Medium High — Illustration: Mula" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/Oso%20Anteojos.webp", title:"Colombian Coffee Medium High — Illustration: Oso Anteojos" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/d70bf4cdeb2a038c2e725a8f678febeaa24b78a3/ZIM%20Dog.webp", title:"Colombian Coffee Medium High — Illustration: ZIM Dog" }
+]
+},
+{
 src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/2ccc4634dc19cc845d9aa5ebd2b0c4ae9c24f35b/Gemini_Generated_Image_vwz67avwz67avwz6.webp",
 title:"Café BGT",
 client:"Coffee Packaging",
@@ -1227,7 +1251,7 @@ client:"Box Packaging",
 description:"Gift box for coffee cups"
 },
 {
-src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/143d3660fd940a4f3680f2bd2ee3066f858b9510/WhatsApp%20Image%202026-09-28%20at%2010.57.34%20AM.webp",
+src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/3ccd9d9dbe75fb2a38d69d2398cd696b7bb3a0a4/Colombian%20Coffee%20Etiquetas%20500gr.%20(7X15CM)%20Mula.webp",
 title:"Coffee Cookie Stickers",
 client:"Sticker Packaging",
 description:"Sticker design for coffee cookies"
@@ -1239,6 +1263,85 @@ client:"Box Packaging · UNICEF",
 description:"Illustration and box design — completed"
 }
 ];
+// ---- Zoom (click / wheel / pinch / drag / buttons) ----
+function makeZoomable(vp, img){
+var s = 1, tx = 0, ty = 0, MAX = 6, moved = false, dragStart = null, pts = {}, pinch0 = null;
+img.draggable = false;
+function clamp(){
+var mx = Math.max(0, (img.clientWidth * s - vp.clientWidth) / 2);
+var my = Math.max(0, (img.clientHeight * s - vp.clientHeight) / 2);
+tx = Math.min(mx, Math.max(-mx, tx)); ty = Math.min(my, Math.max(-my, ty));
+}
+function apply(){
+if(s <= 1.001){ s = 1; tx = 0; ty = 0; }
+clamp();
+img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+vp.classList.toggle('zoomed', s > 1);
+}
+function zoomAt(ns, cx, cy){
+ns = Math.min(MAX, Math.max(1, ns));
+var r = vp.getBoundingClientRect();
+var px = cx - (r.left + r.width / 2), py = cy - (r.top + r.height / 2);
+tx = px - (px - tx) * ns / s; ty = py - (py - ty) * ns / s; s = ns; apply();
+}
+function centerZoom(f){ var r = vp.getBoundingClientRect(); zoomAt(s * f, r.left + r.width / 2, r.top + r.height / 2); }
+function reset(){ s = 1; tx = 0; ty = 0; img.style.transition = 'none'; apply(); }
+img.style.transition = 'transform .18s ease-out';
+vp.addEventListener('wheel', function(e){
+e.preventDefault(); img.style.transition = 'transform .08s linear';
+zoomAt(s * (e.deltaY < 0 ? 1.2 : 1 / 1.2), e.clientX, e.clientY);
+}, { passive:false });
+vp.addEventListener('pointerdown', function(e){
+if(e.target.closest('.zoom-ctrl')) return;
+pts[e.pointerId] = { x:e.clientX, y:e.clientY };
+vp.setPointerCapture(e.pointerId);
+var ids = Object.keys(pts);
+if(ids.length === 1){ moved = false; dragStart = { x:e.clientX, y:e.clientY, tx:tx, ty:ty }; }
+if(ids.length === 2){ var a = pts[ids[0]], b = pts[ids[1]]; pinch0 = { d:Math.hypot(a.x - b.x, a.y - b.y), s:s }; moved = true; }
+});
+vp.addEventListener('pointermove', function(e){
+if(!pts[e.pointerId]) return;
+pts[e.pointerId] = { x:e.clientX, y:e.clientY };
+var ids = Object.keys(pts);
+img.style.transition = 'none';
+if(ids.length === 2 && pinch0){
+var a = pts[ids[0]], b = pts[ids[1]];
+zoomAt(pinch0.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch0.d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+} else if(ids.length === 1 && dragStart){
+var dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+if(Math.abs(dx) + Math.abs(dy) > 4) moved = true;
+if(s > 1 && moved){ vp.classList.add('dragging'); tx = dragStart.tx + dx; ty = dragStart.ty + dy; apply(); }
+}
+});
+function end(e){
+if(!pts[e.pointerId]) return;
+var wasSingle = Object.keys(pts).length === 1;
+delete pts[e.pointerId]; pinch0 = null; vp.classList.remove('dragging');
+if(wasSingle && !moved && e.type === 'pointerup'){
+img.style.transition = 'transform .18s ease-out';
+if(s > 1) { s = 1; apply(); } else { zoomAt(2.6, e.clientX, e.clientY); }
+}
+dragStart = null;
+}
+vp.addEventListener('pointerup', end);
+vp.addEventListener('pointercancel', end);
+var ctrl = document.createElement('div');
+ctrl.className = 'zoom-ctrl';
+function mk(txt, label, fn){
+var b = document.createElement('button'); b.type = 'button'; b.textContent = txt; b.title = label; b.setAttribute('aria-label', label);
+b.addEventListener('click', function(e){ e.stopPropagation(); img.style.transition = 'transform .18s ease-out'; fn(); });
+ctrl.appendChild(b);
+}
+mk('+', 'Zoom in', function(){ centerZoom(1.5); });
+mk('−', 'Zoom out', function(){ centerZoom(1 / 1.5); });
+mk('⟲', 'Reset zoom', function(){ s = 1; apply(); });
+vp.appendChild(ctrl);
+var hint = document.createElement('div');
+hint.className = 'zoom-hint'; hint.textContent = 'Click or scroll to zoom';
+vp.appendChild(hint);
+setTimeout(function(){ hint.style.opacity = 0; }, 3500);
+return { reset:reset };
+}
 function pieceEl(item){
 var btn = document.createElement('button');
 btn.type = 'button';
@@ -1351,6 +1454,10 @@ var img = document.createElement('img');
 img.src = project.images[currentIndex].src;
 img.alt = project.images[currentIndex].title;
 img.style.cssText = 'max-width:100%; max-height:70vh; display:block; margin:0 auto;';
+var zvp = document.createElement('div');
+zvp.className = 'zoom-vp';
+zvp.appendChild(img);
+var zoomer = makeZoomable(zvp, img);
 var info = document.createElement('div');
 info.style.cssText =
 'padding:12px 20px; background:#fff; display:flex; justify-content:space-between; align-items:center;';
@@ -1392,6 +1499,7 @@ closeBtn.style.cssText =
 'border:none; width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:5;';
 function updateImage(index) {
 currentIndex = index;
+zoomer.reset();
 img.src = project.images[currentIndex].src;
 img.alt = project.images[currentIndex].title;
 info.innerHTML =
@@ -1425,7 +1533,7 @@ if (e.target === overlay) closeCarousel();
 });
 nav.appendChild(prevBtn);
 nav.appendChild(nextBtn);
-container.appendChild(img);
+container.appendChild(zvp);
 container.appendChild(info);
 if(linkRow){ container.appendChild(linkRow); }
 container.appendChild(nav);
@@ -1494,8 +1602,10 @@ var lbImg = document.getElementById('lightboxImg');
 var lbTitle = document.getElementById('lightboxTitle');
 var lbClient = document.getElementById('lightboxClient');
 var lastFocused = null;
+var lbZoom = makeZoomable(document.getElementById('lightboxVp'), lbImg);
 function openLightbox(item){
 lastFocused = document.activeElement;
+lbZoom.reset();
 lbImg.src = item.src;
 lbImg.alt = item.title + ' — ' + item.client;
 lbTitle.textContent = item.title;
