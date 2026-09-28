@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Takoi Artist</title>
-<meta name="description" content="Takoi Artist · Jotako Studio — Illustrations, Editorial, Brand Design, Custom Digital Illustration, Manga/Comics, 2D Animation and Website.">
+<meta name="description" content="Takoi Artist · Jotako Studio — Illustrations, Editorial, Brand Design, Custom Digital Illustration, Manga/Comics, 2D Animation, Website and Packaging.">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Potta+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -569,6 +569,19 @@ Back
 </div>
 </div>
 </section>
+<!-- PACKAGING -->
+<section class="py-section bg-soft" id="packaging">
+<div class="container">
+<p class="eyebrow">08 · Chapter</p>
+<h2 class="section-title">Packaging</h2>
+<p class="section-sub">Box, label and product packaging design and illustration for food, coffee and social projects.</p>
+<div class="chapter-carousel">
+<button type="button" class="chapter-arrow prev" data-target="gallery-packaging" aria-label="Previous">‹</button>
+<div class="piece-grid" id="gallery-packaging"></div>
+<button type="button" class="chapter-arrow next" data-target="gallery-packaging" aria-label="Next">›</button>
+</div>
+</div>
+</section>
 <!-- CTA -->
 <section class="py-section" style="background:var(--purple); text-align:center">
 <div class="container">
@@ -658,7 +671,9 @@ img:"https://github.com/Takoiartist/takoi-artist/blob/main/%5BJotako%5D%20Lola's
 { num:"06", href:"#editorial", title:"Editorial Design",
 img:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/editorial.webp" },
 { num:"07", href:"#comisiones", title:"Custom Digital Illustration",
-img:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/Ilustraci%C3%B3n%20gatas.webp" }
+img:"https://raw.githubusercontent.com/Takoiartist/takoi-artist/5ccb3576b72d7d9c295ea64ab4a34e87fc792454/Ilustraci%C3%B3n%20gatas.webp" },
+{ num:"08", href:"#packaging", title:"Packaging",
+img:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/dabe426e334c7d7a1f0055080ba93ce6f29c1aaa/classic-roast-by-colombiancoffeeus-752487.webp" }
 ];
 var catGrid = document.getElementById('catGrid');
 categories.forEach(function(cat){
@@ -1168,6 +1183,62 @@ images: [
 ]
 }
 ];
+var packaging = [
+{
+title: "Enaya",
+client: "Packaging",
+description: "Packaging design proposal for Enaya",
+link: "https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2FTakoiartist%2Fimagenes-y-recursos%2Fmain%2F%255BTakoi%255D%2520Presentaci%25C3%25B3n%2520de%2520Propuesta%2520%25232.pdf&embedded=true",
+linkLabel: "View proposal (PDF) →",
+images: [
+{ src:"https://github.com/Takoiartist/imagenes-y-recursos/blob/main/para-enviar.webp?raw=true", title:"Enaya — Packaging" }
+]
+},
+{
+title: "Colombian Coffee",
+client: "Coffee Packaging",
+description: "Coffee bags, labels and gift kit for Colombian Coffee",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/dabe426e334c7d7a1f0055080ba93ce6f29c1aaa/SMPOSTCOFFEE_24.png", title:"Colombian Coffee — Presentation" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/dabe426e334c7d7a1f0055080ba93ce6f29c1aaa/classic-roast-by-colombiancoffeeus-752487.webp", title:"Colombian Coffee — Classic Roast" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/dabe426e334c7d7a1f0055080ba93ce6f29c1aaa/colombian-excelso-select-harvest-coffee-157614.png", title:"Colombian Coffee — Excelso Select Harvest" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/dabe426e334c7d7a1f0055080ba93ce6f29c1aaa/kit-colombian-coffee-elite-select-classic-694825.png", title:"Colombian Coffee — Elite Select Kit" }
+]
+},
+{
+src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/2ccc4634dc19cc845d9aa5ebd2b0c4ae9c24f35b/Gemini_Generated_Image_vwz67avwz67avwz6.webp",
+title:"Café BGT",
+client:"Coffee Packaging",
+description:"Coffee packaging design"
+},
+{
+title: "Arpía Coffee",
+client: "Coffee Packaging",
+description: "Packaging design for Arpía Coffee",
+images: [
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/143d3660fd940a4f3680f2bd2ee3066f858b9510/WhatsApp%20Image%202026-09-26%20at%2012.26.51%20AM.webp", title:"Arpía Coffee — 1" },
+{ src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/143d3660fd940a4f3680f2bd2ee3066f858b9510/WhatsApp%20Image%202026-09-26%20at%2012.26.51%20AM%20(1).webp", title:"Arpía Coffee — 2" }
+]
+},
+{
+src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/143d3660fd940a4f3680f2bd2ee3066f858b9510/WhatsApp%20Image%202026-09-28%20at%2010.57.09%20AM.webp",
+title:"Colombian Coffee — Glass Box",
+client:"Box Packaging",
+description:"Gift box for coffee cups"
+},
+{
+src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/143d3660fd940a4f3680f2bd2ee3066f858b9510/WhatsApp%20Image%202026-09-28%20at%2010.57.34%20AM.webp",
+title:"Coffee Cookie Stickers",
+client:"Sticker Packaging",
+description:"Sticker design for coffee cookies"
+},
+{
+src:"https://raw.githubusercontent.com/Takoiartist/imagenes-y-recursos/143d3660fd940a4f3680f2bd2ee3066f858b9510/caja-de-heramientas.webp",
+title:"UNICEF Toolbox",
+client:"Box Packaging · UNICEF",
+description:"Illustration and box design — completed"
+}
+];
 function pieceEl(item){
 var btn = document.createElement('button');
 btn.type = 'button';
@@ -1381,7 +1452,8 @@ fillGallery('gallery-comisiones', comisiones);
 fillGallery('gallery-manga', mangaProjects);
 fillGallery('gallery-animacion', animacion);
 fillGallery('gallery-web', web);
-// ---- Chapter carousel arrows (Illustrations, Editorial, Brand, Custom, Manga, Animation, Website) ----
+fillGallery('gallery-packaging', packaging);
+// ---- Chapter carousel arrows (Illustrations, Editorial, Brand, Custom, Manga, Animation, Website, Packaging) ----
 document.querySelectorAll('.chapter-arrow').forEach(function(btn){
 btn.addEventListener('click', function(){
 var grid = document.getElementById(btn.getAttribute('data-target'));
