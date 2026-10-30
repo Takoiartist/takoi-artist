@@ -315,6 +315,21 @@
       padding: 12px;
     }
 
+    /* ---- Featured (destacado) horizontal card ---- */
+    .reel-card.featured {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: 100%;
+      max-width: 820px;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 14px 40px rgba(107,68,145,.35);
+      outline: 3px solid #6B4491;
+      outline-offset: 4px;
+    }
+    .reel-card.featured .reel-play-btn { width: 72px; height: 72px; }
+    .reel-card.featured .reel-label { font-size: 1rem; bottom: 16px; left: 18px; }
+    .reel-card.featured .reel-tag { font-size: .72rem; padding: 5px 14px; }
+
     @media (max-width: 991px) {
       .reel-grid { grid-template-columns: repeat(3, 1fr); }
     }
@@ -528,9 +543,20 @@
     // ---- Reel / video data ----
     // orientation: "portrait" (reels, 9:16) or "landscape" (corporate videos, 16:9)
     const clips = [
+      // Destacado: video banner corporativo (horizontal), primero
+      { id: "1JD-avamEfWCXdQR73gk3E81aFzS0jLgD", label: "Corporate Video", orientation: "landscape", featured: true },
+
+      // Reels (vertical)
       { id: "1sr-mVDmUmZUOSlrZLTfuO_GaA9p0Ti4o", label: "Reel Edit", orientation: "portrait" },
       { id: "1Ovz9IxfJ3Hpqnm4fd1TbalycgVIG-hTU", label: "Reel Edit", orientation: "portrait" },
       { id: "1bfYByZtJsRdLJm8C4PkKIZBjrmxJh5xV", label: "Reel Edit", orientation: "portrait" },
+      { id: "1MsZYYGWyDcugNtr0aH5rS2P2FhlDeyxs", label: "Reel Edit", orientation: "portrait" },
+      { id: "1LBXfHmQbzmM5Z1bT52eEbnpRgnBKVV4d", label: "Reel Edit", orientation: "portrait" },
+      { id: "14WZIAOm5Xtw4ECO21fMXvX70aVoFOUzH", label: "Reel Edit", orientation: "portrait" },
+      { id: "1MQV1t_dzQmH2dDJ7UQKNHKhYYFYOw7EY", label: "Reel Edit", orientation: "portrait" },
+      { id: "1iGNy8AzUdRJKg5a_4eMdFhCJ-FSHIizL", label: "Reel Edit", orientation: "portrait" },
+
+      // Videos (horizontal)
       { id: "1hl-N0C545cEM7i8zo3ozPYrC-mmCO5pS", label: "Video Edit", orientation: "landscape" },
       { id: "17MF5_SV0e38KBtAYIgBRA__eIuie6lOX", label: "Video Edit", orientation: "landscape" },
       { id: "1u-HeVXWIAImp8yr3It2eI_ODLAPCOwJJ", label: "Video Edit", orientation: "landscape" },
@@ -541,7 +567,7 @@
 
     clips.forEach((clip) => {
       const card = document.createElement('div');
-      card.className = 'reel-card';
+      card.className = 'reel-card' + (clip.featured ? ' featured' : '');
       card.innerHTML = `
         <span class="reel-tag">${clip.label}</span>
         <img src="https://drive.google.com/thumbnail?id=${clip.id}&sz=w800" alt="${clip.label} thumbnail" loading="lazy">
